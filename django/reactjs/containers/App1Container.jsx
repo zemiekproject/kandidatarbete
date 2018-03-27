@@ -8,7 +8,7 @@ export default class App1Container extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-            <Headline>IT WORKS!!!!!!!!!!!!!!</Headline>
+            <Headline>IT WORKS!</Headline>
           </div>
         </div>
       </div>
