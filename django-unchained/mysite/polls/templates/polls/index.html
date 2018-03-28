@@ -1,4 +1,5 @@
 {% load static %}
+{% load render_bundle from webpack_loader %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
 
@@ -12,3 +13,10 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
+{% block main %}
+
+<div id="App1"></div>
+{% render_bundle 'vendors' %}
+{% render_bundle 'App1' %}
+{% endblock %}
