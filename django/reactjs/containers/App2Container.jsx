@@ -42,7 +42,7 @@ export default class App2Container extends React.Component {
         <div className="col-sm-1">
           </div>
         </div> */}
-        <form action='' method='post'>
+        <form action='' method='post' name='form'>
             <input type='textBox' name='title'> </input>
         </form>
 
