@@ -1,3 +1,5 @@
+
+
 """djreact URL Configuration
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -15,6 +17,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.views import generic
+from .views import review
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -22,4 +25,5 @@ urlpatterns = [
         generic.TemplateView.as_view(template_name='review.html')),
     url(r'^$',
         generic.TemplateView.as_view(template_name='homepage.html')),
+    url(r'^review/$', review.make_review, name='make_review'),
 ]
