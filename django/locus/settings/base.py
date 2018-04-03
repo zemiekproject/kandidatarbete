@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webpack_loader',
     'reviews',
+
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,7 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'locus.wsgi.application'
+
 
 
 
