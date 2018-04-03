@@ -50,6 +50,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'locus.urls'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {
