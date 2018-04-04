@@ -6,9 +6,8 @@ from django.conf import settings
 User = settings.AUTH_USER_MODEL
 
 class Review(models.Model):
-    #author      = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    author      = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     title       = models.CharField(max_length=120)
-    name       = models.CharField(max_length=120)
     location    = models.CharField(max_length=120)
     text        = models.CharField(max_length=500, null=True, blank=True)
     timestamp   = models.DateTimeField(auto_now_add=True)
