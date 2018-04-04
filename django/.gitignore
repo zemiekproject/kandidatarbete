@@ -1,3 +1,6 @@
 /node_modules
 db.sqlite3
 secretkey.py
+/locus/__pycache__/
+/locus/settings/__pycache__/
+/reviews/__pycache__/
