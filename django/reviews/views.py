@@ -47,7 +47,7 @@ class ReviewsDetailView(DetailView):
 class ReviewCreateView(LoginRequiredMixin, CreateView):
     form_class = ReviewCreateForm
     template_name = 'reviews/form.html'
-    success_url = "/reviews/"
+    #success_url = "/reviews/"
 
     def form_valid(self, form):
         instance = form.save(commit=False)
