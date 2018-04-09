@@ -9,7 +9,10 @@
 <p>{{ object.timestamp }}</p>
 <p>{{ object.text }}</p>
 <p>Last updated: {{ object.updated }}</p>
+<p>Written by: <a href="{%url 'profiles:detail' username=object.author %}">{{ object.author }}</a></p>
 
 <!-- {% render_bundle 'vendors' %}
 {% render_bundle 'App1' %} -->
 {% endblock content %}
+
+
