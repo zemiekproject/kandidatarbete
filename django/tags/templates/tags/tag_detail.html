@@ -9,11 +9,10 @@
     <li><a href='{{obj.get_absolute_url}}'><h3>{{ obj.title }}</h3></a> </br> {{ obj.timestamp }}</li>
 {% endfor %} -->
 
-<h2>{{ location.name }}</h2>
+<h2>{{ tag.name }}</h2>
 
-<p>Average rating: {{ location.get_avg_rating }}</p>
 
-{% for review in location.review_set.all %}
+{% for review in tag.review_set.all %}
     <li><a href='{{ review.get_absolute_url }}'>{{ review.title }}</a></li>
 {% endfor %}
 

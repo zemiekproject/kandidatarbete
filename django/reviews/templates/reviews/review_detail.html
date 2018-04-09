@@ -6,13 +6,25 @@
 <h2>{{ object.title }}</h2>
 
 <p>{{ object.location }}</p>
+<p>Rating: {{ object.rating }}</p>
 <p>{{ object.timestamp }}</p>
 <p>{{ object.text }}</p>
+
+<a href="{{object.upvote}}">{{ object.upvote }}</a>
+<!-- <button onclick="{{ object.upvote }}">VOTE</button> -->
+
 <p>Last updated: {{ object.updated }}</p>
 <p>Written by: <a href="{%url 'profiles:detail' username=object.author %}">{{ object.author }}</a></p>
+
+<ul>
+{% for tag in object.tags.all %}
+<li><a href='{{tag.get_absolute_url}}'>{{ tag }}</a></li>
+{% endfor %}
+</ul>
 
 <!-- {% render_bundle 'vendors' %}
 {% render_bundle 'App1' %} -->
 {% endblock content %}
+
 
 

@@ -15,5 +15,14 @@ class ReviewCreateForm(forms.ModelForm):
             'title',
             'location',
             'text',
-                    
+            'rating',  
+            'tags',    
         ]
+
+# class Vote(forms.ModelForm):
+#     class Meta:
+#         model = Review
+#         fields = [
+#             'upvote',
+#             'downvote',
+#         ]
