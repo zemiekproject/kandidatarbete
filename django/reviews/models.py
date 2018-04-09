@@ -3,13 +3,14 @@ from django.db.models.signals import pre_save
 from .utils import unique_slug_generator
 from django.conf import settings
 from django.urls import reverse
+from locations.models import Location
 
 User = settings.AUTH_USER_MODEL
 
 class Review(models.Model):
     author      = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     title       = models.CharField(max_length=120)
-    location    = models.CharField(max_length=120)
+    location    = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
     text        = models.CharField(max_length=500, null=True, blank=True)
     timestamp   = models.DateTimeField(auto_now_add=True)
     updated     = models.DateTimeField(auto_now=True)

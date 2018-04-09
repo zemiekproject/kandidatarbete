@@ -35,7 +35,6 @@ def about_view(request):
 class ReviewsListView(ListView):
     def get_queryset(self, **kwargs):
         queryset = Review.objects.all() 
-        print(queryset)
         return queryset
 
 class ReviewsDetailView(DetailView):
