@@ -8,7 +8,11 @@
     <li><a href='{{obj.get_absolute_url}}'><h3>{{ obj.title }}</h3></a> </br> {{ obj.location }}</li>
     {% endfor %}
 </ul>
+<div class="container">
+          <div id="app" class="columns"><!-- React --></div>
+</div>
 <a href="{% url 'reviews:create' %}"><h4>Make review</h4></a>
 <!-- {% render_bundle 'vendors' %}
 {% render_bundle 'App1' %} -->
+<div id=Main></div>
 {% endblock content %}
