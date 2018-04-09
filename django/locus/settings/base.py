@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'reviews',
     'profiles',
-
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
