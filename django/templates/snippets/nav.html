@@ -2,11 +2,9 @@
 <ul id="navbar">
 <a class='barkey' href='{%url "home" %}'>LOCUS</a>
 <a class='barkey' href='{%url "home" %}'>Home</a> <!-- inside quotes of url "" is the "name" defined in urlpatterns -->
-<a class='barkey' href='{%url "about" %}'>About</a>
-<a class='barkey' href='{%url "reviews:list" %}'>Reviews</a>
-<a class='barkey' href='{%url "home" %}'>World Map?</a>
-<a class='barkey' href='{%url "home" %}'>Top Places</a>
-<a class='barkey' href='{%url "register" %}'>Top Places</a>
+<a href='{%url "reviews:list" %}'>Reviews</a>
+<a href='{%url "locations:list" %}'>Locations</a>
+<a href='{%url "profiles:detail" username=request.user %}'>My Profile</a>
 <a class='barkey' href="{% url 'login' %}">Login</a>
 </ul>
 <!-- </div> -->
