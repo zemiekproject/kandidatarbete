@@ -22,6 +22,7 @@
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
+<p>Don't have an account yet? <a href="{% url 'register' %}">Sign up now!</a></p>
 
 {# Assumes you setup the password_reset view in your URLconf #}
 
