@@ -7,7 +7,7 @@ from django.views.generic import ListView, DetailView, CreateView
 # REST STUFF
 from reviews.serializers import ReviewSerializer
 from rest_framework import generics
-
+from django.shortcuts import render
 from .models import Review
 from .forms import ReviewCreateForm
 
