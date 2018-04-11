@@ -19,7 +19,10 @@ class Form extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { title, location, text } = this.state;
-    const review = { title, location, text };
+    const author = "1"
+    const review = { author, title, location, text};
+
+    console.log(review);
     const conf = {
       method: "post",
       body: JSON.stringify(review),
@@ -51,7 +54,7 @@ class Form extends Component {
             <div className="control">
               <input
                 className="input"
-                type="location"
+                type="text"
                 name="location"
                 onChange={this.handleChange}
                 value={location}

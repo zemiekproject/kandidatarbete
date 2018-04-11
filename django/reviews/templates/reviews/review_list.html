@@ -9,11 +9,11 @@
 </ul>
 <div class="container">
           <div id=Main></div>
+          <div id=ReviewForm></div>
 {% render_bundle 'vendors' %}
 {% render_bundle 'Main' %}
 </div>
 <a href="{% url 'reviews:create' %}"><h4>Make review</h4></a>
 <!-- {% render_bundle 'vendors' %}
 {% render_bundle 'App1' %} -->
-<div id=Main></div>
 {% endblock content %}

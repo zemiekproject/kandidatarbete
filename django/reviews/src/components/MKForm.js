@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import Form from "./Form";
 
 const MKForm = () => (
-    <Form endpoint="api/review/" />
+    <Form endpoint="http://localhost:8000/reviews/api/review/" />
 );
 
 const wrapper = document.getElementById("ReviewForm");
