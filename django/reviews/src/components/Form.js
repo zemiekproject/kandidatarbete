@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ImageUpload from "./ImageUpload";
 
 class Form extends Component {
   static propTypes = {
@@ -8,9 +7,9 @@ class Form extends Component {
   };
 
   state = {
-    name: "",
-    email: "",
-    message: ""
+    title: "",
+    location: "",
+    text: ""
   };
 
   handleChange = e => {
@@ -19,18 +18,18 @@ class Form extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { name, email, message } = this.state;
-    const lead = { name, email, message };
+    const { title, location, text } = this.state;
+    const review = { title, location, text };
     const conf = {
       method: "post",
-      body: JSON.stringify(lead),
+      body: JSON.stringify(review),
       headers: new Headers({ "Content-Type": "application/json" })
     };
     fetch(this.props.endpoint, conf).then(response => console.log(response));
   };
 
   render() {
-    const { name, email, message } = this.state;
+    const { title, location, text } = this.state;
     return (
       <div className="column">
         <form onSubmit={this.handleSubmit}>
@@ -40,50 +39,48 @@ class Form extends Component {
               <input
                 className="input"
                 type="text"
-                name="name"
+                name="title"
                 onChange={this.handleChange}
-                value={name}
+                value={title}
                 required
               />
             </div>
           </div>
           <div className="field">
-            <label className="label">Email</label>
+            <label className="label">location</label>
             <div className="control">
               <input
                 className="input"
-                type="email"
-                name="email"
+                type="location"
+                name="location"
                 onChange={this.handleChange}
-                value={email}
+                value={location}
                 required
               />
             </div>
           </div>
           <div className="field">
-            <label className="label">Message</label>
+            <label className="label">text</label>
             <div className="control">
               <textarea
                 className="textarea"
                 type="text"
-                name="message"
+                name="text"
                 onChange={this.handleChange}
-                value={message}
+                value={text}
                 required
               />
             </div>
           </div>
           <div className="control">
             <button type="submit" className="button is-info">
-              Send message
+              Send text
             </button>
           </div>
         </form>
-        <ImageUpload></ImageUpload>
       </div>
     );
   }
 }
-
 
 export default Form;
