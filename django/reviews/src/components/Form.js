@@ -19,7 +19,7 @@ class Form extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { title, location, text } = this.state;
-    const author = "1"
+    const author = document.getElementById('uid').innerHTML;
     const review = { author, title, location, text};
 
     console.log(review);

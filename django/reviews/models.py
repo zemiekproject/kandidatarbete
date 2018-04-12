@@ -9,12 +9,12 @@ User = settings.AUTH_USER_MODEL
 
 ## ADDED A BUNCH OF BLANKS SHUDN*T B BLANKS
 class Review(models.Model):
-    author      = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=True)
+    author      = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     title       = models.CharField(max_length=120)
     location    = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
     text        = models.CharField(max_length=500, null=True, blank=True)
-    timestamp   = models.DateTimeField(auto_now_add=True, blank=True)
-    updated     = models.DateTimeField(auto_now=True, blank=True)
+    timestamp   = models.DateTimeField(auto_now_add=True)
+    updated     = models.DateTimeField(auto_now=True)
     slug        = models.SlugField(null=True, blank=True)
 
     def __str__(self):
