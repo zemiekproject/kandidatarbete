@@ -7,6 +7,7 @@ from tags.models import Tag
 from django.db.models import F
 User = settings.AUTH_USER_MODEL
 
+## ADDED A BUNCH OF BLANKS SHUDN*T B BLANKS
 class Review(models.Model):
     author      = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     title       = models.CharField(max_length=120)

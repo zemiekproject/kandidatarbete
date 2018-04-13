@@ -4,12 +4,17 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView
 
-
+# REST STUFF
+from reviews.serializers import UserSerializer, ReviewSerializer
+from rest_framework import generics
+from django.shortcuts import render
 from .models import Review
 from .forms import ReviewCreateForm
 
 import random
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 # def review_createview(request):
 #     form = ReviewCreateForm(request.POST or None)
 #     errors = None
@@ -52,3 +57,12 @@ class ReviewCreateView(LoginRequiredMixin, CreateView):
         instance = form.save(commit=False)
         instance.author = self.request.user
         return super(ReviewCreateView, self).form_valid(form)
+    
+# Also REST, handles GET and POST 4 react
+class ReviewListCreate(generics.ListCreateAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+class UserListCreate(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

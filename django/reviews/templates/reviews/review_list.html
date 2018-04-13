@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load render_bundle from webpack_loader %}
-
 {% block content %}
 <h2>Reviews</h2>
 <ul>
@@ -8,6 +7,12 @@
     <li><a href='{{obj.get_absolute_url}}'><h3>{{ obj.title }}</h3></a> </br> {{ obj.location }}</li>
     {% endfor %}
 </ul>
+<div class="container">
+          <div id=Main></div>
+          <div id=ReviewForm></div>
+{% render_bundle 'vendors' %}
+{% render_bundle 'Main' %}
+</div>
 <a href="{% url 'reviews:create' %}"><h4>Make review</h4></a>
 <!-- {% render_bundle 'vendors' %}
 {% render_bundle 'App1' %} -->

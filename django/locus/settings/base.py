@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'locations',
     'tags',
     'profiles',
-
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
