@@ -19,10 +19,9 @@ class ReviewCreateForm(forms.ModelForm):
             'tags',    
         ]
 
-# class Vote(forms.ModelForm):
+# class UpvoteForm(forms.ModelForm):
 #     class Meta:
 #         model = Review
 #         fields = [
-#             'upvote',
-#             'downvote',
+#             'upvotes',
 #         ]
