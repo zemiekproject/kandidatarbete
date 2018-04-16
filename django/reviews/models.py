@@ -31,11 +31,11 @@ class Review(models.Model):
         #return f"/reviews/{self.slug}"
         return reverse("reviews:detail", kwargs = {'slug': self.slug}) #kwargs are always dicitonaries
 
-    def upvote(self):
-        return Review.objects.filter(id__iexact=self.id).update(upvotes=F('upvotes') + 1)
+    # def upvote(self):
+    #     return Review.objects.filter(id__iexact=self.id).update(upvotes=F('upvotes') + 1)
 
-    def downvote(self):
-        return Review.objects.filter(id__iexact=self.id).update(downvotes=F('downvotes') + 1)
+    # def downvote(self):
+    #     return Review.objects.filter(id__iexact=self.id).update(downvotes=F('downvotes') + 1)
 
 
 def pre_save_receiver(sender, instance, *args, **kwargs):

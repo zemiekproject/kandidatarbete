@@ -10,8 +10,13 @@
 <p>{{ object.timestamp }}</p>
 <p>{{ object.text }}</p>
 
-<button href='{{ object.upvote }}'>{{ object.upvotes }}</button>
-<!-- <button onclick="{{ object.upvote }}">VOTE</button> -->
+<div class="container">
+    <div id="upvoter"></div>
+{% render_bundle 'vendors' %}
+{% render_bundle 'Main' %}
+</div>
+
+<p id="votes">Upvotes: {{ object.upvotes }}</p>
 
 <p>Last updated: {{ object.updated }}</p>
 <p>Written by: <a href="{%url 'profiles:detail' username=object.author %}">{{ object.author }}</a></p>
@@ -22,8 +27,6 @@
 {% endfor %}
 </ul>
 
-<!-- {% render_bundle 'vendors' %}
-{% render_bundle 'App1' %} -->
 {% endblock content %}
 
 
