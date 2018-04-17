@@ -60,7 +60,7 @@ class Form extends Component {
                 onChange={this.handleChange}
                 value={location}
                 required
-              />{Object.}
+              />
             </div>
           </div>
           <div className="field">
