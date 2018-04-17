@@ -9,10 +9,12 @@ from rest_framework.response import Response
 from rest_framework import authentication, permissions
 
 # REST STUFF
-from reviews.serializers import UserSerializer, ReviewSerializer
+from reviews.serializers import UserSerializer, ReviewSerializer, LocationSerializer, TagSerializer
 from rest_framework import generics
 from django.shortcuts import render
 from .models import Review
+from locations.models import Location
+from tags.models import Tag
 from .forms import ReviewCreateForm
 
 import random
@@ -94,6 +96,14 @@ class ReviewDownVoteToggle(RedirectView):
 class ReviewListCreate(generics.ListCreateAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+
+class LocationListCreate(generics.ListCreateAPIView):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
+
+class TagListCreate(generics.ListCreateAPIView):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
 
 class UserListCreate(generics.ListCreateAPIView):
     queryset = User.objects.all()

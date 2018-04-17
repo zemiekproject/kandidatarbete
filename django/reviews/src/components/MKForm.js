@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Form from "./Form";
 import SimpleMap from "./map"
+import DataProvider from "./DataProvider";
 
 const MKForm = () => (
     <div>
