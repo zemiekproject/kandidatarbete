@@ -32,6 +32,9 @@ class SimpleMap extends Component {
             lng={30.337844}
             text={'Kreyser Avrora'}
           />
+
+          
+
         </GoogleMapReact>
       </div>
     );

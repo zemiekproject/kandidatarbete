@@ -4,7 +4,8 @@ import shortid from "shortid";
 
 const uuid = shortid.generate;
 
-const Table = ({ data }) =>
+const Table = ({ data }) =>  
+
   !data.length ? (
     <p>Nothing to show</p>
   ) : (
