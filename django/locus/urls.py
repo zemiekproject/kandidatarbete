@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^u/', include('profiles.urls', namespace='profiles')),
     url(r'^reviews/', include(('reviews.urls', 'reviews'), namespace='reviews')),
     url(r'^locations/', include('locations.urls', namespace='locations')),
+    url(r'^tags/', include('tags.urls', namespace='tags')),
     url(r'^about/$', about_view, name = "about"),
     #Names makes it easier to refer to the paths; you don't have to change your references if paths are changed
 ]
