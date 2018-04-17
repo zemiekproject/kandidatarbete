@@ -3,24 +3,22 @@
 
 {% block content %}
 
-<h2>{{ object.title }}</h2>
+<h2 id="title">{{ object.title }}</h2>
 
-<p>{{ object.location }}</p>
+<p id="location">{{ object.location }}</p>
 <p>Rating: {{ object.rating }}</p>
 <p>{{ object.timestamp }}</p>
 <p>{{ object.text }}</p>
 
-<div class="container">
-    <div id="upvoter"></div>
-{% render_bundle 'vendors' %}
-{% render_bundle 'Main' %}
-</div>
-
-<p id="votes">Upvotes: {{ object.upvotes }}</p>
+<p id ="votes">
+    <a href='{{ object.get_upvote_url }}'>Upvote</a>
+    {{ object.votes }}
+    <a href='{{ object.get_downvote_url }}'>Downvote</a>
+</p>
 
 <p>Last updated: {{ object.updated }}</p>
-<p>Written by: <a href="{%url 'profiles:detail' username=object.author %}">{{ object.author }}</a></p>
-
+<p>Written by: <a href="{%url 'profiles:detail' username=object.author %}" id="author">{{ object.author }}</a></p>
+<p>Review Tags:</p>
 <ul>
 {% for tag in object.tags.all %}
 <li><a href='{{tag.get_absolute_url}}'>{{ tag }}</a></li>
