@@ -8,6 +8,6 @@ const MKSearch = () => (
     </div>
 );
 
-const wrapper = document.getElementById("SearchBar");
+const wrapper = document.getElementById("searchBar");
 
 wrapper ? ReactDOM.render(<SearchBar />, wrapper) : null;

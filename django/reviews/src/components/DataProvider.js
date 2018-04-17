@@ -54,10 +54,9 @@ class DataProvider extends Component {
     const { data, loaded, placeholder, term } = this.state;
     return <div>
       <form>
-        <input type="text" onChange={this.searchHandler}/> Hello? 
+         Search review: <input type="text" onChange={this.searchHandler}/>
       </form> 
-      <div>{data.filter(searchingFor(term)).map( data => <div key={data.id}><h1>{data.title}</h1></div>)}</div>
-      {loaded ? this.props.render(data) : <p>{placeholder}</p>}  </div>
+      {loaded ? this.props.render(data.filter(searchingFor(term))) : <p>{placeholder}</p>}  </div>
   
   }
 }
@@ -69,5 +68,5 @@ export default DataProvider;
 
 
 
-;
+
 
