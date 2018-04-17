@@ -3,11 +3,16 @@
 {% block content %}
 <h2>Reviews</h2>
 <ul>
+    <form method="GET" action=''>
+        <input type="text" name="q" placeholder="Search Review"/>
+        <input type="submit" value="Search"/>
+    </form>
     {% for obj in object_list %}
     <li><a href='{{obj.get_absolute_url}}'><h3>{{ obj.title }}</h3></a> </br> {{ obj.location }}</li>
     {% endfor %}
 </ul>
 <div class="container">
+          <div id=SearchBar></div>
           <div id=Main></div>
           <div id=ReviewForm></div>
 {% render_bundle 'vendors' %}

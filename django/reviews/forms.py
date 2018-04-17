@@ -14,6 +14,5 @@ class ReviewCreateForm(forms.ModelForm):
         fields = [
             'title',
             'location',
-            'text',
-                    
+            'text',          
         ]
