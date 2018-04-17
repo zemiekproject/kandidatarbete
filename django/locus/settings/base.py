@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'reviews',
     'locations',
+    'tags',
     'profiles',
     'rest_framework'
 ]
@@ -53,6 +54,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'locus.urls'
 LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = 'home'
 
 TEMPLATES = [
     {

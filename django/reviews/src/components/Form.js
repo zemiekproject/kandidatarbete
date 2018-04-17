@@ -9,7 +9,8 @@ class Form extends Component {
   state = {
     title: "",
     location: "",
-    text: ""
+    text: "",
+    tags: [],
   };
 
   handleChange = e => {
@@ -18,9 +19,9 @@ class Form extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { title, location, text } = this.state;
+    const { title, location, text, tags } = this.state;
     const author = document.getElementById('uid').innerHTML;
-    const review = { author, title, location, text};
+    const review = { author, title, location, text, tags};
 
     console.log(review);
     const conf = {
@@ -32,7 +33,7 @@ class Form extends Component {
   };
 
   render() {
-    const { title, location, text } = this.state;
+    const { title, location, text, tags } = this.state;
     return (
       <div className="column">
         <form onSubmit={this.handleSubmit}>
@@ -52,7 +53,7 @@ class Form extends Component {
           <div className="field">
             <label className="label">location</label>
             <div className="control">
-              <input
+              <select
                 className="input"
                 type="text"
                 name="location"
@@ -72,6 +73,20 @@ class Form extends Component {
                 onChange={this.handleChange}
                 value={text}
                 required
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">tags</label>
+            <div className="control">
+              <select
+                className="input"
+                type="text"
+                name="tags"
+                onChange={this.handleChange}
+                value={tags}
+                required
+                multiple
               />
             </div>
           </div>
