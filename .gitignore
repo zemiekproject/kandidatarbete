@@ -5,4 +5,5 @@
 /django/locus/__pycache__
 /django/locus/settings/__pycache__
 /django/reviews/__pycache__
+/django/reviews/migrations/__pycache__
 /django/profiles/__pycache__
