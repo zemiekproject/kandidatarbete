@@ -21,6 +21,8 @@ class Review(models.Model):
     tags        = models.ManyToManyField(Tag, blank=True, null=True)
     timestamp   = models.DateTimeField(auto_now_add=True)
     updated     = models.DateTimeField(auto_now=True)
+    lat         = models.FloatField(default=59.955413,blank=True)
+    lng         = models.FloatField(default=30.337,blank=True)
     slug        = models.SlugField(null=True, blank=True)
 
 
