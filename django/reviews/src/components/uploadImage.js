@@ -1,4 +1,4 @@
-uploadImage(imageFile) {
+uploadImage(imageFile); {
   return new Promise((resolve, reject) => {
     let imageFormData = new FormData();
 

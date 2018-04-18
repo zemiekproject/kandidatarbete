@@ -6,7 +6,6 @@ from django.views.generic import ListView, DetailView, CreateView
 # Create your views here.
 
 from .models import Location
-from reviews.models import Review
 
 class LocationsListView(ListView):
     def get_queryset(self, **kwargs):

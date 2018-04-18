@@ -2,7 +2,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, RedirectView
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
 
 # REST STUFF
 from reviews.serializers import UserSerializer, ReviewSerializer
@@ -40,6 +44,10 @@ def about_view(request):
 class ReviewsListView(ListView):
     def get_queryset(self, **kwargs):
         queryset = Review.objects.all() 
+        query = self.request.GET.get("q")
+        if query:
+            queryset = queryset.filter(title__icontains=query)
+
         return queryset
 
 class ReviewsDetailView(DetailView):
@@ -57,7 +65,35 @@ class ReviewCreateView(LoginRequiredMixin, CreateView):
         instance = form.save(commit=False)
         instance.author = self.request.user
         return super(ReviewCreateView, self).form_valid(form)
-    
+
+class ReviewUpVoteToggle(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        slug = self.kwargs.get("slug")
+        obj = get_object_or_404(Review, slug=slug)
+        url_ = obj.get_absolute_url()
+        user = self.request.user
+        if user.is_authenticated:
+            if user in obj.upvotes.all():
+                obj.upvotes.remove(user)
+            else: 
+                if user in obj.downvotes.all(): obj.downvotes.remove(user)
+                obj.upvotes.add(user)
+        return url_
+
+class ReviewDownVoteToggle(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        slug = self.kwargs.get("slug")
+        obj = get_object_or_404(Review, slug=slug)
+        url_ = obj.get_absolute_url()
+        user = self.request.user
+        if user.is_authenticated:
+            if user in obj.downvotes.all():
+                obj.downvotes.remove(user)
+            else: 
+                if user in obj.upvotes.all(): obj.upvotes.remove(user)
+                obj.downvotes.add(user)
+        return url_
+        
 # Also REST, handles GET and POST 4 react
 class ReviewListCreate(generics.ListCreateAPIView):
     queryset = Review.objects.all()

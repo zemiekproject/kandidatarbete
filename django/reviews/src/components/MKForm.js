@@ -6,7 +6,6 @@ import SimpleMap from "./map"
 const MKForm = () => (
     <div>
     <Form endpoint="http://localhost:8000/reviews/api/review/" />
-    <SimpleMap />
     </div>
 );
 
