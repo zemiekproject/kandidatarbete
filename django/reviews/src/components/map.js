@@ -26,7 +26,9 @@ class SimpleMap extends Component {
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
+          
         >
+          
           <AnyReactComponent
             lat={59.955413}
             lng={30.337844}
@@ -39,6 +41,10 @@ class SimpleMap extends Component {
       </div>
     );
   }
+  
+}
+const Marker = props => {
+  return <div className="SuperAwesomePin"></div>
 }
 
 export default SimpleMap;
