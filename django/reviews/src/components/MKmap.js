@@ -11,6 +11,7 @@ const MKmap = () => (
 
 const wrapper = document.getElementsByClassName("Map");
 
+// Varför är det här en for-loop?
 for (var i = 0; i < wrapper.length; i++) {
     wrapper[i] ? ReactDOM.render(<MKmap />, wrapper[i]) : null;
 }

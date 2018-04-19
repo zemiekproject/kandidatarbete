@@ -14,7 +14,7 @@ const Markers = ({ data }) =>
             <div key={el.id} data-lat={el.lat} data-lng={el.lng} name="marker">{el.title}</div>
           ))}</div>
   );
-
+  
 Markers.propTypes = {
   data: PropTypes.array.isRequired
 };

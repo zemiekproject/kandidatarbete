@@ -28,8 +28,6 @@ class SimpleMap extends Component {
     
   };
   
-    
-
 
 
   render() {
@@ -43,7 +41,7 @@ class SimpleMap extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-        <App />
+        <App lat={59.9} lng={30.7}/>
         </GoogleMapReact>
       </div>
     );
