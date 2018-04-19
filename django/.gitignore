@@ -2,9 +2,13 @@
 db.sqlite3
 secretkey.py
 /locus/__pycache__
+/locus/migrations
 /locus/settings/__pycache__
 /reviews/__pycache__
+/reviews/migrations
 /profiles/__pycache__
+/profiles/migrations
 /locations/__pycache__
-webpack.stats.config.js
+/locations/migrations
+webpack-stats-local.json
 /reviews/src
