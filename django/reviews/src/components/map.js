@@ -7,7 +7,7 @@ import Markers from "./Markers";
 import Table from "./Table";
 
 const App = () => (
-  <DataProvider endpoint="api/review/" 
+  <DataProvider endpoint="reviews/api/review/" 
                 render={data => <Markers data={data} />} />
 );
 
@@ -257,6 +257,8 @@ class SimpleMap extends Component {
       
 }
 
+}
+
   
 
 
@@ -274,6 +276,8 @@ class SimpleMap extends Component {
         >
 
         <App lat={59.9} lng={30.7}/>
+
+
 
         </GoogleMapReact>
       </div>
