@@ -15,6 +15,7 @@ urlpatterns = [
     path('api/user/', UserListCreate.as_view() ),
     path('create/api/location/', LocationListCreate.as_view() ),
     path('create/api/tag/', TagListCreate.as_view() ),
+    path('create/api/user/', UserListCreate.as_view() ),
     path('api/location/', LocationListCreate.as_view() ),
     path('api/tag/', TagListCreate.as_view() ),
     #Names makes it easier to refer to the paths; so if path changes you don't need to change all references
