@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load render_bundle from webpack_loader %}
 {% block content %}
+<<<<<<< HEAD
 <h2>Reviews</h2>
 <div class="container">
          <!-- <div id=Main></div> -->
@@ -8,6 +9,23 @@
 
 </div>
 <a href="{% url 'reviews:create' %}"><h4>Make review</h4></a>
+=======
+
+<!-- <ul>
+    <form method="GET" action=''>
+        <input type="text" name="q" placeholder="Search Review"/>
+        <input type="submit" value="Search"/>
+    </form>
+    {% for obj in object_list %}
+    <li><a href='{{obj.get_absolute_url}}'><h3>{{ obj.title }}</h3></a> </br> {{ obj.location }}</li>
+    {% endfor %}
+</ul> -->
+
+<!-- <h2>Reviews</h2>
+<div class="container"> -->
+         <!-- <div id=Main></div> -->
+
+>>>>>>> a74cef9e095f645ad41618ffb238d624d4e6177d
 <!-- {% render_bundle 'vendors' %}
 {% render_bundle 'App1' %} -->
 
@@ -33,6 +51,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <h2>Two Equal Columns</h2>
 
 <div class="row">
@@ -44,6 +63,18 @@
   </div>
 </div>
 <div id=ReviewForm></div>
+=======
+<div class="row">
+  <div class="column">
+    <div id=Main></div>
+    <a href="{% url 'reviews:create' %}"><h4>Make review</h4></a>
+  </div>
+  <div class="column">
+    <div class=Map></div>
+  </div>
+</div>
+
+>>>>>>> a74cef9e095f645ad41618ffb238d624d4e6177d
 </body>
 {% render_bundle 'vendors' %}
 {% render_bundle 'Main' %}

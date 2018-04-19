@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+function searchingFor(term) {
+  return function(x) {
+    return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
+
+  }
+}
+
 class DataProvider extends Component {
 
   constructor(props) {
@@ -42,6 +49,8 @@ class DataProvider extends Component {
     return loaded ? this.props.render(data) : <p>{placeholder}</p>
   }
 }
+//
+
 
 
 export default DataProvider;

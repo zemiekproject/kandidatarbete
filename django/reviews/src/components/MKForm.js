@@ -6,8 +6,7 @@ import DataProvider from "./DataProvider";
 
 const MKForm = () => (
     <div>
-    <Form endpoint="http://localhost:8000/reviews/create/api/review/" />
-    <SimpleMap />
+    <Form endpoint="http://localhost:8000/reviews/api/review/" />
     </div>
 );
 

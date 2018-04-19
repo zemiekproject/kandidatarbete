@@ -46,6 +46,10 @@ def about_view(request):
 class ReviewsListView(ListView):
     def get_queryset(self, **kwargs):
         queryset = Review.objects.all() 
+        query = self.request.GET.get("q")
+        if query:
+            queryset = queryset.filter(title__icontains=query)
+
         return queryset
 
 class ReviewsDetailView(DetailView):
