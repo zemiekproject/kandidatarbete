@@ -5,8 +5,12 @@ import shortid from "shortid";
 const uuid = shortid.generate;
 var i = -1;
 function counter() {
+  if (i = 2) {
+    i = 0;
+  } else {
   i = i + 1;
   return i;
+  }
 }
 
 
