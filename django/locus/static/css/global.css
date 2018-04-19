@@ -3,6 +3,8 @@ ul#navbar {
    width: 100%;
    background-color: #FFCC66;
    list-style-type: none;	
+   padding: 0;
+   margin: 0;
 }
 
 .barkey {
@@ -14,8 +16,8 @@ ul#navbar {
 
 div#foot{
     bottom:0;
-    position: absolute;
     width: 100%;
+
 }
 
 ul#sitefoot {
