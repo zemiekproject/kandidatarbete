@@ -10,8 +10,11 @@ urlpatterns = [
     url(r'^(?P<slug>[\w-]+)/$', ReviewsDetailView.as_view(), name = "detail"),
     url(r'^(?P<slug>[\w-]+)/upvote/$', ReviewUpVoteToggle.as_view(), name = "upvote-toggle"),
     url(r'^(?P<slug>[\w-]+)/downvote/$', ReviewDownVoteToggle.as_view(), name = "downvote-toggle"),
+    path('create/api/review/', ReviewListCreate.as_view() ),
     path('api/review/', ReviewListCreate.as_view() ),
     path('api/user/', UserListCreate.as_view() ),
+    path('create/api/location/', LocationListCreate.as_view() ),
+    path('create/api/tag/', TagListCreate.as_view() ),
     path('api/location/', LocationListCreate.as_view() ),
     path('api/tag/', TagListCreate.as_view() ),
     #Names makes it easier to refer to the paths; so if path changes you don't need to change all references

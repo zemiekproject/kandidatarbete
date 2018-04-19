@@ -2,18 +2,49 @@
 {% load render_bundle from webpack_loader %}
 {% block content %}
 <h2>Reviews</h2>
-<ul>
-    {% for obj in object_list %}
-    <li><a href='{{obj.get_absolute_url}}'><h3>{{ obj.title }}</h3></a> </br> {{ obj.location }}</li>
-    {% endfor %}
-</ul>
 <div class="container">
-          <div id=Main></div>
-          <div id=ReviewForm></div>
-{% render_bundle 'vendors' %}
-{% render_bundle 'Main' %}
+         <!-- <div id=Main></div> -->
+          
+
 </div>
 <a href="{% url 'reviews:create' %}"><h4>Make review</h4></a>
 <!-- {% render_bundle 'vendors' %}
 {% render_bundle 'App1' %} -->
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+</head>
+<body>
+
+<h2>Two Equal Columns</h2>
+
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <div id=Main></div>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <div class=Map></div>
+  </div>
+</div>
+<div id=ReviewForm></div>
+</body>
+{% render_bundle 'vendors' %}
+{% render_bundle 'Main' %}
 {% endblock content %}

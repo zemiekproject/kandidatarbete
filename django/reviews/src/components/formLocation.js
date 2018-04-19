@@ -19,7 +19,7 @@ const FormLocation = ({ data }) =>
         required 
         >
         {data.map(el => (
-          <option key={el.id}>  
+          <option key={el.id} value={Object.entries(el)[0][1]}>  
             {Object.entries(el)[1][1]}
           </option>
         ))}

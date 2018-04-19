@@ -14,11 +14,11 @@ const FormTags = ({ data }) =>
         <select
         className="input"
         type="text"
-        name="tag"
+        name="tags"
         multiple
         >
         {data.map(el => (
-            <option key={el.id}>
+            <option key={el.id} value={Object.entries(el)[0][1]}>
                 {Object.entries(el)[1][1]}
             </option>
         ))}
