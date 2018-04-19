@@ -11,3 +11,4 @@ const MKSearch = () => (
 const wrapper = document.getElementById("searchBar");
 
 wrapper ? ReactDOM.render(<SearchBar />, wrapper) : null;
+

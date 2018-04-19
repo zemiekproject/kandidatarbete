@@ -1,7 +1,0 @@
-  static AnyReactComponent = this.state.data.map((c) =>
-  <AnyReactComponent
-            lat={c.lat}
-            lng={c.lng}
-            text={c.title}
-    />
-);

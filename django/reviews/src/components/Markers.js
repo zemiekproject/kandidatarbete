@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import shortid from "shortid";
 
 const uuid = shortid.generate;
-const AnyReactComponent = ( { text }) => <div>{text}</div>;
+const AnyReactComponent = ( { text } ) => <div>{text}</div>;
 
 const Markers = ({ data }) =>
   !data.length ? (
@@ -18,5 +18,7 @@ const Markers = ({ data }) =>
 Markers.propTypes = {
   data: PropTypes.array.isRequired
 };
+
+
 
 export default Markers;

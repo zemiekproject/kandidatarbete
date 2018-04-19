@@ -5,3 +5,6 @@ secretkey.py
 /locus/settings/__pycache__
 /reviews/__pycache__
 /profiles/__pycache__
+/locations/__pycache__
+webpack.stats.config.js
+/reviews/src
