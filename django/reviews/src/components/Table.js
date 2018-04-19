@@ -15,7 +15,6 @@ function counter() {
 
 
 const Table = ({ data }) =>  
-
   !data.length ? (
     <p>Nothing to show</p>
   ) : (
