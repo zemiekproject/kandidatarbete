@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
+import ReactDOM from "react-dom";
 import GoogleMapReact from 'google-map-react';
+import PropTypes from "prop-types";
+import DataProvider from "./DataProvider";
+import Markers from "./Markers";
+import Table from "./Table";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const App = () => (
+  <DataProvider endpoint="api/review/" 
+                render={data => <Markers data={data} />} />
+);
 
 const mapOptions = {
       
@@ -237,33 +245,43 @@ draggableCursor: 'default',
 
 
 class SimpleMap extends Component {
+
+
   static defaultProps = {
     center: {
       lat: 59.95,
       lng: 30.33
     },
+
     zoom: 0
-  };
+
+  
+    
+
+
 
   render() {
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
+          className='TheMap'
           options={mapOptions}
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           
         >
-          
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text={'Kreyser Avrora'}
-          />
 
           
+//           <AnyReactComponent
+//             lat={59.955413}
+//             lng={30.337844}
+//             text={'Kreyser Avrora'}
+//           />
+
+         
+        <App />
 
         </GoogleMapReact>
       </div>
