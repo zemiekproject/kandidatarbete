@@ -17,14 +17,13 @@ class DataProvider extends Component {
     endpoint: PropTypes.string.isRequired,
     render: PropTypes.func.isRequired
   };
-  //
+  
 
-  // state = {
-  //     data: [],
-  //     loaded: false,
-  //     placeholder: "Loading...",
-  //     term: '',
-  //   };
+  state = {
+      data: [],
+      loaded: false,
+      placeholder: "Loading...",
+    };
 
   componentDidMount() {
     fetch(this.props.endpoint)
@@ -38,12 +37,12 @@ class DataProvider extends Component {
   }
 
   render() {
-    const { data, loaded, placeholder } = this.state;
+    const { data, loaded, placeholder} = this.state;
     return loaded ? this.props.render(data) : <p>{placeholder}</p>
-  
   }
 }
 //
+
 
 
 export default DataProvider;
