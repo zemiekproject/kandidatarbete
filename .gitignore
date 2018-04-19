@@ -7,4 +7,12 @@
 /django/locus/settings/__pycache__
 /django/reviews/__pycache__
 /django/profiles/__pycache__
+/django/locations/__pycache__
 
+/django/locus/migrations
+/django/reviews/migrations
+/django/profiles/migrations
+
+/locations/migrations
+/django/webpack-stats-local.json
+/django/reviews/src/russianstuff
