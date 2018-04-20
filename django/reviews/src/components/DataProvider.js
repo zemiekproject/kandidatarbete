@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-function searchingFor(term) {
-  return function(x) {
-    return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
-
-  }
-}
-
 class DataProvider extends Component {
 
   constructor(props) {
@@ -17,27 +10,20 @@ class DataProvider extends Component {
       data: [],
       loaded: false,
       placeholder: "Loading...",
-      term: '',
     };
-    this.searchHandler = this.searchHandler.bind(this)
   }
 
   static propTypes = {
     endpoint: PropTypes.string.isRequired,
     render: PropTypes.func.isRequired
   };
-  //
+  
 
-  // state = {
-  //     data: [],
-  //     loaded: false,
-  //     placeholder: "Loading...",
-  //     term: '',
-  //   };
-
-  searchHandler(event) {
-    this.setState({ term: event.target.value })
-  }
+  state = {
+      data: [],
+      loaded: false,
+      placeholder: "Loading...",
+    };
 
   componentDidMount() {
     fetch(this.props.endpoint)
@@ -51,22 +37,15 @@ class DataProvider extends Component {
   }
 
   render() {
-    const { data, loaded, placeholder, term } = this.state;
-    return <div>
-      <form>
-         Search review: <input type="text" onChange={this.searchHandler}/>
-      </form> 
-      {loaded ? this.props.render(data.filter(searchingFor(term))) : <p>{placeholder}</p>}  </div>
-  
+    const { data, loaded, placeholder} = this.state;
+    return loaded ? this.props.render(data) : <p>{placeholder}</p>
   }
 }
 //
 
 
+
 export default DataProvider;
-
-
-
 
 
 
