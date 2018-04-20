@@ -4,12 +4,23 @@ import GoogleMapReact from 'google-map-react';
 import PropTypes from "prop-types";
 import DataProvider from "./DataProvider";
 import Markers from "./Markers";
-import Table from "./Table";
 
-const App = () => (
-  <DataProvider endpoint="reviews/api/review/" 
-                render={data => <Markers data={data} />} />
-);
+class App extends Component{
+    constructor(props) {
+        super(props);
+        this.state = { id:null, title:"", lat: 0, lng: 0 };
+
+            
+        
+    }
+    render(){
+    return(
+        <DataProvider endpoint="api/review/" 
+                render={data => <Markers data={data}  />} />
+    );
+        
+    }
+}
 
 const mapOptions = {
       
@@ -257,7 +268,7 @@ class SimpleMap extends Component {
       
 }
 
-}
+
 
   
 
@@ -275,7 +286,8 @@ class SimpleMap extends Component {
           
         >
 
-        <App lat={59.9} lng={30.7}/>
+        <App></App>
+
 
 
 
