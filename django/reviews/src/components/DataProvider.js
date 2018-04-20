@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-function searchingFor(term) {
-  return function(x) {
-    return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
-
-  }
-}
-
 class DataProvider extends Component {
 
   constructor(props) {
@@ -32,7 +25,6 @@ class DataProvider extends Component {
       placeholder: "Loading...",
     };
 
-
   componentDidMount() {
     fetch(this.props.endpoint)
       .then(response => {
@@ -54,9 +46,6 @@ class DataProvider extends Component {
 
 
 export default DataProvider;
-
-
-
 
 
 
