@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import DataProvider from "./DataProvider";
 import Table from "./Table";
-import Searcher from "./Searcher";
 
 function searchingFor(term) {
   return function(x) {
