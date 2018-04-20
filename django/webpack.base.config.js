@@ -9,6 +9,7 @@ module.exports = {
     App1: './reactjs/App1',
     App2: './reactjs/App2',
     Main: './reviews/src/index',
+    ProfileMain: './profiles/src/index', //La till rad,J!!!
     vendors: ['react'],
   },
 

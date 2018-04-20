@@ -10,6 +10,7 @@ const App = () => (
   <DataProvider endpoint="api/review/" 
                 render={data => <Markers data={data} />} />
 );
+const AnyReactComponent = ( { text }) => <div>{text}</div>;
 
 const mapOptions = {
       
@@ -240,13 +241,28 @@ const mapOptions = {
 }
 ],
 draggableCursor: 'default',
+fullscreenControl: false,
 
 };
 
 
 class SimpleMap extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            lat: null,
+            lng: null,
+        }
+    }
 
-
+    componentWillMount() {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        this.setState({ lat: position.coords.latitude, lng: position.coords.longitude});
+      },
+      error => console.log(error)
+    );
+  }
   static defaultProps = {
     center: {
       lat: 59.95,
@@ -255,7 +271,7 @@ class SimpleMap extends Component {
 
     zoom: 0
 
-  
+    }
     
 
 
@@ -270,27 +286,33 @@ class SimpleMap extends Component {
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
-          
         >
-
-          
-//           <AnyReactComponent
-//             lat={59.955413}
-//             lng={30.337844}
-//             text={'Kreyser Avrora'}
-//           />
 
          
         <App />
 
+        <AnyReactComponent
+            lat={this.state.lat}
+            lng={this.state.lng}
+            text={'Kreyser Avrora'}/>
+              
+
+ 
+
+
+
+         
+        
+
         </GoogleMapReact>
       </div>
     );
-  }
+
+
+    }
   
 }
-const Marker = props => {
-  return <div className="SuperAwesomePin"></div>
-}
+
+
 
 export default SimpleMap;
