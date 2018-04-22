@@ -6,9 +6,7 @@ import shortid from "shortid";
 const uuid = shortid.generate;
 
 const FormTags = ({ data }) =>
-    !data.length ? (
-        <p>Nothing to show</p>
-    ) : (
+    (
         <div className="control">
         
         <select
@@ -23,6 +21,13 @@ const FormTags = ({ data }) =>
             </option>
         ))}
         </select>
+        Or add a new tag:
+        
+        <input
+            className="input"
+            type="text"
+            name="tags"
+        />
       
       </div>
       );

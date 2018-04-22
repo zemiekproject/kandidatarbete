@@ -9,6 +9,8 @@ secretkey.py
 /profiles/__pycache__
 /profiles/migrations
 /locations/__pycache__
+/tags/__pycache__
+webpack.stats.config.js
 /locations/migrations
 webpack-stats-local.json
 /reviews/src
