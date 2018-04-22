@@ -7,7 +7,7 @@ import Markers from "./Markers";
 import Table from "./Table";
 
 const App = () => (
-  <DataProvider endpoint="reviews/api/review/" 
+  <DataProvider endpoint="api/review/" 
                 render={data => <Markers data={data} />} />
 );
 

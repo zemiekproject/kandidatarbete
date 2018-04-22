@@ -25,24 +25,106 @@ class Form extends Component {
   };
 
   handleChange = e => {
+    // console.log("Field changed");
+    // console.log(e.target.name + " : " + e.target.value);
     if(e.target.name == "tags"){
-      var options = e.target.options;
-      var value = [];
-      for (var i = 0, l = options.length; i < l; i++) {
-        if (options[i].selected) {
-          value.push(options[i].value);
+      if(e.target.options){
+        var options = e.target.options;
+        var values = [];
+        for (var i = 0, l = options.length; i < l; i++) {
+          if (options[i].selected) {
+            values.push(options[i].value);
+          }
         }
+        this.setState({ [e.target.name]: values });
       }
-      console.log(value);
-      this.setState({ [e.target.name]: value });
+      else {
+        var new_tag = true;
+
+        for (var i = 0, l = this.state.tags.length; i < l; i++) {
+          if (e.target.value.includes(this.state.tags[i])) {
+            this.state.tags[i] = e.target.value;
+            new_tag = false;
+          };
+        };
+
+        if(new_tag){
+          this.state.tags.push(e.target.value);
+        };
+      };
     }
     else{
+      
       this.setState({ [e.target.name]: e.target.value });
+
     }
   };
 
   handleSubmit = e => {
+    // console.log(e.target.tags[0].options);
     e.preventDefault();
+
+    var locationNames = [];
+    var locationValues = [];
+    for (var i = 0, l = e.target.location[0].options.length; i< l; i++) {
+      locationNames.push(e.target.location[0].options[i].attributes[1].value);
+      locationValues.push(e.target.location[0].options[i].attributes[0].value);
+    };
+
+    if(!(locationNames.includes(this.state.location)) && !(locationValues.includes(this.state.location.toString()))){
+      console.log("added new location");
+      name  = this.state.location;
+      const location = { name };
+      const conf1 = {
+        method: "post",
+        body: JSON.stringify(location),
+        headers: new Headers({ "Content-Type": "application/json" })
+      };
+      fetch("api/location/", conf1).then(response => console.log(response));
+      this.state.location = (locationNames.length + 1).toString();
+      this.forceUpdate();
+    }
+    else{
+      for (var i = 0, l = locationNames.length; i< l; i++) {
+        if (locationNames[i] == this.state.location){
+          this.state.location = locationValues[i];
+          break;
+        };
+      };
+    };
+    this.forceUpdate();
+
+    var tagValues = [];
+    for (var i = 0, l = e.target.tags[0].options.length; i< l; i++) {
+      tagValues.push(e.target.tags[0].options[i].attributes[0].value);
+    };
+
+    for (var i = 0, l = this.state.tags.length; i< l; i++) {
+      console.log("tag: " + this.state.tags[i]);
+      if(!(tagValues.includes(this.state.tags[i]))){
+        console.log("adding new tag");
+        name  = this.state.tags[i];
+        const tag = { name };
+        const conf1 = {
+          method: "post",
+          body: JSON.stringify(tag),
+          headers: new Headers({ "Content-Type": "application/json" })
+        };
+        fetch("api/tag/", conf1).then(response => console.log(response));
+        this.state.tags[i] = (tagValues.length + 1).toString();
+        this.forceUpdate();
+      };
+      // else{
+      //   for (var j = 0, l = tagNames.length; j< l; j++) {
+      //     if (tagNames[j] == this.state.tags[i]){
+      //       this.state.tags[i] = locationValues[i];
+      //       break;
+      //     };
+      //   };
+      // };
+    };
+    this.forceUpdate();
+
     const { title, location, text, tags } = this.state;
     const author = document.getElementById('uid').innerHTML;
     const review = { author, title, location, text, tags};
@@ -58,9 +140,6 @@ class Form extends Component {
 
   render() {
     const { title, location, text, tags } = this.state;
-
-    console.log("field changed");
-    console.log(this.state);
 
     return (
       <div className="column">
