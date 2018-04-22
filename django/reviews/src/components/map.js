@@ -6,9 +6,24 @@ import DataProvider from "./DataProvider";
 import Markers from "./Markers";
 import Table from "./Table";
 
+var i = -1;
+function counter() {
+  if (i = 2) {
+    i = 0;
+  } else {
+  i = i + 1;
+  return i;
+  }
+}
+
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+
+
+
 const App = () => (
-  <DataProvider endpoint="api/review/" 
-                render={data => <Markers data={data} />} />
+  <DataProvider endpoint="reviews/api/review/" 
+                render={data => <Marker data={data} />} />
 );
 
 const mapOptions = {
@@ -246,6 +261,14 @@ draggableCursor: 'default',
 
 class SimpleMap extends Component {
 
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          data: this.props.data,
+          
+        };
+      }
 
   static defaultProps = {
     center: {
@@ -271,13 +294,14 @@ class SimpleMap extends Component {
           options={mapOptions}
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
           defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-          
+          defaultZoom={this.props.zoom} 
         >
-
-
-         
-        <App />
+        
+          <AnyReactComponent
+            text={this.props.data[0].title}
+            lat={this.props.data[0].lat}
+            lng={this.props.data[0].lng} 
+          />
 
         </GoogleMapReact>
       </div>
