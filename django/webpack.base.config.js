@@ -25,7 +25,16 @@ module.exports = {
   ], // add all common plugins here
 
   module: {
-    loaders: [] // add all common loaders here
+    loaders: [
+        {
+            test: /\.(gif|jpe?g|png|ico)$/,
+            loader: 'url-loader?limit=10000'
+        },
+                {
+            test: /\.(png|jpg)$/,
+            loader: 'file-loader'
+        },
+    ] // add all common loaders here
   },
 
   resolve: {
