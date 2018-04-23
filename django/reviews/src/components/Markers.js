@@ -37,13 +37,42 @@ class AnyReactComponent extends React.Component{
     
 }
 
+class Marker extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: this.props.data,
+      
+    };
+  }
+
+  render() {
+    const { data } = this.state;
+ 
+    return <div id="thatMarker">
+            
+          </div>
+          
+  }
+}
+
+
+const wrapper = document.getElementById("Main");
+
+wrapper ? ReactDOM.render(<App />, wrapper) : null;
+
+
 const Markers = ({ data }) =>
   !data.length ? (
     <p>Nothing to show</p>
   ) : (
       <div id="thatMarker">
           {data.map(el => (
-            <AnyReactComponent key={el.id} lat={el.lat} lng={el.lng} text={el.title} />
+
+            <div key={el.id} data-lat={el.lat} data-lng={el.lng} name="marker"><img src={"/static/graphics/drawing.png"} alt="Logo" /><br />{el.title}{console.log(el.lat)}</div>
+
           ))}</div>
   );
   
@@ -51,4 +80,6 @@ Markers.propTypes = {
   data: PropTypes.array.isRequired
 };
 
-export default Markers;
+export default Marker;
+
+

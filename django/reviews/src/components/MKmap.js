@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Form from "./Form";
 import SimpleMap from "./map"
+import DataProvider from "./DataProvider"
 
 const MKmap = () => (
     <div>
-    <SimpleMap />
+        <DataProvider endpoint="reviews/api/review/"
+        render = { data => <SimpleMap data={data}/>}/>
     </div>
 );
 

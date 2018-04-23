@@ -3,24 +3,29 @@ import ReactDOM from "react-dom";
 import GoogleMapReact from 'google-map-react';
 import PropTypes from "prop-types";
 import DataProvider from "./DataProvider";
-import Markers from "./Markers";
 
-class App extends Component{
-    constructor(props) {
-        super(props);
-        this.state = { id:null, title:"", lat: 0, lng: 0 };
 
-            
-        
-    }
-    render(){
-    return(
-        <DataProvider endpoint="api/review/" 
-                render={data => <Markers data={data}  />} />
-    );
-        
-    }
+
+var i = -1;
+function counter() {
+  if (i = 2) {
+    i = 0;
+  } else {
+  i = i + 1;
+  return i;
+  }
 }
+
+const ReviewMarker = ({ text }) => <div><img src={"/static/graphics/drawing.png"} alt="Logo" /><br />{text}</div>;
+
+
+
+
+const App = () => (
+  <DataProvider endpoint="reviews/api/review/" 
+                render={data => <Marker data={data} />} />
+);
+
 
 const mapOptions = {
       
@@ -257,6 +262,15 @@ draggableCursor: 'default',
 
 class SimpleMap extends Component {
 
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+          data: this.props.data,
+          childComponent: null,
+          
+        };
+      }
 
   static defaultProps = {
     center: {
@@ -270,7 +284,7 @@ class SimpleMap extends Component {
 
 
 
-  
+
 
 
   render() {
@@ -282,13 +296,14 @@ class SimpleMap extends Component {
           options={mapOptions}
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
           defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-          
+          defaultZoom={this.props.zoom} 
         >
 
-        <App></App>
-
-
+        
+            {this.state.data.map(el => (<ReviewMarker
+            text={el.title}
+            lat={el.lat}
+            lng={el.lng} />))}
 
 
         </GoogleMapReact>
