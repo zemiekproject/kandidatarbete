@@ -2,12 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Form from "./Form";
 import SimpleMap from "./map"
+import SimpleMapPage from "./examples/x_events/events_map_page"
 import DataProvider from "./DataProvider"
-
+const divstyle = {
+    width: '100px',
+    height: '100px',
+};
 const MKmap = () => (
-    <div>
-        <DataProvider endpoint="reviews/api/review/"
-        render = { data => <SimpleMap data={data}/>}/>
+    <div style={divstyle}>
+        <EventsMapPage/>
     </div>
 );
 
