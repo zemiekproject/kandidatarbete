@@ -1,0 +1,2 @@
+
+    document.getElementByTagName('SimpleMap')
