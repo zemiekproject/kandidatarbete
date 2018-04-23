@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Form from "./Form";
 import SimpleMap from "./map"
-import SimpleMapPage from "./examples/x_events/events_map_page"
+import MainMapBlock from "./examples/x_main/main_map_block"
 import DataProvider from "./DataProvider"
 const divstyle = {
     width: '100px',
@@ -10,7 +10,7 @@ const divstyle = {
 };
 const MKmap = () => (
     <div style={divstyle}>
-        <EventsMapPage/>
+        <MainMapBlock/>
     </div>
 );
 

@@ -25,10 +25,10 @@ const Table = ({ data }) =>
       <table className="table is-striped">
         <thead>
           <tr>
-            {console.log(Object)}
+            {/* {console.log(Object)}
             {console.log(Object.entries)}
             {console.log(Object.entries(data))}
-            {console.log(Object.entries(data[0]))}
+            {console.log(Object.entries(data[0]))} */}
 
             {Object.entries(data[0]).map(el => <th key={uuid()}>{el[0]}</th>)}
           </tr>
