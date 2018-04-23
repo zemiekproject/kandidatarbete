@@ -1,10 +1,43 @@
 import React from "react";
+
+import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import shortid from "shortid";
-import ReactDOM from "react-dom";
+import Drawing from "./drawing";
+
 
 const uuid = shortid.generate;
-const AnyReactComponent = ( { text }) => <div>{text}</div>;
+class AnyReactComponent extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            lat: null,
+            lng: null,
+        }
+        this.makeMarkerGreat = () => {
+            if (this.refs.skit){
+                var element = ReactDOM.findDOMNode(this.refs.skit)
+                element.setAttribute("lat", parseFloat(this.props.lat));
+                element.setAttribute("lng", parseFloat(this.props.lng));
+                console.log('meh');
+            }
+        }
+    }
+    componentDidMount() {
+    console.log(this.refs.skit);
+    this.makeMarkerGreat();
+  }
+        render(){
+            let lat = this.props.lat;
+            let lng = this.props.lng;
+            let text = this.props.text;
+            return(
+                <div lat={lat} lng={lng} name="marker" ref='skit'><Drawing /><br /> {text}</div>
+            );
+        }
+    
+}
+
 
 class Marker extends React.Component {
 
@@ -29,6 +62,12 @@ class Marker extends React.Component {
 
 
 
+const wrapper = document.getElementById("Main");
+
+wrapper ? ReactDOM.render(<App />, wrapper) : null;
+=======
+
+
 
 const Markers = ({ data }) =>
   !data.length ? (
@@ -36,10 +75,12 @@ const Markers = ({ data }) =>
   ) : (
       <div id="thatMarker">
           {data.map(el => (
-            <div key={el.id} data-lat={el.lat} data-lng={el.lng} name="marker">{el.title}{console.log(el.lat)}</div>
+
+            <div key={el.id} data-lat={el.lat} data-lng={el.lng} name="marker"><img src={"/static/graphics/drawing.png"} alt="Logo" /><br />{el.title}{console.log(el.lat)}</div>
+
           ))}</div>
   );
-
+  
 Markers.propTypes = {
   data: PropTypes.array.isRequired
 };

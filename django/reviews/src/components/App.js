@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import DataProvider from "./DataProvider";
 import Table from "./Table";
 
+
 function searchingFor(term) {
   return function(x) {
     return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
