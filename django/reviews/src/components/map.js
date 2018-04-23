@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import GoogleMapReact from 'google-map-react';
 import PropTypes from "prop-types";
 import DataProvider from "./DataProvider";
-import Markers from "./Markers";
 import Table from "./Table";
 
 var i = -1;
@@ -16,16 +15,8 @@ function counter() {
   }
 }
 
+
 const ReviewMarker = ({ text }) => <div><img src={"/static/graphics/drawing.png"} alt="Logo" /><br />{text}</div>;
-
-
-
-
-const App = () => (
-  <DataProvider endpoint="reviews/api/review/" 
-                render={data => <Marker data={data} />} />
-);
-
 
 const mapOptions = {
       
