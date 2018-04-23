@@ -1,16 +1,12 @@
 {% extends "base.html" %}
-
+{% load render_bundle from webpack_loader %}
 {% block content %}
 
 <h2>Write a review!</h2>
 
-{% if form.errors %}
-{{ form.errors }}
-{% endif %}
-{% for form in forms %}
-<form method='POST'>{% csrf_token %}
-    {{ form.as_p }}
-    <button type='submit'>Save</button>
-</form>
-{% endfor %}
+<div class="container">
+          <div id=ReviewForm></div>
+{% render_bundle 'vendors' %}
+{% render_bundle 'Main' %}
+</div>
 {% endblock %}

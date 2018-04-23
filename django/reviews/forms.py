@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Review, User
+from .models import Review
 
 # class ReviewCreateForm(forms.Form):
 #     title       = forms.CharField()
@@ -15,13 +15,13 @@ class ReviewCreateForm(forms.ModelForm):
             'title',
             'location',
             'text',
-                    
+            'rating',  
+            'tags',    
         ]
 
-class CreatedByForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = [
-            'firstname',
-            'lastname',
-        ]
+# class UpvoteForm(forms.ModelForm):
+#     class Meta:
+#         model = Review
+#         fields = [
+#             'upvotes',
+#         ]

@@ -18,6 +18,11 @@ config.entry = {
     'webpack/hot/only-dev-server',
     './reactjs/App2',
   ],
+  Main: [
+    'webpack-dev-server/client?http://' + ip + ':3000',
+    'webpack/hot/only-dev-server',
+    './reviews/src/index',
+  ]
 }
 
 config.output.publicPath = 'http://' + ip + ':3000' + '/assets/bundles/'

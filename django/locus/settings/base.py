@@ -35,7 +35,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webpack_loader',
     'reviews',
-
+    'locations',
+    'tags',
+    'profiles',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -50,6 +53,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'locus.urls'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = 'home'
 
 TEMPLATES = [
     {
@@ -80,9 +85,16 @@ WSGI_APPLICATION = 'locus.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'locus',
+        'USER': 'root',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
+
 }
 
 
