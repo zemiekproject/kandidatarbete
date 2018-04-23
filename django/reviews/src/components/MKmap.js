@@ -6,7 +6,7 @@ import DataProvider from "./DataProvider"
 
 const MKmap = () => (
     <div>
-        <DataProvider endpoint="reviews/api/review/"
+        <DataProvider endpoint="http://localhost/reviews/api/review/"
         render = { data => <SimpleMap data={data}/>}/>
     </div>
 );
