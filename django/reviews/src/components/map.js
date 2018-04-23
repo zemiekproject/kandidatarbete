@@ -3,8 +3,13 @@ import ReactDOM from "react-dom";
 import GoogleMapReact from 'google-map-react';
 import PropTypes from "prop-types";
 import DataProvider from "./DataProvider";
+<<<<<<< HEAD
 
 
+=======
+import Markers from "./Markers";
+import Table from "./Table";
+>>>>>>> 3fd25e762e424a8501fa63a44c1bb009de693be0
 
 var i = -1;
 function counter() {
@@ -16,7 +21,11 @@ function counter() {
   }
 }
 
+<<<<<<< HEAD
 const ReviewMarker = ({ text }) => <div><img src={"/static/graphics/drawing.png"} alt="Logo" /><br />{text}</div>;
+=======
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
+>>>>>>> 3fd25e762e424a8501fa63a44c1bb009de693be0
 
 
 
@@ -26,7 +35,10 @@ const App = () => (
                 render={data => <Marker data={data} />} />
 );
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3fd25e762e424a8501fa63a44c1bb009de693be0
 const mapOptions = {
       
 
@@ -264,6 +276,7 @@ class SimpleMap extends Component {
 
     constructor(props) {
         super(props);
+
         
         this.state = {
           data: this.props.data,
@@ -279,7 +292,7 @@ class SimpleMap extends Component {
     },
 
     zoom: 0
-      
+
 }
 
 
@@ -298,6 +311,7 @@ class SimpleMap extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom} 
         >
+
 
         
             {this.state.data.map(el => (<ReviewMarker

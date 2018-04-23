@@ -1,4 +1,5 @@
 import React from "react";
+
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import shortid from "shortid";
@@ -37,6 +38,7 @@ class AnyReactComponent extends React.Component{
     
 }
 
+
 class Marker extends React.Component {
 
   constructor(props) {
@@ -52,16 +54,19 @@ class Marker extends React.Component {
     const { data } = this.state;
  
     return <div id="thatMarker">
-            
+
           </div>
           
   }
 }
 
 
+
 const wrapper = document.getElementById("Main");
 
 wrapper ? ReactDOM.render(<App />, wrapper) : null;
+=======
+
 
 
 const Markers = ({ data }) =>
