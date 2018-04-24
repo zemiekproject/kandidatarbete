@@ -17,7 +17,7 @@ const ReviewMarkerStyle = {
   }
 
 
-const ReviewMarker = ({ text, slug }) => <div><img src={"/static/graphics/drawing.png"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
+const ReviewMarker = ({ text, slug }) => <div><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
 
 const mapOptions = {
       

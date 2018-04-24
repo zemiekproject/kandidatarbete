@@ -35,11 +35,13 @@ class App extends React.Component {
     
     
     return <div>
+            <div className="column">
             <form>
               <input type="text" onChange={this.searchHandler} />
             </form> 
             <DataProvider endpoint="api/review/" 
           render={data => <ReviewCard data={data.filter(searchingFor(term))} />} />
+          </div>
           </div>
           
   }

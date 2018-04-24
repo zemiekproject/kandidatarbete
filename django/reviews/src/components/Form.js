@@ -20,13 +20,14 @@ class Form extends Component {
   state = {
     title: "",
     location: "",
+    lat: "",
+    lng: "",
     text: "",
     tags: [],
   };
 
   handleChange = e => {
-    // console.log("Field changed");
-    // console.log(e.target.name + " : " + e.target.value);
+    
     if(e.target.name == "tags"){
       if(e.target.options){
         var options = e.target.options;
@@ -53,6 +54,22 @@ class Form extends Component {
         };
       };
     }
+    else if(e.target.name == "location"){
+      if(e.target.options){
+        this.state.location = e.target[e.target.value-1].attributes.value.value;
+        this.state.lat = e.target[e.target.value-1].attributes['data-lat'].value;
+        this.state.lng = e.target[e.target.value-1].attributes['data-lon'].value;
+      }
+      else {
+        this.setState({ [e.target.name]: e.target.value });
+      };
+    }
+    else if(e.target.name == "lat"){
+      this.setState({ [e.target.name]: e.target.value });
+    }
+    else if(e.target.name == "lng"){
+      this.setState({ [e.target.name]: e.target.value });
+    }
     else{
       
       this.setState({ [e.target.name]: e.target.value });
@@ -67,14 +84,18 @@ class Form extends Component {
     var locationNames = [];
     var locationValues = [];
     for (var i = 0, l = e.target.location[0].options.length; i< l; i++) {
-      locationNames.push(e.target.location[0].options[i].attributes[1].value);
-      locationValues.push(e.target.location[0].options[i].attributes[0].value);
+      locationNames.push(e.target.location[0].options[i].attributes['name'].value);
+      locationValues.push(e.target.location[0].options[i].attributes['value'].value);
     };
+    // console.log(this.state.location);
+    // console.log(locationValues);
 
     if(!(locationNames.includes(this.state.location)) && !(locationValues.includes(this.state.location.toString()))){
       console.log("added new location");
-      name  = this.state.location;
-      const location = { name };
+      const name  = this.state.location;
+      const lon = this.state.lng;
+      const lat = this.state.lat;
+      const location = { name, lon, lat };
       const conf1 = {
         method: "post",
         body: JSON.stringify(location),
@@ -82,6 +103,7 @@ class Form extends Component {
       };
       fetch("api/location/", conf1).then(response => console.log(response));
       this.state.location = (locationNames.length + 1).toString();
+
       this.forceUpdate();
     }
     else{
@@ -125,9 +147,9 @@ class Form extends Component {
     };
     this.forceUpdate();
 
-    const { title, location, text, tags } = this.state;
+    const { title, location, lat, lng, text, tags } = this.state;
     const author = document.getElementById('uid').innerHTML;
-    const review = { author, title, location, text, tags};
+    const review = { author, title, location, lat, lng, text, tags};
 
     console.log(review);
     const conf = {
@@ -139,16 +161,17 @@ class Form extends Component {
   };
 
   render() {
-    const { title, location, text, tags } = this.state;
+    const { title, location, lat, lng, text, tags } = this.state;
 
     return (
-      <div className="column">
-        <form onSubmit={this.handleSubmit}>
-          <div className="field">
-            <label className="label">Name</label>
+      <div>
+        <form inline className="form" onSubmit={this.handleSubmit}>
+          <div className="field" className="form-group">
+            <label className="label"><b>Name</b></label>
             <div className="control">
               <input
                 className="input"
+                className="form-control"
                 type="text"
                 name="title"
                 onChange={this.handleChange}
@@ -157,17 +180,45 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field" onChange={this.handleChange} value={location}>
-            <label className="label">location</label>
+          <div className="field" className="form-group" onChange={this.handleChange} value={location}>
+            <label className="label"><b>Location</b></label>
             
              <DropdownLocation />
              
           </div>
-          <div className="field">
-            <label className="label">text</label>
+          Add new location latitude and longitude below:
+          <div className="field" className="form-group">
+            <label className="label">lat</label>
+            <div className="control">
+              Latitud: <input
+                className="textarea"
+                type="number"
+                name="lat"
+                onChange={this.handleChange}
+                value={lat}
+                step="0.000001"
+              />
+            </div>
+          </div>
+          <div className="field" className="form-group">
+            <label className="label">lng</label>
+            <div className="control">
+              Longitud: <input
+                className="textarea"
+                type="number"
+                name="lng"
+                onChange={this.handleChange}
+                value={lng}
+                step="0.000001"
+              />
+            </div>
+          </div>
+          <div className="field" className="form-group">
+            <label className="label"><b>Text</b></label>
             <div className="control">
               <textarea
                 className="textarea"
+                className="form-control"
                 type="text"
                 name="text"
                 onChange={this.handleChange}
@@ -176,8 +227,8 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field" onChange={this.handleChange} value={tags}>
-            <label className="label">tags</label>
+          <div className="field" className="form-group" onChange={this.handleChange} value={tags}>
+            <label className="label"><b>Tags</b></label>
             
             <SelectTags />
             
