@@ -2,55 +2,13 @@
 {% load render_bundle from webpack_loader %}
 {% block content %}
 
-<!-- <ul>
-    <form method="GET" action=''>
-        <input type="text" name="q" placeholder="Search Review"/>
-        <input type="submit" value="Search"/>
-    </form>
-    {% for obj in object_list %}
-    <li><a href='{{obj.get_absolute_url}}'><h3>{{ obj.title }}</h3></a> </br> {{ obj.location }}</li>
-    {% endfor %}
-</ul> -->
-
-<!-- <h2>Reviews</h2>
-<div class="container"> -->
-         <!-- <div id=Main></div> -->
-
-<!-- {% render_bundle 'vendors' %}
-{% render_bundle 'App1' %} -->
-<head>
-<style>
-* {
-    box-sizing: border-box;
-}
-
-/* Create two equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-</style>
-</head>
 <body>
-
-
-<div class="row">
-  <div class="column">
-    <div id=Main class=Main></div>
-    <a href="{% url 'reviews:create' %}"><h4>Make review</h4></a>
-  </div>
-  <div class="column">
-    <div class=Map></div>
-  </div>
-</div>
+        <div class="row">
+            <div class="col"><div class="Main" id="Main"></div>
+                <a href="{% url 'reviews:create' %}"><h4>Make review</h4></a>
+            </div>
+            <div class="col"><div><div class=Map></div></div></div>
+        </div>
 
 </body>
 {% render_bundle 'vendors' %}

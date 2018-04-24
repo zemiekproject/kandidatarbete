@@ -301,12 +301,8 @@ class SimpleMap extends Component {
             key={el.id}
             text={el.title}
             lat={el.lat}
-<<<<<<< HEAD
-            lng={el.lon} />))}
-=======
-            lng={el.lng}
+            lng={el.lon}
             slug={el.slug}/>))}
->>>>>>> 429f904474865e0d3693a2430de02a0cb3eb5d5b
 
 
         </GoogleMapReact>
