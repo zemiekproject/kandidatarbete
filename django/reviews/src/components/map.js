@@ -16,7 +16,7 @@ function counter() {
 }
 
 
-const ReviewMarker = ({ text }) => <div><img src={"/static/graphics/drawing.png"} alt="Logo" /><br />{text}</div>;
+const ReviewMarker = ({ text, slug }) => <div><img src={"/static/graphics/drawing.png"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
 
 const mapOptions = {
       
@@ -251,6 +251,9 @@ draggableCursor: 'default',
 };
 
 
+// GETS LAT LANG ON CLICK
+function _onClick(obj){ console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);}
+
 class SimpleMap extends Component {
 
     constructor(props) {
@@ -283,7 +286,7 @@ class SimpleMap extends Component {
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
+        <GoogleMapReact onClick={_onClick}
           className='TheMap'
           options={mapOptions}
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
@@ -294,9 +297,11 @@ class SimpleMap extends Component {
 
         
             {this.state.data.map(el => (<ReviewMarker
+            key={el.id}
             text={el.title}
             lat={el.lat}
-            lng={el.lng} />))}
+            lng={el.lng}
+            slug={el.slug}/>))}
 
 
         </GoogleMapReact>
