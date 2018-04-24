@@ -1,3 +1,6 @@
+import React, {Component} from "react";
+import ReactDOM from "react-dom";
+
 function Profile(props){
   return (
       <div className="Profile">
@@ -11,3 +14,5 @@ function Profile(props){
       </div>
     );
 }
+
+export default Profile;

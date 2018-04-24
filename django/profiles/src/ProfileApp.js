@@ -8,10 +8,10 @@ class ProfileApp extends Component{
     super(props);
     this.state = {
       person: {
-        name: 'Jack-Edward Oliver',
-        biography: '26 year old Designer / Developer living in Stockholm. Originally from Oxford, England. Love to make stuff.',
+        name: 'Jacob Rutfors',
+        biography: '22 year old superhuman / Professional Developer living in Uppsala. Originally from Luleå, Sweden. Love to pet cats.',
       },
-      image: 'http://static1.squarespace.com/static/55acc005e4b098e615cd80e2/t/57b057398419c2c454f09924/1471025851733/',
+      image: '/static/graphics/one.png',
       quote: {
         content: 'Beautiful things don\'t ask for attention',
         source: 'The Secret Life of Walter Mitty'
@@ -29,5 +29,6 @@ class ProfileApp extends Component{
   }
 }
 
+ReactDOM.render(<ProfileApp />, document.getElementById('root'));
 
 export default ProfileApp;

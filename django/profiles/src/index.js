@@ -1,3 +1,2 @@
 import ProfileApp from "./ProfileApp";
-
-ReactDOM.render(<ProfileApp />, document.getElementById('root'));
+import ReactDOM from "react-dom"
