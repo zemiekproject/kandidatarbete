@@ -25,6 +25,7 @@ const FormTags = ({ data }) =>
         
         <input
             className="input"
+            className="form-control"
             type="text"
             name="tags"
         />

@@ -2,11 +2,39 @@
 {% load render_bundle from webpack_loader %}
 {% block content %}
 
-<h2>Write a review!</h2>
+<head><style>
+* {
+    box-sizing: border-box;
+}
 
-<div class="container">
-          <div id=ReviewForm></div>
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 0 0 0 10px
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+</head>
+<body>
+<div class="container-fluid">
+          <div class="row">
+  <div class="column">
+    <h2>Write a review!</h2>
+    <div id=ReviewForm></div>
+  </div>
+  <div class="column">
+    <div class=Map></div>
+  </div>
+</div>
 {% render_bundle 'vendors' %}
 {% render_bundle 'Main' %}
 </div>
+</body>
 {% endblock %}
