@@ -164,13 +164,14 @@ class Form extends Component {
     const { title, location, lat, lng, text, tags } = this.state;
 
     return (
-      <div className="column">
-        <form onSubmit={this.handleSubmit}>
-          <div className="field">
-            <label className="label">Name</label>
+      <div>
+        <form inline className="form" onSubmit={this.handleSubmit}>
+          <div className="field" className="form-group">
+            <label className="label"><b>Name</b></label>
             <div className="control">
               <input
                 className="input"
+                className="form-control"
                 type="text"
                 name="title"
                 onChange={this.handleChange}
@@ -179,14 +180,14 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field" onChange={this.handleChange} value={location}>
-            <label className="label">location</label>
+          <div className="field" className="form-group" onChange={this.handleChange} value={location}>
+            <label className="label"><b>Location</b></label>
             
              <DropdownLocation />
              
           </div>
           Add new location latitude and longitude below:
-          <div className="field">
+          <div className="field" className="form-group">
             <label className="label">lat</label>
             <div className="control">
               Latitud: <input
@@ -199,7 +200,7 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field">
+          <div className="field" className="form-group">
             <label className="label">lng</label>
             <div className="control">
               Longitud: <input
@@ -212,11 +213,12 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field">
-            <label className="label">text</label>
+          <div className="field" className="form-group">
+            <label className="label"><b>Text</b></label>
             <div className="control">
               <textarea
                 className="textarea"
+                className="form-control"
                 type="text"
                 name="text"
                 onChange={this.handleChange}
@@ -225,8 +227,8 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field" onChange={this.handleChange} value={tags}>
-            <label className="label">tags</label>
+          <div className="field" className="form-group" onChange={this.handleChange} value={tags}>
+            <label className="label"><b>Tags</b></label>
             
             <SelectTags />
             
