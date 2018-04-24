@@ -65,7 +65,7 @@ class Marker extends React.Component {
 const wrapper = document.getElementById("Main");
 
 wrapper ? ReactDOM.render(<App />, wrapper) : null;
-=======
+
 
 
 

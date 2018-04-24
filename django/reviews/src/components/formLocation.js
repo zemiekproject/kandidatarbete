@@ -16,7 +16,7 @@ const FormLocation = ({ data }) =>
         name="location"
         >
         {data.map(el => (
-          <option key={el.id} value={Object.entries(el)[0][1]} name={Object.entries(el)[1][1]}>  
+          <option key={el.id} value={Object.entries(el)[0][1]} data-lat={Object.entries(el)[4][1]} data-lon={Object.entries(el)[3][1]} name={Object.entries(el)[1][1]}>  
             {Object.entries(el)[1][1]}
           </option>
         ))}
