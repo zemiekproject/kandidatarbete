@@ -45,6 +45,9 @@ class App extends React.Component {
 }
 
 
-const wrapper = document.getElementById("Main");
+const wrapper = document.getElementsByClassName("Main");
 
-wrapper ? ReactDOM.render(<App />, wrapper) : null;
+
+for (var i = 0; i < wrapper.length; i++) {
+  wrapper[i] ? ReactDOM.render(<App />, wrapper[i]) : null;
+}
