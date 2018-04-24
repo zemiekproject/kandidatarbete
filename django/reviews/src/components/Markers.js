@@ -68,7 +68,6 @@ wrapper ? ReactDOM.render(<App />, wrapper) : null;
 
 
 
-
 const Markers = ({ data }) =>
   !data.length ? (
     <p>Nothing to show</p>
