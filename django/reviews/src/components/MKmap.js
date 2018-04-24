@@ -1,17 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Form from "./Form";
-import SimpleMap from "./map"
-import MainMapBlock from "./examples/x_main/main_map_block"
-import DataProvider from "./DataProvider"
+import SimpleMap from "./map";
+import DataProvider from "./DataProvider";
+
 const divstyle = {
     width: '100px',
     height: '100px',
 };
 const MKmap = () => (
-    <div style={divstyle}>
-        <SimpleMap/>
-
+    <div>
+    <DataProvider endpoint="http://localhost:8000/reviews/api/review/" render={data => <SimpleMap data={data} />} />
     </div>
 );
 
