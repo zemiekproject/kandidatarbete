@@ -37,7 +37,11 @@ const Table = ({ data }) =>
           {counter()}
           {data.map( (el, i) => (
             <tr key={el.id}>
-                {Object.entries(el).map(el => <td key={uuid()}><a href={"/reviews/"+data[i].slug+"/"}>{el[1]}</a></td>)}
+                <td key={uuid()}><a href={"/reviews/"+data[i].slug+"/"}>{el.title}</a></td>
+                <td key={uuid()}><p>{el.rating}</p></td>
+                <td key={uuid()}><p>{el.upvotes}</p></td>
+                <td key={uuid()}><p>{el.author}</p></td>
+                <td key={uuid()}><p>{el.title}</p></td>)}
             </tr>
           ))}
         </tbody>

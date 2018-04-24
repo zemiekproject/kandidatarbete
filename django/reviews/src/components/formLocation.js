@@ -25,6 +25,7 @@ const FormLocation = ({ data }) =>
         
         <input
             className="input"
+            className="form-control"
             type="text"
             name="location"
         />
