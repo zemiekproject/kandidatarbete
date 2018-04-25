@@ -9,9 +9,9 @@ from django.db.models import Avg
 class Location(models.Model):
     # author      = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     name       = models.CharField(max_length=120)
-    country    = models.CharField(max_length=120)
-    lon        = models.FloatField()
-    lat        = models.FloatField()
+    country    = models.CharField(max_length=120, null=True, blank=True)
+    lng        = models.FloatField(null=True, blank=True, unique=True)
+    lat        = models.FloatField(null=True, blank=True, unique=True)
     # avgRating  = Review.objects.all()
     # text        = models.CharField(max_length=500, null=True, blank=True)
     # timestamp   = models.DateTimeField(auto_now_add=True)

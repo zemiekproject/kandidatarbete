@@ -5,11 +5,21 @@ import PropTypes from "prop-types";
 import DataProvider from "./DataProvider";
 import Table from "./Table";
 
-const App = () => (
-  <DataProvider endpoint="reviews/api/review/" 
-                render={data => <Markers data={data} />} />
-);
-const AnyReactComponent = ( { text }) => <div>{text}</div>;
+
+
+//Stylingen behövs för att markern ska hamna mitt på koordinaterna; annars är koordinaterna i ett av markerns hörn.
+const MARKER_SIZE = 40;
+const ReviewMarkerStyle = {
+    position: 'absolute',
+    width: MARKER_SIZE,
+    height: MARKER_SIZE,
+    left: -MARKER_SIZE / 2,
+    top: -MARKER_SIZE * 2
+  }
+
+
+const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle} ><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
+
 
 const mapOptions = {
       
@@ -256,6 +266,9 @@ zoomControl: true,
 };
 
 
+// GETS LAT LANG ON CLICK
+function _onClick(obj){ console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);}
+
 class SimpleMap extends Component {
     constructor(props) {
         super(props);
@@ -265,7 +278,22 @@ class SimpleMap extends Component {
         }
     }
 
+<<<<<<< HEAD
    
+=======
+    constructor(props) {
+        super(props);
+        console.log(this.props.data)
+        
+        this.state = {
+          data: this.props.data,
+          
+          childComponent: null,
+          
+        };
+      }
+
+>>>>>>> add95c7eb9132d8bcf4f86188701e857db387f23
   static defaultProps = {
     center: {
       lat: 59.95,
@@ -274,8 +302,15 @@ class SimpleMap extends Component {
 
     zoom: 0
 
+<<<<<<< HEAD
     }
     
+=======
+}
+
+
+
+>>>>>>> add95c7eb9132d8bcf4f86188701e857db387f23
 
 
 
@@ -283,14 +318,27 @@ class SimpleMap extends Component {
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
+        <GoogleMapReact onClick={_onClick}
           className='TheMap'
           options={mapOptions}
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
           defaultCenter={this.props.center}
+<<<<<<< HEAD
           defaultZoom={this.props.zoom}
+=======
+          defaultZoom={this.props.zoom} 
+>>>>>>> add95c7eb9132d8bcf4f86188701e857db387f23
         >
+    
+                
+            {this.state.data.map(el => (<ReviewMarker
+            key={el.id}
+            text={el.title}
+            lat={el.lat}
+            lng={el.lng}
+            slug={el.slug}/>))}
 
+<<<<<<< HEAD
          
         <App />
 
@@ -302,6 +350,8 @@ class SimpleMap extends Component {
 
          
         
+=======
+>>>>>>> add95c7eb9132d8bcf4f86188701e857db387f23
 
         </GoogleMapReact>
       </div>

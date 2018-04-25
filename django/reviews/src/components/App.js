@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import DataProvider from "./DataProvider";
 import Table from "./Table";
+import ReviewCard from "./Card";
+
+
 
 function searchingFor(term) {
   return function(x) {
@@ -33,17 +36,22 @@ class App extends React.Component {
     
     
     return <div>
+            <div className="column">
             <form>
               <input type="text" onChange={this.searchHandler} />
             </form> 
             <DataProvider endpoint="api/review/" 
-          render={data => <Table data={data.filter(searchingFor(term))} />} />
+          render={data => <ReviewCard data={data.filter(searchingFor(term))} />} />
+          </div>
           </div>
           
   }
 }
 
 
-const wrapper = document.getElementById("Main");
+const wrapper = document.getElementsByClassName("Main");
 
-wrapper ? ReactDOM.render(<App />, wrapper) : null;
+
+for (var i = 0; i < wrapper.length; i++) {
+  wrapper[i] ? ReactDOM.render(<App />, wrapper[i]) : null;
+}

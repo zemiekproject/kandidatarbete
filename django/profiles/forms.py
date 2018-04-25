@@ -13,6 +13,7 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = ('username','email','first_name', 'last_name',)
 
+
     def clean_email(self):
         email = self.cleaned_data.get("email")
         qs = User.objects.filter(email__iexact=email)
