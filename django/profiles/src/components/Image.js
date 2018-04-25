@@ -3,7 +3,10 @@ import ReactDOM from "react-dom";
 
 function Image(props){
     return (
-      <div className="Image" style={{backgroundImage: 'url(' + props.src + ')'}}></div>
+      <img className="Image" src = {props.src } height='210' >
+         <a onClick={this.handleClick} style={{cursor:'pointer', color: 'blue', marginLeft: 60}} >Byt profilbild</a>
+      </img>
+     
     ); 
 }
 

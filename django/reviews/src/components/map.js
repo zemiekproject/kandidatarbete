@@ -139,7 +139,7 @@ const mapOptions = {
         {"hue": "#8ba975"},
         {"saturation": -46},
         {"lightness": -28},
-        {"visibility": "on"}
+        {"visibility": "off"}
     ]
 },
 {
@@ -163,8 +163,8 @@ const mapOptions = {
     "featureType": "road.highway",
     "elementType": "geometry",
     "stylers": [
-        {"hue": "#d4dad0"},
-        {"saturation": -88},
+        {"hue": "#0000FF"},
+        {"saturation": 0},
         {"lightness": 54},
         {"visibility": "simplified"}
     ]
@@ -218,9 +218,17 @@ const mapOptions = {
         {"hue": "#a43218"},
         {"saturation": 74},
         {"lightness": -51},
-        {"visibility": "simplified"}
+        {"visibility": "off"}
     ]
 },
+{
+    "featureType": "transit",
+    "elementType": "labels.text",
+    "stylers": [
+        {"visibility": "off"}
+    ]
+},
+
 {
     "featureType": "water",
     "elementType": "geometry",
@@ -242,6 +250,9 @@ const mapOptions = {
 ],
 draggableCursor: 'default',
 fullscreenControl: false,
+//gestureHandling: 'greedy',
+scrollwheel: false,
+zoomControl: true,
 
 };
 
