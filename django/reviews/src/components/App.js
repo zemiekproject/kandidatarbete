@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import DataProvider from "./DataProvider";
@@ -36,11 +37,15 @@ class App extends React.Component {
     
     return <div>
             <div className="column">
-            <form>
-              <input type="text" onChange={this.searchHandler} />
-            </form> 
+
+            <InputGroup>
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>Search for reviews here:</InputGroupText>
+            </InputGroupAddon>
+            <Input placeholder="" type="text" onChange={this.searchHandler}/>
+          </InputGroup>
             <DataProvider endpoint="api/review/" 
-          render={data => <ReviewCard data={data.filter(searchingFor(term))} />} />
+          render={data => <ReviewCard term={term} data={data.filter(searchingFor(term))} />} />
           </div>
           </div>
           
