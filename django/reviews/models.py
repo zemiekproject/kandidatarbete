@@ -21,10 +21,9 @@ class Review(models.Model):
     tags        = models.ManyToManyField(Tag, blank=True, null=True)
     timestamp   = models.DateTimeField(auto_now_add=True)
     updated     = models.DateTimeField(auto_now=True)
-    # lat         = models.FloatField(default=59.955413,blank=True)
-    # lng         = models.FloatField(default=30.337,blank=True)
+
     lat         = models.ForeignKey("locations.Location", on_delete=models.DO_NOTHING, to_field='lat', related_name='reviews_lat')
-    lon         = models.ForeignKey("locations.Location", on_delete=models.DO_NOTHING, to_field='lon', related_name='reviews_lng')
+    lng         = models.ForeignKey("locations.Location", on_delete=models.DO_NOTHING, to_field='lng', related_name='reviews_lng')
     slug        = models.SlugField(null=True, blank=True)
 
 
