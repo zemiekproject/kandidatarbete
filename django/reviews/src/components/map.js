@@ -288,6 +288,8 @@ handleClick(obj) {
     if (window.location.pathname=="/reviews/create/") {
         console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
         this.setState({mrklat: obj.lat, mrklng: obj.lng})
+        document.getElementById('lat').setAttribute('value', obj.lat)
+        document.getElementById('lng').setAttribute('value', obj.lng)
         ReactDOM.render(<NewReviewMarker lat={obj.lat} lng={obj.lng} text='new review' />, document.getElementById('plcs')
         );
     }

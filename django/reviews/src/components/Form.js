@@ -28,7 +28,9 @@ class Form extends Component {
   };
 
   handleChange = e => {
-    
+//     NOTE SHIT FIX breaks React philosophy again
+    this.setState({ lat: document.getElementById('lat').getAttribute('value') });
+    this.setState({ lng: document.getElementById('lng').getAttribute('value') });
     if(e.target.name == "tags"){
       if(e.target.options){
         var options = e.target.options;
@@ -180,7 +182,8 @@ class Form extends Component {
             <div className="control">
               Latitude: <input
                 className="textarea"
-                type="number"
+                type="text"
+                id='lat'
                 name="lat"
                 onChange={this.handleChange}
                 value={lat}
@@ -193,7 +196,8 @@ class Form extends Component {
             <div className="control">
               Longitude: <input
                 className="textarea"
-                type="number"
+                type="text"
+                id='lng'
                 name="lng"
                 onChange={this.handleChange}
                 value={lng}
