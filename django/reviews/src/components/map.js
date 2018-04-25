@@ -5,15 +5,16 @@ import PropTypes from "prop-types";
 import DataProvider from "./DataProvider";
 import Table from "./Table";
 
-var i = -1;
-function counter() {
-  if (i = 2) {
-    i = 0;
-  } else {
-  i = i + 1;
-  return i;
+
+//Stylingen behövs för att markern ska hamna mitt på koordinaterna; annars är koordinaterna i ett av markerns hörn.
+const MARKER_SIZE = 40;
+const ReviewMarkerStyle = {
+    position: 'absolute',
+    width: MARKER_SIZE,
+    height: MARKER_SIZE,
+    left: -MARKER_SIZE / 2,
+    top: -MARKER_SIZE / 2
   }
-}
 
 
 const ReviewMarker = ({ text, slug }) => <div><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
@@ -263,7 +264,7 @@ class SimpleMap extends Component {
 
     constructor(props) {
         super(props);
-
+        console.log(this.props.data)
         
         this.state = {
           data: this.props.data,
@@ -305,9 +306,8 @@ handleClick(obj) {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom} 
         >
-
-
-        
+    
+                
             {this.state.data.map(el => (<ReviewMarker
             key={el.id}
             text={el.title}

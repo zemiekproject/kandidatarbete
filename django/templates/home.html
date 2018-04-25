@@ -3,8 +3,8 @@
 
 {% block content %}
 <style>
-    #wrapper { position: relative; }
-    #over_map { position: absolute; top: 25%; left: 27%; z-index: 99; }
+    #wrapper { position: relative;}
+    #over_map {position: absolute;   top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 99; }
  </style>
  
  <div id="wrapper">
@@ -12,7 +12,7 @@
     <div class=Map></div>
  
     <div id="over_map">
-        <div id="search_wrapper">
+        <div id="search_wrapper"><br/>
             <div id=searchBar></div>
         </div>
     </div>
@@ -22,4 +22,3 @@
 {% render_bundle 'vendors' %}
 {% render_bundle 'Main' %}
 {% endblock %}
-

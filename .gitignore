@@ -11,6 +11,8 @@
 /django/profiles/__pycache__
 /django/locations/__pycache__
 /django/locations/migrations
+/django/tags/__pycache__
+/django/tags/migrations
 
 /django/locus/migrations
 /django/reviews/migrations

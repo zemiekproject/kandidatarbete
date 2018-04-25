@@ -20,13 +20,15 @@ class Form extends Component {
   state = {
     title: "",
     location: "",
+    lat: "",
+    lng: "",
     text: "",
+    rating: "",
     tags: [],
   };
 
   handleChange = e => {
-    // console.log("Field changed");
-    // console.log(e.target.name + " : " + e.target.value);
+    
     if(e.target.name == "tags"){
       if(e.target.options){
         var options = e.target.options;
@@ -53,6 +55,23 @@ class Form extends Component {
         };
       };
     }
+    else if(e.target.name == "location"){
+      if(e.target.options){
+        this.state.location = e.target[e.target.value-1].attributes.value.value;
+        this.state.lat = e.target[e.target.value-1].attributes['data-lat'].value;
+        this.state.lng = e.target[e.target.value-1].attributes['data-lng'].value;
+        this.forceUpdate();
+      }
+      else {
+        this.setState({ [e.target.name]: e.target.value });
+      };
+    }
+    else if(e.target.name == "lat"){
+      this.setState({ [e.target.name]: e.target.value });
+    }
+    else if(e.target.name == "lng"){
+      this.setState({ [e.target.name]: e.target.value });
+    }
     else{
       
       this.setState({ [e.target.name]: e.target.value });
@@ -61,28 +80,28 @@ class Form extends Component {
   };
 
   handleSubmit = e => {
-    // console.log(e.target.tags[0].options);
     e.preventDefault();
 
     var locationNames = [];
     var locationValues = [];
     for (var i = 0, l = e.target.location[0].options.length; i< l; i++) {
-      locationNames.push(e.target.location[0].options[i].attributes[1].value);
-      locationValues.push(e.target.location[0].options[i].attributes[0].value);
+      locationNames.push(e.target.location[0].options[i].attributes['name'].value);
+      locationValues.push(e.target.location[0].options[i].attributes['value'].value);
     };
 
     if(!(locationNames.includes(this.state.location)) && !(locationValues.includes(this.state.location.toString()))){
       console.log("added new location");
       name  = this.state.location;
-      const location = { name };
+      const lng = this.state.lng;
+      const lat = this.state.lat;
+      const location = { name, lng, lat };
       const conf1 = {
         method: "post",
         body: JSON.stringify(location),
         headers: new Headers({ "Content-Type": "application/json" })
       };
       fetch("api/location/", conf1).then(response => console.log(response));
-      this.state.location = (locationNames.length + 1).toString();
-      this.forceUpdate();
+      this.state.location = (locationValues.length + 1).toString();
     }
     else{
       for (var i = 0, l = locationNames.length; i< l; i++) {
@@ -92,7 +111,6 @@ class Form extends Component {
         };
       };
     };
-    this.forceUpdate();
 
     var tagValues = [];
     for (var i = 0, l = e.target.tags[0].options.length; i< l; i++) {
@@ -112,22 +130,14 @@ class Form extends Component {
         };
         fetch("api/tag/", conf1).then(response => console.log(response));
         this.state.tags[i] = (tagValues.length + 1).toString();
-        this.forceUpdate();
       };
-      // else{
-      //   for (var j = 0, l = tagNames.length; j< l; j++) {
-      //     if (tagNames[j] == this.state.tags[i]){
-      //       this.state.tags[i] = locationValues[i];
-      //       break;
-      //     };
-      //   };
-      // };
     };
+
     this.forceUpdate();
 
-    const { title, location, text, tags } = this.state;
+    const { title, location, lat, lng, text, rating, tags } = this.state;
     const author = document.getElementById('uid').innerHTML;
-    const review = { author, title, location, text, tags};
+    const review = { author, title, location, lat, lng, text, rating, tags};
 
     console.log(review);
     const conf = {
@@ -139,7 +149,7 @@ class Form extends Component {
   };
 
   render() {
-    const { title, location, text, tags } = this.state;
+    const { title, location, lat, lng, text, rating, tags } = this.state;
 
     return (
       <div>
@@ -159,10 +169,37 @@ class Form extends Component {
             </div>
           </div>
           <div className="field" className="form-group" onChange={this.handleChange} value={location}>
-            <label className="label"><b>Location</b></label>
+            <label className="label"><b>Location (Choose existing or create new)</b></label>
             
              <DropdownLocation />
              
+          </div>
+          Add new location latitude and longitude below:
+          <div className="field" className="form-group">
+            <label className="label"></label>
+            <div className="control">
+              Latitude: <input
+                className="textarea"
+                type="number"
+                name="lat"
+                onChange={this.handleChange}
+                value={lat}
+                step="0.000001"
+              />
+            </div>
+          </div>
+          <div className="field" className="form-group">
+            <label className="label"></label>
+            <div className="control">
+              Longitude: <input
+                className="textarea"
+                type="number"
+                name="lng"
+                onChange={this.handleChange}
+                value={lng}
+                step="0.000001"
+              />
+            </div>
           </div>
           <div className="field" className="form-group">
             <label className="label"><b>Text</b></label>
@@ -176,6 +213,19 @@ class Form extends Component {
                 value={text}
                 required
               />
+            </div>
+          </div>
+          <div className="field" className="form-group">
+            <label className="label"><b>Rating (0-10)</b></label>
+            <div className="control">
+              <input
+                  className="textarea"
+                  type="number"
+                  name="rating"
+                  onChange={this.handleChange}
+                  value={rating}
+                  min="0" max="10"
+                />
             </div>
           </div>
           <div className="field" className="form-group" onChange={this.handleChange} value={tags}>
