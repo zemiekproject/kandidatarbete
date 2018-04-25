@@ -15,7 +15,7 @@ const ReviewMarkerStyle = {
     height: MARKER_SIZE,
     left: -MARKER_SIZE / 2,
     top: -MARKER_SIZE * 2
-  }
+}
 
 
 const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle} ><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
@@ -272,17 +272,6 @@ function _onClick(obj){ console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);}
 class SimpleMap extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            lat: null,
-            lng: null,
-        }
-    }
-
-<<<<<<< HEAD
-   
-=======
-    constructor(props) {
-        super(props);
         console.log(this.props.data)
         
         this.state = {
@@ -291,9 +280,8 @@ class SimpleMap extends Component {
           childComponent: null,
           
         };
-      }
+    }
 
->>>>>>> add95c7eb9132d8bcf4f86188701e857db387f23
   static defaultProps = {
     center: {
       lat: 59.95,
@@ -301,16 +289,7 @@ class SimpleMap extends Component {
     },
 
     zoom: 0
-
-<<<<<<< HEAD
     }
-    
-=======
-}
-
-
-
->>>>>>> add95c7eb9132d8bcf4f86188701e857db387f23
 
 
 
@@ -323,12 +302,9 @@ class SimpleMap extends Component {
           options={mapOptions}
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
           defaultCenter={this.props.center}
-<<<<<<< HEAD
-          defaultZoom={this.props.zoom}
-=======
-          defaultZoom={this.props.zoom} 
->>>>>>> add95c7eb9132d8bcf4f86188701e857db387f23
-        >
+          defaultZoom={this.props.zoom}>
+
+
     
                 
             {this.state.data.map(el => (<ReviewMarker
@@ -337,28 +313,14 @@ class SimpleMap extends Component {
             lat={el.lat}
             lng={el.lng}
             slug={el.slug}/>))}
-
-<<<<<<< HEAD
          
-        <App />
-
-    
-
- 
-
-
-
-         
-        
-=======
->>>>>>> add95c7eb9132d8bcf4f86188701e857db387f23
-
+       
         </GoogleMapReact>
       </div>
     );
 
 
-    }
+  }
   
 }
 
