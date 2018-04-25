@@ -15,11 +15,12 @@ const ReviewMarkerStyle = {
     height: MARKER_SIZE,
     left: -MARKER_SIZE / 2,
     top: -MARKER_SIZE * 2
-}
 
+  }
 
-const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle} ><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
+const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
 
+const NewReviewMarker = ({ text }) => <div><img src={"/static/graphics/drawingblue.svg"} alt="Logo" /><br /><p>{text}</p></div>;
 
 const mapOptions = {
       
@@ -267,7 +268,10 @@ zoomControl: true,
 
 
 // GETS LAT LANG ON CLICK
-function _onClick(obj){ console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);}
+// function _onClick(obj){ console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
+//         ReactDOM.render(<NewReviewMarker lat={obj.lat} lng={obj.lng} text='new review' />, document.getElementById('plcs')
+//         );
+// }
 
 class SimpleMap extends Component {
     constructor(props) {
@@ -276,9 +280,8 @@ class SimpleMap extends Component {
         
         this.state = {
           data: this.props.data,
-          
-          childComponent: null,
-          
+          mrklat: null,
+          mrklng: null,
         };
     }
 
@@ -289,7 +292,22 @@ class SimpleMap extends Component {
     },
 
     zoom: 0
+
+
+}
+
+
+handleClick(obj) { 
+    if (window.location.pathname=="/reviews/create/") {
+        console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
+        this.setState({mrklat: obj.lat, mrklng: obj.lng})
+        document.getElementById('lat').setAttribute('value', obj.lat)
+        document.getElementById('lng').setAttribute('value', obj.lng)
+        ReactDOM.render(<NewReviewMarker lat={obj.lat} lng={obj.lng} text='new review' />, document.getElementById('plcs')
+        );
     }
+}
+
 
 
 
@@ -297,7 +315,7 @@ class SimpleMap extends Component {
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact onClick={_onClick}
+        <GoogleMapReact onClick={this.handleClick.bind(this)}
           className='TheMap'
           options={mapOptions}
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
@@ -315,6 +333,10 @@ class SimpleMap extends Component {
             slug={el.slug}/>))}
          
        
+
+            <div id='plcs' lat={this.state.mrklat} lng={this.state.mrklng} />
+
+
         </GoogleMapReact>
       </div>
     );

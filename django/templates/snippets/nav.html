@@ -1,12 +1,42 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<!-- <div class="container">
+<ul id="navbar">
+<a class='barkey' href='{%url "home" %}'>LOCUS</a>
+<a class='barkey' href='{%url "home" %}'>Home</a> 
+<a class='barkey' href='{%url "reviews:list" %}'>Reviews</a>
+<a class='barkey' href='{%url "locations:list" %}'>Locations</a>
+<a class='barkey' href='{%url "tags:list" %}'>Tags</a>
+<a class='barkey' href='{%url "profiles:detail" username=request.user %}'>My Profile</a>
+<a class='barkey' href="{% url 'login' %}">Login</a>
+</ul>
+</div> -->
+
+
+<style>
+    .nav-item {
+        font-size: 18px;
+        transition: background-color .2s, color .2s;
+    }
+    .active {
+        background-color: #bd5734;
+        color: #fff !important; 
+    }
+    .nav-item a:hover {
+		background-color: #bd5734;
+		color: #fff !important;
+        
+        }
+
+</style>
+<div>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
     <div class="d-flex">
     <!-- Links -->
             <a class="navbar-brand mr-0" href='{%url "home" %}'>LOCUS</a>
 
         </div>
-        <div class="navbar-collapse collapse justify-content-center" id="collapsingNavbar">
+        <div id="menu" class="navbar-collapse collapse justify-content-center" id="collapsingNavbar">
             <ul class="navbar-nav">
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href='{%url "home" %}'>Home</a>
         </li>
         <li class="nav-item">
@@ -28,3 +58,20 @@
       </div>
 
     </nav>
+</div>
+
+    <script>
+$(document).ready(function () {
+    var links = $('.navbar ul li a');
+    $.each(links, function (key, va) {
+        if (va.href == document.URL) {
+            $(this).addClass('active');
+        }
+    });
+});
+   $("a").click(function() {
+      // remove classes from all
+      $("a").removeClass("active");
+      // add class to the one we clicked
+      $(this).addClass("active");
+   });</script>
