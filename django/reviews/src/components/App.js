@@ -7,6 +7,7 @@ import Table from "./Table";
 import ReviewCard from "./Card";
 
 
+
 function searchingFor(term) {
   return function(x) {
     return x.title.toLowerCase().includes(term.toLowerCase()) || !term;

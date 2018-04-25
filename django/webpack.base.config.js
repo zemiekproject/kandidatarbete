@@ -8,6 +8,7 @@ module.exports = {
     // Add as many entry points as you have container-react-components here
     App1: './reactjs/App1',
     Main: './reviews/src/index',
+    ProfileMain: './profiles/src/index', //La till rad,J!!!
     vendors: ['react'],
   },
 

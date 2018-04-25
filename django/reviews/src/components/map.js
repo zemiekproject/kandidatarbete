@@ -6,6 +6,7 @@ import DataProvider from "./DataProvider";
 import Table from "./Table";
 
 
+
 //Stylingen behövs för att markern ska hamna mitt på koordinaterna; annars är koordinaterna i ett av markerns hörn.
 const MARKER_SIZE = 40;
 const ReviewMarkerStyle = {
@@ -14,8 +15,8 @@ const ReviewMarkerStyle = {
     height: MARKER_SIZE,
     left: -MARKER_SIZE / 2,
     top: -MARKER_SIZE * 2
-  }
 
+  }
 
 const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
 
@@ -148,7 +149,7 @@ const mapOptions = {
         {"hue": "#8ba975"},
         {"saturation": -46},
         {"lightness": -28},
-        {"visibility": "on"}
+        {"visibility": "off"}
     ]
 },
 {
@@ -172,8 +173,8 @@ const mapOptions = {
     "featureType": "road.highway",
     "elementType": "geometry",
     "stylers": [
-        {"hue": "#d4dad0"},
-        {"saturation": -88},
+        {"hue": "#0000FF"},
+        {"saturation": 0},
         {"lightness": 54},
         {"visibility": "simplified"}
     ]
@@ -227,9 +228,17 @@ const mapOptions = {
         {"hue": "#a43218"},
         {"saturation": 74},
         {"lightness": -51},
-        {"visibility": "simplified"}
+        {"visibility": "off"}
     ]
 },
+{
+    "featureType": "transit",
+    "elementType": "labels.text",
+    "stylers": [
+        {"visibility": "off"}
+    ]
+},
+
 {
     "featureType": "water",
     "elementType": "geometry",
@@ -250,6 +259,10 @@ const mapOptions = {
 }
 ],
 draggableCursor: 'default',
+fullscreenControl: false,
+//gestureHandling: 'greedy',
+scrollwheel: false,
+zoomControl: true,
 
 };
 
@@ -261,7 +274,6 @@ draggableCursor: 'default',
 // }
 
 class SimpleMap extends Component {
-
     constructor(props) {
         super(props);
         console.log(this.props.data)
@@ -271,7 +283,7 @@ class SimpleMap extends Component {
           mrklat: null,
           mrklng: null,
         };
-      }
+    }
 
   static defaultProps = {
     center: {
@@ -280,6 +292,7 @@ class SimpleMap extends Component {
     },
 
     zoom: 0
+
 
 }
 
@@ -297,6 +310,7 @@ handleClick(obj) {
 
 
 
+
   render() {
     return (
       // Important! Always set the container height explicitly
@@ -306,8 +320,9 @@ handleClick(obj) {
           options={mapOptions}
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
           defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom} 
-        >
+          defaultZoom={this.props.zoom}>
+
+
     
                 
             {this.state.data.map(el => (<ReviewMarker
@@ -316,16 +331,21 @@ handleClick(obj) {
             lat={el.lat}
             lng={el.lng}
             slug={el.slug}/>))}
+         
+       
+
             <div id='plcs' lat={this.state.mrklat} lng={this.state.mrklng} />
+
 
         </GoogleMapReact>
       </div>
     );
+
+
   }
   
 }
-const Marker = props => {
-  return <div className="SuperAwesomePin"></div>
-}
+
+
 
 export default SimpleMap;
