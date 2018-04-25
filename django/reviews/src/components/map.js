@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import GoogleMapReact from 'google-map-react';
 import PropTypes from "prop-types";
 import DataProvider from "./DataProvider";
-import Markers from "./Markers";
 import Table from "./Table";
 
 const App = () => (
@@ -266,14 +265,7 @@ class SimpleMap extends Component {
         }
     }
 
-    componentWillMount() {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        this.setState({ lat: position.coords.latitude, lng: position.coords.longitude});
-      },
-      error => console.log(error)
-    );
-  }
+   
   static defaultProps = {
     center: {
       lat: 59.95,
@@ -302,11 +294,7 @@ class SimpleMap extends Component {
          
         <App />
 
-        <AnyReactComponent
-            lat={this.state.lat}
-            lng={this.state.lng}
-            text={'Kreyser Avrora'}/>
-              
+    
 
  
 
