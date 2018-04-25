@@ -301,7 +301,7 @@ class SimpleMap extends Component {
             key={el.id}
             text={el.title}
             lat={el.lat}
-            lng={el.lon}
+            lng={el.lng}
             slug={el.slug}/>))}
 
 

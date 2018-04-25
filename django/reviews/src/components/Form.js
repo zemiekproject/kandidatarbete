@@ -59,7 +59,7 @@ class Form extends Component {
       if(e.target.options){
         this.state.location = e.target[e.target.value-1].attributes.value.value;
         this.state.lat = e.target[e.target.value-1].attributes['data-lat'].value;
-        this.state.lng = e.target[e.target.value-1].attributes['data-lon'].value;
+        this.state.lng = e.target[e.target.value-1].attributes['data-lng'].value;
         this.forceUpdate();
       }
       else {
@@ -92,9 +92,9 @@ class Form extends Component {
     if(!(locationNames.includes(this.state.location)) && !(locationValues.includes(this.state.location.toString()))){
       console.log("added new location");
       name  = this.state.location;
-      const lon = this.state.lng;
+      const lng = this.state.lng;
       const lat = this.state.lat;
-      const location = { name, lon, lat };
+      const location = { name, lng, lat };
       const conf1 = {
         method: "post",
         body: JSON.stringify(location),
@@ -133,7 +133,7 @@ class Form extends Component {
       };
     };
 
-    this.forceUpdate;
+    this.forceUpdate();
 
     const { title, location, lat, lng, text, rating, tags } = this.state;
     const author = document.getElementById('uid').innerHTML;
