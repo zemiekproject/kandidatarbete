@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import shortid from "shortid";
+import DataProvider from "./DataProvider";
+import fetchName from "./fetchName";
 
 const uuid = shortid.generate;
 var i = -1;
@@ -41,7 +43,7 @@ const Table = ({ data }) =>
                 <td key={uuid()}><p>{el.rating}</p></td>
                 <td key={uuid()}><p>{el.upvotes}</p></td>
                 <td key={uuid()}><p>{el.author}</p></td>
-                <td key={uuid()}><p>{el.title}</p></td>)}
+                <td key={uuid()}><p>skit här</p></td>)}
             </tr>
           ))}
         </tbody>

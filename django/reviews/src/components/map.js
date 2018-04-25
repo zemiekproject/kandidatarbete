@@ -18,6 +18,8 @@ function counter() {
 
 const ReviewMarker = ({ text, slug }) => <div><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
 
+const NewReviewMarker = ({ text }) => <div><img src={"/static/graphics/drawingblue.svg"} alt="Logo" /><br /><p>{text}</p></div>;
+
 const mapOptions = {
       
 
@@ -252,7 +254,10 @@ draggableCursor: 'default',
 
 
 // GETS LAT LANG ON CLICK
-function _onClick(obj){ console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);}
+// function _onClick(obj){ console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
+//         ReactDOM.render(<NewReviewMarker lat={obj.lat} lng={obj.lng} text='new review' />, document.getElementById('plcs')
+//         );
+// }
 
 class SimpleMap extends Component {
 
@@ -262,8 +267,8 @@ class SimpleMap extends Component {
         
         this.state = {
           data: this.props.data,
-          childComponent: null,
-          
+          mrklat: null,
+          mrklng: null,
         };
       }
 
@@ -278,7 +283,14 @@ class SimpleMap extends Component {
 }
 
 
-
+handleClick(obj) { 
+    if (window.location.pathname=="/reviews/create/") {
+        console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
+        this.setState({mrklat: obj.lat, mrklng: obj.lng})
+        ReactDOM.render(<NewReviewMarker lat={obj.lat} lng={obj.lng} text='new review' />, document.getElementById('plcs')
+        );
+    }
+}
 
 
 
@@ -286,7 +298,7 @@ class SimpleMap extends Component {
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact onClick={_onClick}
+        <GoogleMapReact onClick={this.handleClick.bind(this)}
           className='TheMap'
           options={mapOptions}
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
@@ -302,7 +314,7 @@ class SimpleMap extends Component {
             lat={el.lat}
             lng={el.lng}
             slug={el.slug}/>))}
-
+            <div id='plcs' lat={this.state.mrklat} lng={this.state.mrklng} />
 
         </GoogleMapReact>
       </div>
