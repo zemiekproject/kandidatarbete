@@ -13,11 +13,11 @@ const ReviewMarkerStyle = {
     width: MARKER_SIZE,
     height: MARKER_SIZE,
     left: -MARKER_SIZE / 2,
-    top: -MARKER_SIZE / 2
+    top: -MARKER_SIZE * 2
   }
 
 
-const ReviewMarker = ({ text, slug }) => <div><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
+const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
 
 const NewReviewMarker = ({ text }) => <div><img src={"/static/graphics/drawingblue.svg"} alt="Logo" /><br /><p>{text}</p></div>;
 
