@@ -95,12 +95,12 @@ class Form extends Component {
       const lng = this.state.lng;
       const lat = this.state.lat;
       const location = { name, lng, lat };
-      const conf1 = {
+      const confLoc = {
         method: "post",
         body: JSON.stringify(location),
         headers: new Headers({ "Content-Type": "application/json" })
       };
-      fetch("api/location/", conf1).then(response => console.log(response));
+      fetch("api/location/", confLoc).then(response => console.log(response));
       this.state.location = (locationValues.length + 1).toString();
     }
     else{
@@ -111,6 +111,8 @@ class Form extends Component {
         };
       };
     };
+
+    
 
     var tagValues = [];
     for (var i = 0, l = e.target.tags[0].options.length; i< l; i++) {
@@ -123,17 +125,15 @@ class Form extends Component {
         console.log("adding new tag");
         name  = this.state.tags[i];
         const tag = { name };
-        const conf1 = {
+        const confTag = {
           method: "post",
           body: JSON.stringify(tag),
           headers: new Headers({ "Content-Type": "application/json" })
         };
-        fetch("api/tag/", conf1).then(response => console.log(response));
+        fetch("api/tag/", confTag).then(response => console.log(response));
         this.state.tags[i] = (tagValues.length + 1).toString();
       };
     };
-
-    this.forceUpdate();
 
     const { title, location, lat, lng, text, rating, tags } = this.state;
     const author = document.getElementById('uid').innerHTML;
@@ -145,7 +145,10 @@ class Form extends Component {
       body: JSON.stringify(review),
       headers: new Headers({ "Content-Type": "application/json" })
     };
-    fetch(this.props.endpoint, conf).then(response => console.log(response));
+    fetch(this.props.endpoint)
+    .then(function(response) {
+      fetch("api/review/", conf).then(response => console.log(response));
+    });
   };
 
   render() {
