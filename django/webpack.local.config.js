@@ -17,7 +17,12 @@ config.entry = {
     'webpack-dev-server/client?http://' + ip + ':3000',
     'webpack/hot/only-dev-server',
     './reviews/src/index',
-  ]
+  ],
+  ProfileMain: [
+    'webpack-dev-server/client?http://' + ip + ':3000',
+    'webpack/hot/only-dev-server',
+    './profiles/src/index', 
+  ] //La till detta stycke, J!!!
 }
 
 config.output.publicPath = 'http://' + ip + ':3000' + '/assets/bundles/'

@@ -7,6 +7,7 @@ import Table from "./Table";
 import SearchBox from "./SearchBox";
 
 
+
 //Stylingen behövs för att markern ska hamna mitt på koordinaterna; annars är koordinaterna i ett av markerns hörn.
 const MARKER_SIZE = 40;
 const ReviewMarkerStyle = {
@@ -15,8 +16,8 @@ const ReviewMarkerStyle = {
     height: MARKER_SIZE,
     left: -MARKER_SIZE / 2,
     top: -MARKER_SIZE * 2
-  }
 
+  }
 
 const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
 
@@ -160,7 +161,7 @@ const mapOptions = {
         {"hue": "#8ba975"},
         {"saturation": -46},
         {"lightness": -28},
-        {"visibility": "on"}
+        {"visibility": "off"}
     ]
 },
 {
@@ -184,8 +185,8 @@ const mapOptions = {
     "featureType": "road.highway",
     "elementType": "geometry",
     "stylers": [
-        {"hue": "#d4dad0"},
-        {"saturation": -88},
+        {"hue": "#0000FF"},
+        {"saturation": 0},
         {"lightness": 54},
         {"visibility": "simplified"}
     ]
@@ -239,9 +240,17 @@ const mapOptions = {
         {"hue": "#a43218"},
         {"saturation": 74},
         {"lightness": -51},
-        {"visibility": "simplified"}
+        {"visibility": "off"}
     ]
 },
+{
+    "featureType": "transit",
+    "elementType": "labels.text",
+    "stylers": [
+        {"visibility": "off"}
+    ]
+},
+
 {
     "featureType": "water",
     "elementType": "geometry",
@@ -262,6 +271,10 @@ const mapOptions = {
 }
 ],
 draggableCursor: 'default',
+fullscreenControl: false,
+//gestureHandling: 'greedy',
+scrollwheel: false,
+zoomControl: true,
 
 };
 
@@ -273,7 +286,6 @@ draggableCursor: 'default',
 // }
 
 class SimpleMap extends Component {
-
     constructor(props) {
         super(props);
         console.log(this.props.data)
@@ -289,7 +301,7 @@ class SimpleMap extends Component {
             zoom: 0
         };
         this.handleSearch = this.handleSearch.bind(this);
-      }
+    }
 
   static defaultProps = {
     center: {
@@ -298,6 +310,7 @@ class SimpleMap extends Component {
     },
 
     zoom: 0
+
 
 }
 
@@ -315,6 +328,7 @@ handleClick(obj) {
         this.setState({mrklat: obj.lat, mrklng: obj.lng})
         document.getElementById('lat').setAttribute('value', obj.lat)
         document.getElementById('lng').setAttribute('value', obj.lng)
+        document.getElementById('sb').setAttribute('value', obj.lat+' '+obj.lng)
         ReactDOM.render(<NewReviewMarker lat={obj.lat} lng={obj.lng} text='new review' />, document.getElementById('plcs')
         );
     }
@@ -325,9 +339,6 @@ handleSearch(place) {
     var lat = place[0].geometry.viewport.f.f;
     var zoom = 12;
     this.setState({center: {lat: lat, lng: lng}, zoom: zoom,});
-}
-
-ComponentDidMount(){
 }
 
 
@@ -343,8 +354,9 @@ ComponentDidMount(){
           options={mapOptions}
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
           center={this.state.center}
-          defaultZoom={this.props.zoom} 
+          defaultZoom={this.state.zoom} 
         >
+
                 
             {this.state.data.map(el => (<ReviewMarker
             key={el.id}
@@ -352,17 +364,21 @@ ComponentDidMount(){
             lat={el.lat}
             lng={el.lng}
             slug={el.slug}/>))}
+         
+       
+
             <div id='plcs' lat={this.state.mrklat} lng={this.state.mrklng} />
-        <SearchBox placeholder={"Var vill du åka?"}
+        <SearchBox id='sb' placeholder={"Var vill du åka?"}
          onPlacesChanged={this.handleSearch} />
         </GoogleMapReact>
       </div>
     );
+
+
   }
   
 }
-const Marker = props => {
-  return <div className="SuperAwesomePin"></div>
-}
+
+
 
 export default SimpleMap;

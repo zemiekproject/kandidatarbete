@@ -7,6 +7,7 @@ import Table from "./Table";
 import ReviewCard from "./Card";
 
 
+
 function searchingFor(term) {
   return function(x) {
     return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
@@ -44,7 +45,7 @@ class App extends React.Component {
             </InputGroupAddon>
             <Input placeholder="" type="text" onChange={this.searchHandler}/>
           </InputGroup>
-            <DataProvider endpoint="api/review/" 
+            <DataProvider endpoint="http://localhost:8000/reviews/api/review/"  
           render={data => <ReviewCard term={term} data={data.filter(searchingFor(term))} />} />
           </div>
           </div>

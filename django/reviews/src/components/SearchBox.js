@@ -21,7 +21,7 @@ export default class SearchBox extends React.Component {
         
     }
     else{
-        return null;
+        return <div><center><p>Welcome to Locus</p></center><input ref="input" {...this.props} type="text"/></div>;
     }
   }
   onPlacesChanged = () => {

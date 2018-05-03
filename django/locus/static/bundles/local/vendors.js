@@ -90,7 +90,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7da4bd345976fb36a527"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5c7acc1a226f6efe9fb0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -613,7 +613,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"App1","1":"App2","2":"Main"}[chunkId]||chunkId) + "-" + hotCurrentHash + ".js";
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"App1","1":"Main","2":"ProfileMain"}[chunkId]||chunkId) + "-" + hotCurrentHash + ".js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
