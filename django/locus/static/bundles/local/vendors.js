@@ -90,7 +90,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7b97a1daeea1dc9d975a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5c7acc1a226f6efe9fb0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -613,7 +613,11 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
+<<<<<<< HEAD
 /******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"App1","1":"Main"}[chunkId]||chunkId) + "-" + hotCurrentHash + ".js";
+=======
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"App1","1":"Main","2":"ProfileMain"}[chunkId]||chunkId) + "-" + hotCurrentHash + ".js";
+>>>>>>> 876e82de0243e166a547fe3ea71fd9b5751b146e
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};

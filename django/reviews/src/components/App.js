@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import DataProvider from "./DataProvider";
 import Table from "./Table";
 import ReviewCard from "./Card";
+
 
 
 function searchingFor(term) {
@@ -36,11 +38,15 @@ class App extends React.Component {
     
     return <div>
             <div className="column">
-            <form>
-              <input type="text" onChange={this.searchHandler} />
-            </form> 
-            <DataProvider endpoint="api/review/" 
-          render={data => <ReviewCard data={data.filter(searchingFor(term))} />} />
+
+            <InputGroup>
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>Search for reviews here:</InputGroupText>
+            </InputGroupAddon>
+            <Input placeholder="" type="text" onChange={this.searchHandler}/>
+          </InputGroup>
+            <DataProvider endpoint="http://localhost:8000/reviews/api/review/"  
+          render={data => <ReviewCard term={term} data={data.filter(searchingFor(term))} />} />
           </div>
           </div>
           

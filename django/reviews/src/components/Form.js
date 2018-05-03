@@ -29,6 +29,8 @@ class Form extends Component {
   };
 
   handleChange = e => {
+    this.setState({ lat: document.getElementById('lat').getAttribute('value') });
+    this.setState({ lng: document.getElementById('lng').getAttribute('value') });
     if (!e.target) {
       this.setState({ ['tags']: e });
     }
@@ -175,7 +177,8 @@ class Form extends Component {
             <div className="control">
               Latitude: <input
                 className="textarea"
-                type="number"
+                type="text"
+                id='lat'
                 name="lat"
                 onChange={this.handleChange}
                 value={lat}
@@ -188,7 +191,8 @@ class Form extends Component {
             <div className="control">
               Longitude: <input
                 className="textarea"
-                type="number"
+                type="text"
+                id='lng'
                 name="lng"
                 onChange={this.handleChange}
                 value={lng}

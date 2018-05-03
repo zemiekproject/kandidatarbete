@@ -9,6 +9,7 @@ module.exports = {
     Form: ['babel-polyfill', './reviews/src/components/Form.js'],
     App1: './reactjs/App1',
     Main: './reviews/src/index',
+    ProfileMain: './profiles/src/index', //La till rad,J!!!
     vendors: ['react'],
   },
 

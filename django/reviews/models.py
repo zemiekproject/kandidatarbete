@@ -26,7 +26,7 @@ class Review(models.Model):
     lng         = models.ForeignKey("locations.Location", on_delete=models.DO_NOTHING, to_field='lng', related_name='reviews_lng')
     slug        = models.SlugField(null=True, blank=True)
 
-
+    
     def __str__(self):
         return self.title
     
