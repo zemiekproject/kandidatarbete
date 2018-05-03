@@ -40,3 +40,40 @@ ul#sitefoot {
 .column {
     background-color: #FFE6CC
 }
+
+#over_map {position: absolute;   top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 99; }
+
+#hidden {display:none;}
+
+.inputClass{
+    fontSize: "45px";
+    color: 'white';
+}
+
+#ddown{
+    position: absolute;
+    top:0%;
+    left:60%;
+    padding: 10%;
+    z-index: 99;
+}
+
+div#reviewbox {
+    width: 45%;
+    padding: 1%;
+    margin: 1%;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}

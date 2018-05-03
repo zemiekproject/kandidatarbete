@@ -3,27 +3,29 @@
 
 {% block content %}
 
-<h2 id="title">{{ object.title }}</h2>
+<div id=reviewbox>
+    <div class="card">
+        <h2 id="title">{{ object.title }}</h2>
+        <p>Written by: <a href="{%url 'profiles:detail' username=object.author %}" id="author">{{ object.author }}</a></p><p>Last updated: {{ object.updated }}</p>
+        <div class="fakeimg" style="height:200px;">Image</div>
+        <h5 id="location" class="revfield">{{ object.location }}</h5>
+        <p class="revfield">Rating: {{ object.rating }}</p>
+        <p class="revfield">{{ object.text }}</p>
+        <p class="revfield">{{ object.timestamp }}</p>
+        <p class="revfield" id ="votes">
+        <a href='{{ object.get_upvote_url }}'>Upvote</a>
+        {{ object.votes }}
+        <a href='{{ object.get_downvote_url }}'>Downvote</a>
+        </p>
+        <p>Review Tags:</p>
+        <ul>
+        {% for tag in object.tags.all %}
+        <li><a href='{{tag.get_absolute_url}}'>{{ tag }}</a></li>
+        {% endfor %}
+        </ul>
+        </div>
+    </div>
 
-<p id="location">{{ object.location }}</p>
-<p>Rating: {{ object.rating }}</p>
-<p>{{ object.timestamp }}</p>
-<p>{{ object.text }}</p>
-
-<p id ="votes">
-    <a href='{{ object.get_upvote_url }}'>Upvote</a>
-    {{ object.votes }}
-    <a href='{{ object.get_downvote_url }}'>Downvote</a>
-</p>
-
-<p>Last updated: {{ object.updated }}</p>
-<p>Written by: <a href="{%url 'profiles:detail' username=object.author %}" id="author">{{ object.author }}</a></p>
-<p>Review Tags:</p>
-<ul>
-{% for tag in object.tags.all %}
-<li><a href='{{tag.get_absolute_url}}'>{{ tag }}</a></li>
-{% endfor %}
-</ul>
 
 {% endblock content %}
 
