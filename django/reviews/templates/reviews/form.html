@@ -1,40 +1,90 @@
-{% extends "base.html" %}
-{% load render_bundle from webpack_loader %}
-{% block content %}
+{% extends "base.html" %} {% load render_bundle from webpack_loader %} {% block content %}
 
-<head><style>
-* {
-    box-sizing: border-box;
-}
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-/* Create two equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 50%;
-    padding: 0 0 0 10px
-}
+        /* Create two equal columns that floats next to each other */
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-</style>
+        .column {
+            float: left;
+            width: 50%;
+            padding: 0 0 0 10px
+        }
+
+        /* Clear floats after the columns */
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .react-tagsinput {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            padding-left: 5px;
+            padding-top: 5px;
+        }
+
+        .react-tagsinput--focused {
+            border-color: #ffcc99;
+        }
+
+        .react-tagsinput-tag {
+            background-color: #ffcc99;
+            border-radius: 2px;
+            border: 1px solid #ffcc99;
+            color: #333333;
+            display: inline-block;
+            font-family: sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            margin-bottom: 5px;
+            margin-right: 5px;
+            padding: 5px;
+        }
+
+        .react-tagsinput-remove {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .react-tagsinput-tag a::before {
+            content: " ×";
+        }
+
+        .react-tagsinput-input {
+            background: transparent;
+            border: 0;
+            color: #777;
+            font-family: sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            margin-bottom: 6px;
+            margin-top: 1px;
+            outline: none;
+            padding: 5px;
+            width: 80px;
+        }
+    </style>
 </head>
+
 <body>
-<div class="container-fluid">
-          <div class="row">
-  <div class="column">
-    <h2>Write a review!</h2>
-    <div id=ReviewForm></div>
-  </div>
-  <div class="column">
-    <div class=Map></div>
-  </div>
-</div>
-{% render_bundle 'vendors' %}
-{% render_bundle 'Main' %}
-</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="column">
+                <h2>Write a review!</h2>
+                <div id=ReviewForm></div>
+            </div>
+            <div class="column">
+                <div class=Map></div>
+            </div>
+        </div>
+        {% render_bundle 'vendors' %} {% render_bundle 'Main' %}
+    </div>
 </body>
 {% endblock %}
