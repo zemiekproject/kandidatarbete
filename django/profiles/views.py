@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 #from django.contrib import auth
-from django.contrib.auth import get_user_model, get_user
-from django.http import Http404
+from django.contrib.auth import get_user_model, get_user, logout
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, CreateView
 from .forms import RegisterForm
@@ -9,6 +9,10 @@ from .forms import RegisterForm
 # Create your views here.
 
 User = get_user_model()
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 
 class RegisterView(CreateView):
     form_class = RegisterForm

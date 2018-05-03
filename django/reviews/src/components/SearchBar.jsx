@@ -4,7 +4,7 @@ const inputStyles = {
   fontSize: "45px",
 }
 const textStyles = {
-  fontSize: "40px",
+  fontSize: "37px",
   color: "White",
 }
 
