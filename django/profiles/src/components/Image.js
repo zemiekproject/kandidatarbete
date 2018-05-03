@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 function Image(props){
     return (
-      <img className="Image" src = {props.src } height='210' >
+      <img className="Image" src = {props.src } height='130' >
          <a onClick={this.handleClick} style={{cursor:'pointer', color: 'blue', marginLeft: 60}} >Byt profilbild</a>
       </img>
      
