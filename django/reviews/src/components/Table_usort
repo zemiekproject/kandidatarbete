@@ -16,11 +16,7 @@ function counter() {
 }
 
 
-const theTable = ({ data }) =>
-    console.log('usd');
-    for obj in data{
-      console.log(obj);
-    }
+const theTable = ({ data }) =>  
   !data.length ? (
     <p>Nothing to show</p>
   ) : (

@@ -22,7 +22,6 @@ const uuid = shortid.generate;
 
 
 const ReviewCard = ({ data, term }) =>  
-
   !data.length ? (
     <p>Nothing to show</p>
   ) : (

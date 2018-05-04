@@ -28,6 +28,7 @@ const FormLocation = ({ data }) =>
             className="form-control"
             type="text"
             name="location"
+            id="location"
         />
 
       </div>

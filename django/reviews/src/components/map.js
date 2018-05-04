@@ -294,6 +294,7 @@ class SimpleMap extends Component {
           data: this.props.data,
           mrklat: null,
           mrklng: null,
+          reverse: null,
           center: {
             lat: 59.95,
             lng: 30.33
@@ -301,6 +302,7 @@ class SimpleMap extends Component {
             zoom: 0
         };
         this.handleSearch = this.handleSearch.bind(this);
+        this.reverseLookup = this.reverseLookup.bind(this);
     }
 
   static defaultProps = {
@@ -308,11 +310,9 @@ class SimpleMap extends Component {
       lat: 59.95,
       lng: 30.33
     },
-
-    zoom: 0
-
-
 }
+
+
 
 _onChange = ({center, zoom}) => {
     this.setState({
@@ -324,6 +324,12 @@ _onChange = ({center, zoom}) => {
 
 handleClick(obj) { 
     if (window.location.pathname=="/reviews/create/") {
+        var geocoder = new google.maps.Geocoder;
+        var loc = new google.maps.LatLng(obj.lat,obj.lng);
+        this.reverseLookup(geocoder, loc).then(function(){console.log(this.state.reverse);
+            document.getElementById('location').setAttribute('value', this.state.reverse.formatted_address);
+        }.bind(this), function(){console.log('nvmifuckedup');});
+        
         console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
         this.setState({mrklat: obj.lat, mrklng: obj.lng})
         document.getElementById('lat').setAttribute('value', obj.lat)
@@ -331,17 +337,45 @@ handleClick(obj) {
         document.getElementById('sb').setAttribute('value', obj.lat+' '+obj.lng)
         ReactDOM.render(<NewReviewMarker lat={obj.lat} lng={obj.lng} text='new review' />, document.getElementById('plcs')
         );
+        
     }
 }
 
-handleSearch(place) {
-    var lng = place[0].geometry.viewport.b.f;
-    var lat = place[0].geometry.viewport.f.f;
-    var zoom = 12;
-    this.setState({center: {lat: lat, lng: lng}, zoom: zoom,});
+reverseLookup(geocoder, input) {
+        var latlng = input;
+        var result = null;
+        return new Promise((resolve, reject) => geocoder.geocode({'location': latlng}, function(results, status) {
+          if (status === 'OK') {
+            if (results[0]) {
+//                 console.log(results[0]);
+                this.setState({reverse: results[0]});
+                resolve("Success!");
+            } else {
+              window.alert('No results found');
+              reject();
+            }
+          } else {
+            window.alert('Geocoder failed due to: ' + status);
+            reject();
+          }
+        }.bind(this)
+        ));
+//         console.log(this.state.reverse);
 }
 
 
+handleSearch(place) {
+    console.log(place[0]);
+    var lng = (place[0].geometry.viewport.b.b+place[0].geometry.viewport.b.f)/2;
+    var lat = (place[0].geometry.viewport.f.f+place[0].geometry.viewport.f.b)/2;
+    var zoom = 10 - Math.round(Math.log(Math.abs(place[0].geometry.viewport.f.f-place[0].geometry.viewport.f.b))/Math.log(2));
+    this.setState({center: {lat: lat, lng: lng}, zoom: zoom,});
+}
+
+componentDidMount() {
+    var input = React.findDOMNode(this.refs.map);
+    this.plc = new google.maps.places.PlacesService(input);
+}
 
   render() {
     return (
@@ -354,7 +388,8 @@ handleSearch(place) {
           options={mapOptions}
           bootstrapURLKeys={{ key: "AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4" }}
           center={this.state.center}
-          defaultZoom={this.state.zoom} 
+          defaultZoom = {0}
+          zoom={this.state.zoom} 
         >
 
                 
@@ -365,7 +400,6 @@ handleSearch(place) {
             lng={el.lng}
             slug={el.slug}/>))}
          
-       
 
             <div id='plcs' lat={this.state.mrklat} lng={this.state.mrklng} />
         <SearchBox id='sb' placeholder={"Var vill du åka?"}
