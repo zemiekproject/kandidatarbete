@@ -70,9 +70,53 @@
             padding: 5px;
             width: 80px;
         }
+
+        button {
+            background: #f8ba7c;
+            color: #fff;
+            border: none;
+            position: relative;
+            height: 45px;
+            font-size: 1.6em;
+            padding: 0 2em;
+            cursor: pointer;
+            transition: 800ms ease all;
+            outline: none;
+        }
+
+        button:hover {
+            background: #fff;
+            color: #f8b068;
+        }
+
+        button:before,
+        button:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 2px;
+            width: 0;
+            background: #f8ba7c;
+            transition: 400ms ease all;
+        }
+
+        button:after {
+            right: inherit;
+            top: inherit;
+            left: 0;
+            bottom: 0;
+        }
+
+        button:hover:before,
+        button:hover:after {
+            width: 100%;
+            transition: 800ms ease all;
+        }
         
         .hiddenform{
             display:none;
+
         }
     </style>
 </head>
