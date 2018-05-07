@@ -40,7 +40,6 @@ class App extends React.Component {
     return <div>
           
             <div className="column">
-            <ReviewList />
             <InputGroup>
             <InputGroupAddon addonType="prepend">
               <InputGroupText>Search for reviews here:</InputGroupText>
