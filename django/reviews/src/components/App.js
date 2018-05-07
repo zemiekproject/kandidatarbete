@@ -5,6 +5,7 @@ import ReactDOM from "react-dom";
 import DataProvider from "./DataProvider";
 import Table from "./Table";
 import ReviewCard from "./Card";
+import ReviewList from "./axios/ReviewList";
 
 
 
@@ -37,8 +38,9 @@ class App extends React.Component {
     
     
     return <div>
+          
             <div className="column">
-
+            <ReviewList />
             <InputGroup>
             <InputGroupAddon addonType="prepend">
               <InputGroupText>Search for reviews here:</InputGroupText>
