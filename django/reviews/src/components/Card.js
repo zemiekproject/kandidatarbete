@@ -22,7 +22,6 @@ const uuid = shortid.generate;
 
 
 const ReviewCard = ({ data, term }) =>  
-
   !data.length ? (
     <p>Nothing to show</p>
   ) : (
@@ -38,7 +37,7 @@ const ReviewCard = ({ data, term }) =>
                     <CardTitle key={uuid()}>{data.title}</CardTitle>
                     <CardSubtitle>{data.location}</CardSubtitle>
                     <CardText>{data.text}</CardText>
-                    <Button href={"/reviews/"+data.slug+"/"}>Button</Button>
+                    <Button href={"/reviews/"+data.slug+"/"}>Read More</Button>
                 </CardBody>
             </Card> 
        ))}
