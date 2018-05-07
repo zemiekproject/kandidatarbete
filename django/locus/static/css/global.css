@@ -37,12 +37,13 @@ ul#sitefoot {
     padding: 0% 3%;
 }
 
-#column {
-    background-color: #FFFFEC;
-    border: 3px solid black;
-    border-radius: 10px;
-    margin:1%;
-}
+
+
+
+
+
+
+
 
 #over_map {position: absolute;   top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 99; }
 
@@ -81,10 +82,9 @@ div#reviewbox {
   margin-top: 20px;
 }
 
-#submitbutton{
-    
-}
+
 
 .hiddenform{
     display:none;
 }
+

@@ -1,7 +1,7 @@
 from django import forms
 from django.http import HttpResponseRedirect
-
 from django.contrib.auth import get_user_model
+from profiles.models import ProfilePicture
 
 User = get_user_model()
 
@@ -42,3 +42,10 @@ class RegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+class ModelFormWithFileField(forms.ModelForm): 
+    class Meta: 
+        model=ProfilePicture
+        fields = ['picture','author']
+
+

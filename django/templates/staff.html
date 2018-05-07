@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block content %}
+<h2>Staff</h2>
+<p>Our staff contains of four ambitious STS-Students:</p>
+<p>{{karl}} - <a href="https://www.linkedin.com/in/karl-larsson-b27697117/">Linkedin</a></p>
+<p>{{jacob}} - <a href="https://www.linkedin.com/in/jacob-rutfors-59362489/">Linkedin</a></p>
+<p>{{mikael}} - <a href="https://www.linkedin.com/in/mikael-holmer-10844110a/">Linkedin</a></p>
+<p>{{herman}} - <a href="https://www.linkedin.com/in/herman-guss-ba0b6a15b/">Linkedin</a></p>
+<!-- {% render_bundle 'vendors' %}
+{% render_bundle 'App1' %} -->
+{% endblock %}
