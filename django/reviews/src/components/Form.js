@@ -5,9 +5,9 @@ import FormLocation from "./formLocation";
 import TagsInput from 'react-tagsinput';
 import "babel-polyfill";
 
-const DropdownLocation = () => (
-  <DataProvider endpoint="api/location/" render={data => <FormLocation data={data} />} />
-);
+// const DropdownLocation = () => (
+//   <DataProvider endpoint="api/location/" render={data => <FormLocation data={data} />} />
+// );
 
 // const SelectTags = () => (
 //   <DataProvider endpoint="api/tag/" render={data => <FormTags data={data} /> } />
@@ -25,12 +25,15 @@ class Form extends Component {
     lng: "",
     text: "",
     rating: "",
+    country: "",
     tags: [],
   };
 
   handleChange = e => {
     this.setState({ lat: document.getElementById('lat').getAttribute('value') });
     this.setState({ lng: document.getElementById('lng').getAttribute('value') });
+    this.setState({ location: document.getElementById('location').getAttribute('value') });
+    this.setState({ country: document.getElementById('country').getAttribute('value') });
     if (!e.target) {
       this.setState({ ['tags']: e });
     }
@@ -62,19 +65,24 @@ class Form extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const formRequest = async () => {
+        
       var locationNames = [];
       var locationValues = [];
-      for (var i = 0, l = e.target.location[0].options.length; i < l; i++) {
-        locationNames.push(e.target.location[0].options[i].attributes['name'].value);
-        locationValues.push(e.target.location[0].options[i].attributes['value'].value);
-      };
+      
+      const locationResponse = await fetch('api/location/');
+      const locationJson = await locationResponse.json();
+
+      locationNames = locationJson.map(function (arg) { return arg.name });
+      locationValues = locationJson.map(function (arg) { return arg.id });
+    
 
       if (!(locationNames.includes(this.state.location)) && !(locationValues.includes(this.state.location.toString()))) {
         console.log("added new location");
         name = this.state.location;
         const lng = this.state.lng;
         const lat = this.state.lat;
-        const location = { name, lng, lat };
+        const country = this.state.country;
+        const location = { name, country, lng, lat };
         const confLoc = {
           method: "post",
           body: JSON.stringify(location),
@@ -139,14 +147,19 @@ class Form extends Component {
       await fetch(this.props.endpoint)
         .then(function (response) {
           console.log(conf);
-          fetch("api/review/", conf).then(response => console.log(response));
+          fetch("api/review/", conf).then(function(){
+              window.location.replace("http://localhost:8000/reviews");
+        },function(){
+            console.log('nvmifuckedup');
+        }
+        );
         });
     };
     formRequest();
   };
 
   render() {
-    const { title, location, lat, lng, text, rating, tags } = this.state;
+    const { title, location, country, lat, lng, text, rating, tags } = this.state;
 
     return (
       <div>
@@ -157,6 +170,7 @@ class Form extends Component {
               <input
                 className="input"
                 className="form-control"
+                placeholder="Type your review title here"
                 type="text"
                 name="title"
                 onChange={this.handleChange}
@@ -165,18 +179,44 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field" className="form-group" onChange={this.handleChange} value={location}>
-            <label className="label"><b>Location (Choose existing or create new)</b></label>
-
-            <DropdownLocation />
-
-          </div>
-          Add new location latitude and longitude below:
-          <div className="field" className="form-group">
-            <label className="label"></label>
+        <div className="field" className="form-group">
+            <label className="label"><b>Location</b></label>
             <div className="control">
-              Latitude: <input
+              <input
+                className="input"
+                className="form-control"
+                placeholder="Please mark your desired location on the map"
+                type="text"
+                id='location'
+                name="location"
+                onChange={this.handleChange}
+                value={location}
+                required
+              />
+            </div>
+          </div>
+          <div className="field" className="form-group">
+            <label className="label"><b>Country</b></label>
+            <div className="control">
+              <input
+                className="input"
+                placeholder="Please mark your desired location on the map"
+                className="form-control"
+                type="text"
+                id='country'
+                name="country"
+                onChange={this.handleChange}
+                value={country}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="field" className="form-group">
+            <div className="control" >
+              <input
                 className="textarea"
+                className='hiddenform'
                 type="text"
                 id='lat'
                 name="lat"
@@ -187,10 +227,10 @@ class Form extends Component {
             </div>
           </div>
           <div className="field" className="form-group">
-            <label className="label"></label>
             <div className="control">
-              Longitude: <input
+              <input
                 className="textarea"
+                className='hiddenform'
                 type="text"
                 id='lng'
                 name="lng"
@@ -206,6 +246,7 @@ class Form extends Component {
               <textarea
                 className="textarea"
                 className="form-control"
+                placeholder="Type your review here"
                 type="text"
                 name="text"
                 onChange={this.handleChange}
