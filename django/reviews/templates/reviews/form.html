@@ -23,7 +23,7 @@
             clear: both;
         }
 
-        #submitbutton {
+       /*  #submitbutton {
             background: #38933b;
             color: white;
             border-style: outset; 
@@ -33,26 +33,136 @@
             font: bold 15px arial, sans-serif; 
             text-shadow: none;
             margin: 1vh;
+            
+        } */
+        .form {
+            border: none;
+            border-radius: 5px;
+            color: rgba(255,127,80,0.95);
+            margin:auto;
+            height: 84vh;
         }
+
+        #column {
+            background-color: #FFFFEC;
+            border: 3px solid black;
+            border-radius: 10px;
+        }
+
+        #mapcolumn {
+            height: 100%;
+        }
+        .label {
+            margin-left: 1vh;
+            color: #46211A
+        }
+
+        .submitbutton{
+            text-transform: uppercase;
+            text-align: center;
+            color: rgba(255,127,80,0.95);
+
+            font: bold 20px arial, sans-serif;
+            font-size: 20px; 
+            
+            width: 100px;
+            height:50px;
+
+            background: rgba(255,127,80,0.95);
+            border: 1px solid rgba(255,127,80,0.95);
+            border-radius: 5px;
+            color: #FFF;
+            overflow: hidden;
+            
+            transition: all 0.5s;
+
+            margin: 1vh;
+        }
+
+        .submitbutton:hover, .submitbutton:active 
+        {
+            text-decoration: none;
+            color: #FFF;
+            border-color: #0C5;
+            background: #0C5;
+        }
+
+        .submitbutton span 
+        {
+            display: inline-block;
+            position: relative;
+            
+            transition: padding-right 0.5s;
+        }
+
+        .submitbutton span:after 
+        {
+            content: ' ';  
+            position: absolute;
+            top: 0;
+            right: -18px;
+            opacity: 0;
+            width: 10px;
+            height: 10px;
+            margin-top: -10px;
+
+            background: rgba(0, 0, 0, 0);
+            border: 3px solid #FFF;
+            border-top: none;
+            border-right: none;
+
+            transition: opacity 0.5s, top 0.5s, right 0.5s;
+            transform: rotate(-45deg);
+        }
+
+        .submitbutton:hover span, .submitbutton:active span 
+        {
+            padding-right: 30px;
+        }
+
+        .submitbutton:hover span:after, .submitbutton:active span:after 
+        {
+            transition: opacity 0.5s, top 0.5s, right 0.5s;
+            opacity: 1;
+            border-color: #0C5;
+            right: 0;
+            top: 50%;
+        }
+                
 
         #namefield {
             margin: 1vh;
+            height: 8%;
+
+        }
+
+         #locationfield {
+            margin: 1vh;  
+            height: 8%;  
+        }
+
+        #countryfield {
+            margin: 1vh;
+            height: 8%;
         }
 
         #textfield {
             margin: 1vh;    
+            height: 35%;
         }
 
-        #locationfield {
-            margin: 1vh;    
+        #textbox {
+            height: 30vh;
         }
 
         #ratingfield {
             margin: 1vh; 
+            height: 8%;
         }
 
         #tagsfield {
             margin: 1vh; 
+            height: 8%;
         }
 
 
@@ -117,7 +227,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="column" id="formcolumn">
-                <h3 class="text-muted">
+                <h3 class="text-muted" align="center">
                     Write a review
                     <small class="text-muted"></small>
                 </h3>

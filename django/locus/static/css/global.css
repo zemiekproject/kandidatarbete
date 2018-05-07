@@ -38,32 +38,10 @@ ul#sitefoot {
 }
 
 
-.form {
-    border: solid;
-    border-radius: 5px;
-    color: rgba(255,127,80,0.95);
-    margin: auto;
-    height: 100vh;
-
-#column {
-    background-color: #FFFFEC;
-    border: 3px solid black;
-    border-radius: 10px;
-    margin:1%;
-
-
-#mapcolumn {
-    margin-top: 3vh;
-    height: 100%;
-}
 
 
 
 
-.label {
-    margin-left: 1vh;
-    color: #46211A
-}
 
 
 

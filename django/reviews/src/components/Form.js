@@ -180,7 +180,7 @@ class Form extends Component {
             </div>
           </div>
 
-        <div className="field" className="form-group">
+        <div className="field" className="form-group" id="locationfield">
             <label className="label"><b>Location</b></label>
             <div className="control">
               <input
@@ -196,7 +196,7 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field" className="form-group">
+          <div className="field" className="form-group" id="countryfield">
             <label className="label"><b>Country</b></label>
             <div className="control">
               <input
@@ -245,6 +245,7 @@ class Form extends Component {
             <label className="label"><b>Text</b></label>
             <div className="control">
               <textarea
+                id = "textbox"
                 className="textarea"
                 className="form-control"
                 placeholder="Type your review here"
@@ -277,8 +278,8 @@ class Form extends Component {
           </div>
           <div className="control">
 
-            <button type="submit" className="button is-info" id="submitbutton">
-
+            <button type="submit" className="submitbutton" id="submitbutton">
+                Submit
             </button>
           </div>
         </form>
