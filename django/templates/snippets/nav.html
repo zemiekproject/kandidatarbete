@@ -1,13 +1,12 @@
 <style>
-
     nav {
         background: transparent;
     }
+
     .navbar {
         font-size: 1.25rem;
         background: transparent;
     }
-
 
     .nav-item {
         font-size: 20px;
@@ -33,12 +32,17 @@
 
     .logout {
         line-height: 60px;
-
     }
 
     .navbar-brand {
         margin-left: 50px;
         font-size: 2rem;
+    }
+
+    .username {
+        font-size: 1rem;
+        line-height: 60px;
+
     }
 </style>
 <div>
@@ -104,6 +108,10 @@
                 <li class="nav-item ">
                     <a class="nav-link logout" href="{% url 'profiles:logout' %}">Logout</a>
                 </li>
+                <span class="navbar-text username">
+                        Logged in as:
+                        <strong>{{user.username}}</strong>
+                    </span>
             </ul>
             {% endif %}
         </div>
