@@ -12,6 +12,7 @@ export default class ReviewList extends React.Component {
         .then(res => {
             this.setState({reviews: res.data });
         })
+        
     }
 
     render() {
