@@ -37,6 +37,37 @@ ul#sitefoot {
     padding: 0% 3%;
 }
 
-.column {
-    background-color: #FFE6CC
+.form {
+    border: solid;
+    border-radius: 5px;
+    color: rgba(255,127,80,0.95);
+    margin: auto;
+    height: 100vh;
+}
+
+#mapcolumn {
+    margin-top: 3vh;
+    height: 100%;
+}
+
+
+#submitbutton {
+    background: #38933b;
+    color: white;
+    border-style: outset; 
+    border-color: #38933b;
+    height: 50px; 
+    width: 100px; 
+    font: bold 15px arial, sans-serif; 
+    text-shadow: none;
+    margin: 1vh;
+}
+
+.label {
+    margin-left: 1vh;
+    color: #46211A
+}
+
+.h2 {
+
 }

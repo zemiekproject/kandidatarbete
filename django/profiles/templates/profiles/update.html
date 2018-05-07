@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% load static %}
+{% block content %}
+
+            <form method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p}}
+                
+                <button type='submit'> Ladda upp bild </button>  
+             </form>
+
+{% render_bundle 'vendors' %}
+{% render_bundle 'ProfileMain' %}
+{% render_bundle 'Main' %}
+{% endblock %}

@@ -239,8 +239,8 @@ class Form extends Component {
             
           </div>
           <div className="control">
-            <button type="submit" className="button is-info">
-              Send text
+            <button type="submit" className="button is-info" id="submitbutton">
+              Submit
             </button>
           </div>
         </form>
