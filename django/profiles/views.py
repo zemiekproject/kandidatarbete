@@ -1,11 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormMixin
 #from django.contrib import auth
-<<<<<<< HEAD
 from django.contrib.auth import get_user_model, get_user
-=======
 from django.contrib.auth import get_user_model, get_user, logout
->>>>>>> fa94e9671ef48959edf0af8cd657a5554029e700
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, CreateView, FormView, UpdateView

@@ -1,7 +1,6 @@
 from .views import ProfileDetailView, logout_view
 
 from django.conf.urls import url
-<<<<<<< HEAD
 from django.urls import include, path
 
 from .views import UpdateProfilePicture

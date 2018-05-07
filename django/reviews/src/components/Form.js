@@ -151,7 +151,7 @@ class Form extends Component {
     return (
       <div>
         <form inline className="form" onSubmit={this.handleSubmit}>
-          <div className="field" className="form-group">
+          <div className="field" className="form-group" id="namefield">
             <label className="label"><b>Name</b></label>
             <div className="control">
               <input
@@ -165,7 +165,7 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field" className="form-group" onChange={this.handleChange} value={location}>
+          <div className="field" className="form-group" onChange={this.handleChange} value={location} id="locationfield">
             <label className="label"><b>Location (Choose existing or create new)</b></label>
 
             <DropdownLocation />
@@ -200,7 +200,7 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field" className="form-group">
+          <div className="field" className="form-group" id="textfield">
             <label className="label"><b>Text</b></label>
             <div className="control">
               <textarea
@@ -214,7 +214,7 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field" className="form-group">
+          <div className="field" className="form-group" id="ratingfield">
             <label className="label"><b>Rating (0-10)</b></label>
             <div className="control">
               <input
@@ -227,7 +227,7 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field" className="form-group">
+          <div className="field" className="form-group" id="tagsfield">
             <label className="label"><b>Tags</b></label>
             <div className="control">
               <TagsInput value={tags} onChange={this.handleChange} name="tags" addKeys="[188]" />

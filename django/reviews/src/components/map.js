@@ -205,7 +205,7 @@ handleSearch(place) {
        
 
             <div id='plcs' lat={this.state.mrklat} lng={this.state.mrklng} />
-        <SearchBox id='sb' placeholder={"Var vill du åka?"}
+        <SearchBox id='sb' placeholder={"Search for a place"}
          onPlacesChanged={this.handleSearch} />
         </GoogleMapReact>
       </div>

@@ -1,28 +1,4 @@
-<<<<<<< HEAD
-{% extends "base.html" %}
-{% load render_bundle from webpack_loader %}
-{% block content %}
 
-<head><style>
-* {
-    box-sizing: border-box;
-}
-
-/* Create two equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 50%;
-    padding: 0 0 0 10px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-</style>
-=======
 {% extends "base.html" %} {% load render_bundle from webpack_loader %} {% block content %}
 
 <head>
@@ -46,6 +22,39 @@
             display: table;
             clear: both;
         }
+
+        #submitbutton {
+            background: #38933b;
+            color: white;
+            border-style: outset; 
+            border-color: #38933b;
+            height: 50px; 
+            width: 100px; 
+            font: bold 15px arial, sans-serif; 
+            text-shadow: none;
+            margin: 1vh;
+        }
+
+        #namefield {
+            margin: 1vh;
+        }
+
+        #textfield {
+            margin: 1vh;    
+        }
+
+        #locationfield {
+            margin: 1vh;    
+        }
+
+        #ratingfield {
+            margin: 1vh; 
+        }
+
+        #tagsfield {
+            margin: 1vh; 
+        }
+
 
         .react-tagsinput {
             background-color: #fff;
@@ -96,40 +105,25 @@
             width: 80px;
         }
     </style>
->>>>>>> fa94e9671ef48959edf0af8cd657a5554029e700
+
 </head>
 
 <body>
-<<<<<<< HEAD
-<div class="container-fluid">
-          <div class="row">
-  <div  class="column" id="formcolumn">
-        <h3 class="text-muted">
-            Write a review
-            <small class="text-muted"></small>
-        </h3>
-    <div id=ReviewForm></div>
-  </div>
-  <div class="column" id="mapcolumn">
-    <div class=Map></div>
-  </div>
-</div>
-{% render_bundle 'vendors' %}
-{% render_bundle 'Main' %}
-</div>
-=======
+
     <div class="container-fluid">
         <div class="row">
-            <div class="column">
-                <h2>Write a review!</h2>
+            <div class="column" id="formcolumn">
+                <h3 class="text-muted">
+                    Write a review
+                    <small class="text-muted"></small>
+                </h3>
                 <div id=ReviewForm></div>
             </div>
-            <div class="column">
+            <div class="column" id="mapcolumn">
                 <div class=Map></div>
             </div>
         </div>
         {% render_bundle 'vendors' %} {% render_bundle 'Main' %}
     </div>
->>>>>>> fa94e9671ef48959edf0af8cd657a5554029e700
 </body>
 {% endblock %}

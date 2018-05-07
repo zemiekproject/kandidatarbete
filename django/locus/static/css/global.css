@@ -51,26 +51,14 @@ ul#sitefoot {
 }
 
 
-#submitbutton {
-    background: #38933b;
-    color: white;
-    border-style: outset; 
-    border-color: #38933b;
-    height: 50px; 
-    width: 100px; 
-    font: bold 15px arial, sans-serif; 
-    text-shadow: none;
-    margin: 1vh;
-}
+
 
 .label {
     margin-left: 1vh;
     color: #46211A
 }
 
-.h2 {
 
-}
 
 #over_map {position: absolute;   top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 99; }
 
