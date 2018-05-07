@@ -1,106 +1,135 @@
-
 <style>
+
+    nav {
+        background: transparent;
+    }
+    .navbar {
+        font-size: 1.25rem;
+        background: transparent;
+    }
+
+
     .nav-item {
         font-size: 20px;
         text-align: center;
-        transition: background-color .2s, color .2s;
-        width:300px;
-        padding: 0; 
+    }
+
+    .navbar1 {
+        margin-right: 75px;
+        margin-left: 75px;
+    }
+
+    .navbar1 .nav-item .nav-link {
+        height: 75px;
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: 75px;
     }
 
     .active {
-        background-color: #bd5734;
-        color: #fff !important;
+        border-bottom: 5px solid #bd5734;
+        font-weight: 600;
     }
 
-    .nav-item a:hover {
-        background-color: #bd5734;
-        color: #fff !important;
+    .logout {
+        line-height: 60px;
 
+    }
+
+    .navbar-brand {
+        margin-left: 50px;
+        font-size: 2rem;
     }
 </style>
 <div>
-    <nav class="navbar navbar-expand-sm bg-light navbar-light p-0">
-        <div class="d-flex">
-            <!-- Links -->
-            <a class="navbar-brand mr-0" href='{%url "home" %}'>LOCUS</a>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light p-0">
+        <a class="navbar-brand" href="{%url 'home'  %}">LOCUS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        </div>
-        <div id="menu" class="navbar-collapse collapse justify-content-between" id="collapsingNavbar">
-            <ul class="navbar-nav navbar-center">
-                <li class="nav-item px-0">
-                    <a class="nav-link" href='{%url "home" %}'>Home</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href='{%url "reviews:list" %}'>Reviews</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-fill w-100 navbar1">
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'home' %}" id="home">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='{%url "locations:list" %}'>Locations</a>
+                    <a class="nav-link" href='{%url "reviews:list" %}' id="reviews">Reviews</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='{%url "tags:list" %}'>Tags</a>
+                    <a class="nav-link" href='{%url "reviews:toplist" %}' id="toprated">Top Rated</a>
                 </li>
-                {% if user.is_authenticated %}
+
+                {% if not user.is_authenticated %}
+
+                <li class="nav-item dropdown login">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Login
+                    </a>
+                    <div class="dropdown">
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <form class="px-4 py-3" method="post" action="{% url 'login' %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="id_username">Username</label>
+                                    <input type="text" class="form-control" name="username" autofocus="" maxlength="254" required id="id_username" placeholder="username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_password">Password:</label>
+                                    <input type="password" name="password" required id="id_password" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                                    <label class="form-check-label" for="dropdownCheck">
+                                        Remember me
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">New around here? Sign up</a>
+                            <a class="dropdown-item" href="#">Forgot password?</a>
+                        </div>
+                    </div>
+                </li>
+                {% else %}
                 <li class="nav-item ">
                     <a class="nav-link" href='{%url "profiles:detail" username=request.user %}'>My Profile</a>
                 </li>
+
                 <li class="nav-item ">
-                    <a class="nav-link" href="{% url 'profiles:logout' %}">Logout</a>
+                    <a class="nav-link logout" href="{% url 'profiles:logout' %}">Logout</a>
                 </li>
-            </ul>
-            {% else %}
-            </ul>
-            <ul class="navbar-nav">
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Login
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <form class="px-4 py-3" method="post" action="{% url 'login' %}">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label for="id_username">Username</label>
-                                <input type="text" class="form-control" name="username" autofocus="" maxlength="254" required id="id_username" placeholder="username">
-                            </div>
-                            <div class="form-group">
-                                <label for="id_password">Password:</label>
-                                <input type="password" name="password" required id="id_password" class="form-control" placeholder="Password">
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                                <label class="form-check-label" for="dropdownCheck">
-                                    Remember me
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Sign in</button>
-                        </form>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">New around here? Sign up</a>
-                        <a class="dropdown-item" href="#">Forgot password?</a>
-                    </div>
-                </div>
             </ul>
             {% endif %}
         </div>
-
-        
-        </ul>
-</div>
-</nav>
+    </nav>
 </div>
 
 <script>
     $(document).ready(function () {
-        var links = $('.navbar ul li a');
-        $.each(links, function (key, va) {
-            if (va.href == document.URL) {
-                $(this).addClass('active');
+        var listItems = $('.navbar ul li');
+
+        $.each(listItems, function (key, litem) {
+            var aElement = $(this).children(litem)[0];
+
+            if (aElement == document.URL) {
+                $(aElement).addClass('active');
             }
         });
     });
+<<<<<<< HEAD
+
+</script>
+=======
     $("a").click(function () {
         // remove classes from all
         $("a").removeClass("active");
         // add class to the one we clicked
         $(this).addClass("active");
     });</script>
+>>>>>>> cdf213ce8fcb63da277f08e1655a311c37c4bc25
