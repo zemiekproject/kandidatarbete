@@ -326,15 +326,27 @@ handleClick(obj) {
     if (window.location.pathname=="/reviews/create/") {
         var geocoder = new google.maps.Geocoder;
         var loc = new google.maps.LatLng(obj.lat,obj.lng);
+        var countryName = '';
         this.reverseLookup(geocoder, loc).then(function(){console.log(this.state.reverse);
-            document.getElementById('location').setAttribute('value', this.state.reverse.formatted_address);
+            
+            var geo = this.state.reverse.address_components
+            for(var i=0;i<geo.length;i++){
+                for (var j=0; j<geo[i].types.length; j++){
+//                     console.log(geo[i].types[j])
+                    if(geo[i].types[j]=='country'){
+                        countryName = geo[i].long_name
+                        document.getElementById('country').setAttribute('value', countryName)
+                    }
+                } 
+            };
+            var new_string = this.state.reverse.formatted_address.replace(countryName, '');
+            document.getElementById('location').setAttribute('value', new_string);
         }.bind(this), function(){console.log('nvmifuckedup');});
         
         console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
         this.setState({mrklat: obj.lat, mrklng: obj.lng})
         document.getElementById('lat').setAttribute('value', obj.lat)
         document.getElementById('lng').setAttribute('value', obj.lng)
-        document.getElementById('sb').setAttribute('value', obj.lat+' '+obj.lng)
         ReactDOM.render(<NewReviewMarker lat={obj.lat} lng={obj.lng} text='new review' />, document.getElementById('plcs')
         );
         
