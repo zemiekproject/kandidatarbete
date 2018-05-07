@@ -340,7 +340,8 @@ handleClick(obj) {
                 } 
             };
             var new_string = this.state.reverse.formatted_address.replace(countryName, '');
-            document.getElementById('location').setAttribute('value', new_string);
+            var str = new_string.slice(0, -2);
+            document.getElementById('location').setAttribute('value', str);
         }.bind(this), function(){console.log('nvmifuckedup');});
         
         console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);

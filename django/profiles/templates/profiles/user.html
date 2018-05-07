@@ -42,10 +42,11 @@
 </body>
 
 
-
+<div id="userreviewlist">
 {% for review in user.review_set.all %}
-    <li>{{ review.title }}</li>
+    <li>{{ review.title }}</li><br />
 {% endfor %}
+</div>
 
 {% render_bundle 'vendors' %}
 {% render_bundle 'ProfileMain' %}
