@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import DataProvider from "./DataProvider";
 import FormLocation from "./formLocation";
-import FormTags from "./formTags";
+import TagsInput from 'react-tagsinput';
+import "babel-polyfill";
 
 const DropdownLocation = () => (
-  <DataProvider endpoint="api/location/" render={data => <FormLocation data={data} /> } />
+  <DataProvider endpoint="api/location/" render={data => <FormLocation data={data} />} />
 );
 
-const SelectTags = () => (
-  <DataProvider endpoint="api/tag/" render={data => <FormTags data={data} /> } />
-);
+// const SelectTags = () => (
+//   <DataProvider endpoint="api/tag/" render={data => <FormTags data={data} /> } />
+// );
 
 class Form extends Component {
   static propTypes = {
@@ -28,126 +29,120 @@ class Form extends Component {
   };
 
   handleChange = e => {
-//     NOTE SHIT FIX breaks React philosophy again
     this.setState({ lat: document.getElementById('lat').getAttribute('value') });
     this.setState({ lng: document.getElementById('lng').getAttribute('value') });
-    if(e.target.name == "tags"){
-      if(e.target.options){
-        var options = e.target.options;
-        var values = [];
-        for (var i = 0, l = options.length; i < l; i++) {
-          if (options[i].selected) {
-            values.push(options[i].value);
-          }
+    if (!e.target) {
+      this.setState({ ['tags']: e });
+    }
+    if (e.target) {
+      if (e.target.name == "location") {
+        if (e.target.options) {
+          this.state.location = e.target[e.target.value - 1].attributes.value.value;
+          this.state.lat = e.target[e.target.value - 1].attributes['data-lat'].value;
+          this.state.lng = e.target[e.target.value - 1].attributes['data-lng'].value;
+          this.forceUpdate();
         }
-        this.setState({ [e.target.name]: values });
-      }
-      else {
-        var new_tag = true;
-
-        for (var i = 0, l = this.state.tags.length; i < l; i++) {
-          if (e.target.value.includes(this.state.tags[i])) {
-            this.state.tags[i] = e.target.value;
-            new_tag = false;
-          };
+        else {
+          this.setState({ [e.target.name]: e.target.value });
         };
-
-        if(new_tag){
-          this.state.tags.push(e.target.value);
-        };
-      };
-    }
-    else if(e.target.name == "location"){
-      if(e.target.options){
-        this.state.location = e.target[e.target.value-1].attributes.value.value;
-        this.state.lat = e.target[e.target.value-1].attributes['data-lat'].value;
-        this.state.lng = e.target[e.target.value-1].attributes['data-lng'].value;
-        this.forceUpdate();
       }
-      else {
+      else if (e.target.name == "lat") {
         this.setState({ [e.target.name]: e.target.value });
-      };
-    }
-    else if(e.target.name == "lat"){
-      this.setState({ [e.target.name]: e.target.value });
-    }
-    else if(e.target.name == "lng"){
-      this.setState({ [e.target.name]: e.target.value });
-    }
-    else{
-      
-      this.setState({ [e.target.name]: e.target.value });
+      }
+      else if (e.target.name == "lng") {
+        this.setState({ [e.target.name]: e.target.value });
+      }
+      else {
 
-    }
+        this.setState({ [e.target.name]: e.target.value });
+      }
+    };
   };
 
   handleSubmit = e => {
     e.preventDefault();
-
-    var locationNames = [];
-    var locationValues = [];
-    for (var i = 0, l = e.target.location[0].options.length; i< l; i++) {
-      locationNames.push(e.target.location[0].options[i].attributes['name'].value);
-      locationValues.push(e.target.location[0].options[i].attributes['value'].value);
-    };
-
-    if(!(locationNames.includes(this.state.location)) && !(locationValues.includes(this.state.location.toString()))){
-      console.log("added new location");
-      name  = this.state.location;
-      const lng = this.state.lng;
-      const lat = this.state.lat;
-      const location = { name, lng, lat };
-      const conf1 = {
-        method: "post",
-        body: JSON.stringify(location),
-        headers: new Headers({ "Content-Type": "application/json" })
+    const formRequest = async () => {
+      var locationNames = [];
+      var locationValues = [];
+      for (var i = 0, l = e.target.location[0].options.length; i < l; i++) {
+        locationNames.push(e.target.location[0].options[i].attributes['name'].value);
+        locationValues.push(e.target.location[0].options[i].attributes['value'].value);
       };
-      fetch("api/location/", conf1).then(response => console.log(response));
-      this.state.location = (locationValues.length + 1).toString();
-    }
-    else{
-      for (var i = 0, l = locationNames.length; i< l; i++) {
-        if (locationNames[i] == this.state.location){
-          this.state.location = locationValues[i];
-          break;
-        };
-      };
-    };
 
-    var tagValues = [];
-    for (var i = 0, l = e.target.tags[0].options.length; i< l; i++) {
-      tagValues.push(e.target.tags[0].options[i].attributes[0].value);
-    };
-
-    for (var i = 0, l = this.state.tags.length; i< l; i++) {
-      console.log("tag: " + this.state.tags[i]);
-      if(!(tagValues.includes(this.state.tags[i]))){
-        console.log("adding new tag");
-        name  = this.state.tags[i];
-        const tag = { name };
-        const conf1 = {
+      if (!(locationNames.includes(this.state.location)) && !(locationValues.includes(this.state.location.toString()))) {
+        console.log("added new location");
+        name = this.state.location;
+        const lng = this.state.lng;
+        const lat = this.state.lat;
+        const location = { name, lng, lat };
+        const confLoc = {
           method: "post",
-          body: JSON.stringify(tag),
+          body: JSON.stringify(location),
           headers: new Headers({ "Content-Type": "application/json" })
         };
-        fetch("api/tag/", conf1).then(response => console.log(response));
-        this.state.tags[i] = (tagValues.length + 1).toString();
+        fetch("api/location/", confLoc).then(response => console.log(response));
+        this.state.location = (locationValues.length + 1).toString();
+      }
+      else {
+        for (var i = 0, l = locationNames.length; i < l; i++) {
+          if (locationNames[i] == this.state.location) {
+            this.state.location = locationValues[i];
+            break;
+          };
+        };
       };
+
+      var tagNames = [];
+      var tagValues = [];
+
+      const tagResponse = await fetch('api/tag/');
+      const tagJson = await tagResponse.json();
+
+      tagNames = tagJson.map(function (arg) { return arg.name });
+      tagValues = tagJson.map(function (arg) { return arg.id });
+      
+      for (var i = 0, l = this.state.tags.length; i < l; i++) {
+        if (!tagNames.includes(this.state.tags[i])) {
+          console.log("adding new tag");
+          name = this.state.tags[i];
+          const tag = { name };
+          const confTag = {
+            method: "post",
+            body: JSON.stringify(tag),
+            headers: new Headers({ "Content-Type": "application/json" })
+          };
+          await fetch("api/tag/", confTag).then(response => console.log(response));
+          tagNames.push(this.state.tags[i]);
+          this.state.tags[i] = (tagNames.length).toString();
+          tagValues.push(this.state.tags[i]);
+        }
+        else {
+          for (var j = 0, le = tagNames.length; j < le; j++) {
+            if (tagNames[j] == this.state.tags[i]) {
+              this.state.tags[i] = tagValues[j].toString();
+              break;
+            };
+          };
+        };
+      };
+
+      const { title, location, lat, lng, text, rating, tags } = this.state;
+      const author = document.getElementById('uid').innerHTML;
+      const review = { author, title, location, lat, lng, text, rating, tags };
+
+      console.log(review);
+      const conf = {
+        method: "post",
+        body: JSON.stringify(review),
+        headers: new Headers({ "Content-Type": "application/json" })
+      };
+      await fetch(this.props.endpoint)
+        .then(function (response) {
+          console.log(conf);
+          fetch("api/review/", conf).then(response => console.log(response));
+        });
     };
-
-    this.forceUpdate();
-
-    const { title, location, lat, lng, text, rating, tags } = this.state;
-    const author = document.getElementById('uid').innerHTML;
-    const review = { author, title, location, lat, lng, text, rating, tags};
-
-    console.log(review);
-    const conf = {
-      method: "post",
-      body: JSON.stringify(review),
-      headers: new Headers({ "Content-Type": "application/json" })
-    };
-    fetch(this.props.endpoint, conf).then(response => console.log(response));
+    formRequest();
   };
 
   render() {
@@ -172,9 +167,9 @@ class Form extends Component {
           </div>
           <div className="field" className="form-group" onChange={this.handleChange} value={location}>
             <label className="label"><b>Location (Choose existing or create new)</b></label>
-            
-             <DropdownLocation />
-             
+
+            <DropdownLocation />
+
           </div>
           Add new location latitude and longitude below:
           <div className="field" className="form-group">
@@ -223,24 +218,25 @@ class Form extends Component {
             <label className="label"><b>Rating (0-10)</b></label>
             <div className="control">
               <input
-                  className="textarea"
-                  type="number"
-                  name="rating"
-                  onChange={this.handleChange}
-                  value={rating}
-                  min="0" max="10"
-                />
+                className="textarea"
+                type="number"
+                name="rating"
+                onChange={this.handleChange}
+                value={rating}
+                min="0" max="10"
+              />
             </div>
           </div>
-          <div className="field" className="form-group" onChange={this.handleChange} value={tags}>
+          <div className="field" className="form-group">
             <label className="label"><b>Tags</b></label>
-            
-            <SelectTags />
-            
+            <div className="control">
+              <TagsInput value={tags} onChange={this.handleChange} name="tags" addKeys="[188]" />
+            </div>
           </div>
           <div className="control">
+
             <button type="submit" className="button is-info" id="submitbutton">
-              Submit
+
             </button>
           </div>
         </form>
