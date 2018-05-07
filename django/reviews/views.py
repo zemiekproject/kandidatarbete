@@ -36,9 +36,28 @@ User = get_user_model()
 
 def about_view(request):
     template_name = 'about.html'
-    num = random.randint(0,100)
     context = {
-        "num": num
+        "text": "Locus is a web-based application for reviewing geographic locations. The idea is that users rate, for example, cities they visit and then get feedback on their reviews in the form of an up / downvote system. Locus focuses on being authentic, and building a serious user base. To achieve this, Locus may use geolocation to make sure that users actually visit the sites they review. It works partly as a personal page, where you can store your experiences of different destinations, but also as a page for recommendations for different destinations.",
+    }
+
+    return render(request, template_name, context)
+
+def contact_view(request):
+    template_name = 'contact.html'
+    context = {
+        "email": "info@locus.com",
+        "phone": "070 13 37 666"
+    }
+
+    return render(request, template_name, context)
+
+def staff_view(request):
+    template_name = 'staff.html'
+    context = {
+        "karl": "Karl Larsson",
+        "herman": "Herman Guss",
+        "jacob": "Jacob Rutfors",
+        "mikael": "Mikael Holmer"
     }
 
     return render(request, template_name, context)

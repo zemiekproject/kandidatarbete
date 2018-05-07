@@ -2,8 +2,10 @@
 {% load render_bundle from webpack_loader %}
 
 {% block content %}
-<h2>About</h2>
-<div>{{text}}</div>
+<h2>Contact</h2>
+<p>To get in touch with the developers, please use one of the following channels</p>
+Email: <p>{{email}}</p>
+Phone: <p>{{phone}}</p>
 <!-- {% render_bundle 'vendors' %}
 {% render_bundle 'App1' %} -->
 {% endblock %}

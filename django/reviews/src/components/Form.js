@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import DataProvider from "./DataProvider";
 import FormLocation from "./formLocation";
+import FormAutosuggest from "./formAutosuggest";
 import TagsInput from 'react-tagsinput';
 import "babel-polyfill";
 
@@ -9,8 +10,8 @@ import "babel-polyfill";
 //   <DataProvider endpoint="api/location/" render={data => <FormLocation data={data} />} />
 // );
 
-// const SelectTags = () => (
-//   <DataProvider endpoint="api/tag/" render={data => <FormTags data={data} /> } />
+// const Autosuggest = () => (
+//   <DataProvider endpoint="api/location/" render={data => <FormAutosuggest data={data} /> } />
 // );
 
 class Form extends Component {
@@ -270,10 +271,12 @@ class Form extends Component {
               />
             </div>
           </div>
-          <div className="field" className="form-group" id="tagsfield">
-            <label className="label"><b>Tags</b></label>
+
+          <div className="field" className="form-group">
+            <label className="label"><b>Tags (Press space to add additional ones)</b></label>
+
             <div className="control">
-              <TagsInput value={tags} onChange={this.handleChange} name="tags" addKeys="[188]" />
+              <TagsInput value={tags} onChange={this.handleChange} name="tags" addKeys="[32]" />
             </div>
           </div>
           <div className="control">
