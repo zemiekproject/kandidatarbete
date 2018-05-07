@@ -6,6 +6,7 @@ from reviews.views import about_view, ReviewsListView, ReviewsDetailView, Review
 app_name='reviews'
 urlpatterns = [
     url(r'^$', ReviewsListView.as_view(), name = "list"),
+    url(r'^toprated/$', ReviewsListView.as_view(), name = "toplist"),
     url(r'^create/$', ReviewCreateView.as_view(), name = "create"),
     url(r'^(?P<slug>[\w-]+)/$', ReviewsDetailView.as_view(), name = "detail"),
     url(r'^(?P<slug>[\w-]+)/upvote/$', ReviewUpVoteToggle.as_view(), name = "upvote-toggle"),
