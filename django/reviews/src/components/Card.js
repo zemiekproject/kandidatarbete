@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button, CardDeck,
+  CardTitle, CardSubtitle, Button, CardDeck, CardLink,
   CardGroup } from 'reactstrap';
 import PropTypes from "prop-types";
 import shortid from "shortid";
@@ -37,6 +37,7 @@ const ReviewCard = ({ data, term }) =>
                     <CardTitle key={uuid()}>{data.title}</CardTitle>
                     <CardSubtitle>{data.location}</CardSubtitle>
                     <CardText>{data.text}</CardText>
+                    <CardLink>Written by: {data.author}</CardLink><br/>
                     <Button href={"/reviews/"+data.slug+"/"}>Read More</Button>
                 </CardBody>
             </Card> 
