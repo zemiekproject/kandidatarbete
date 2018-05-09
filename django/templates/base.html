@@ -16,23 +16,34 @@
 </head>
 
 <style>
+
+    .contentBlockWrapper {
+        height: 100%;
+    }
     .contentBlock {
         padding-top: 80px;
+        height:100%;
+    }
+    html, body {
+        height: 100%;
     }
 </style>
 
 <body>
     
     <div id='uid' style="display:none;">{{ request.user.id }}</div> <!--GAD IS SHITTY SOLUTION-->
-    <div>
+    <div class=contentBlockWrapper>
         
     <header>{% include 'snippets/nav.html' %}</header>
     <div class=contentBlock>
     {% block content %}
-    
+
     {% endblock %}
-    </div>
 </div>
+</div>
+
+
+
     <footer>{% include 'snippets/footer.html' %}</footer>
     
 </body>
