@@ -16,7 +16,7 @@ class ProfileApp extends Component{
         email: email,
         biography: '22 year old superhuman / Professional Developer living in Uppsala. Originally from Luleå, Sweden. Love to pet cats and recite cheesy quotes from average movies.',
       },
-      image: 'https://thumbs.dreamstime.com/b/cartoon-funny-turtle-traveling-illustration-white-background-63678763.jpg',
+      // image: 'https://thumbs.dreamstime.com/b/cartoon-funny-turtle-traveling-illustration-white-background-63678763.jpg',
       quote: {
         content: 'Beautiful things don\'t ask for attention',
         source: 'The Secret Life of Walter Mitty'
@@ -28,14 +28,14 @@ class ProfileApp extends Component{
     return(
       <div className="ProfileApp">
         <Container>
-          <Row>
-            <Col sm='3'>
-                <Image src={this.state.image} />
-            </Col>
-            <Col sm='8'>
+          {/* <Row> */}
+            {/* <Col sm='3'> */}
+                {/* <Image src={this.state.image} /> */}
+            {/* </Col>
+            <Col sm='8'> */}
               <Profile person={this.state.person} quote={this.state.quote} />
-            </Col>
-          </Row>
+            {/* </Col>
+          </Row> */}
         </Container>
       </div>
     );

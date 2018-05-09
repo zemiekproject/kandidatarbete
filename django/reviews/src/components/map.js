@@ -19,7 +19,7 @@ const ReviewMarkerStyle = {
 
   }
 
-const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
+const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><a href={"http://localhost:8000/reviews/"+slug}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br />{text}</a></div>;
 
 const NewReviewMarker = ({ text }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawingblue.svg"} alt="Logo" /><br /><p>{text}</p></div>;
 
@@ -31,10 +31,11 @@ const mapOptions = {
     "featureType": "administrative",
     "elementType": "all",
     "stylers": [
-        {"hue": "#3a3935"},
+        {"hue": "#cc1616"},
         {"saturation": 5},
-        {"lightness": -57},
-        {"visibility": "off"}
+        {"lightness": -11},
+        {"visibility": "on"}
+
     ]
 },
  {
@@ -44,42 +45,17 @@ const mapOptions = {
         {"hue": "#E8E3E3"},
         {"visibility": "simplified"}
     ]
-},
+}, 
 {
     "featureType": "administrative.country",
-    "elementType": "geometry.stroke",
+    "elementType": "geometry",
     "stylers": [
-        {"hue": "#FF7733"},
+        {"hue": "#e8720b"},
         {"visibility": "on"}
     ]
 },
-{
-    "featureType": "administrative.province",
-    "elementType": "all",
-    "stylers": [
-        {"hue": "#ffffff"},
-        {"lightness": 100},
-        {"visibility": "simplified"}
-    ]
-},
-{
-    "featureType": "administrative.locality",
-    "elementType": "labels",
-    "stylers": [
-        {"hue": "#C2470A"},
-        {"lightness": 0},
-        {"visibility": "on"}
-    ]
-},
-{
-    "featureType": "administrative.neighborhood",
-    "elementType": "all",
-    "stylers": [
-        {"hue": "#ffffff"},
-        {"lightness": 100},
-        {"visibility": "off"}
-    ]
-},
+
+
 {
     "featureType": "administrative.land_parcel",
     "elementType": "all",
@@ -93,9 +69,9 @@ const mapOptions = {
     "featureType": "landscape",
     "elementType": "geometry",
     "stylers": [
-        {"hue": "#b7caaa"},
-        {"saturation": -14},
-        {"lightness": -18},
+        {"hue": "#38933b"},
+        {"saturation": -30},
+        {"lightness": -30},
         {"visibility": "on"}
     ]
 },
@@ -109,155 +85,15 @@ const mapOptions = {
         {"visibility": "on"}
     ]
 },
-{
-    "featureType": "landscape.natural",
-    "elementType": "all",
-    "stylers": [
-        {"hue": "#CCFF99"},
-        {"fill": '#CCFF99'},
-        {"saturation": 5},
-        {"lightness": -9},
-        {"visibility": "on"}
-    ]
-},
-{
-    "featureType": "poi",
-    "elementType": "geometry",
-    "stylers": [
-        {"hue": "#c17118"},
-        {"saturation": 61},
-        {"lightness": -45},
-        {"visibility": "on"}
-    ]
-},
-{
-    "featureType": "poi",
-    "elementType": "labels",
-    "stylers": [
-        {"visibility": "off"}
-    ]
-},
-{
-    "featureType": "poi.medical",
-    "elementType": "geometry",
-    "stylers": [
-        {"hue": "#cba923"},
-        {"saturation": 50},
-        {"lightness": -46},
-        {"visibility": "on"}
-    ]
-},
-{
-    "featureType": "poi.medical",
-    "elementType": "labels",
-    "stylers": [
-        {"visibility": "off"}
-    ]
-},
-{
-    "featureType": "poi.park",
-    "elementType": "all",
-    "stylers": [
-        {"hue": "#8ba975"},
-        {"saturation": -46},
-        {"lightness": -28},
-        {"visibility": "off"}
-    ]
-},
-{
-    "featureType": "poi.park",
-    "elementType": "labels",
-    "stylers": [
-        {"visibility": "off"}
-    ]
-},
-{
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-        {"hue": "#8d9b83"},
-        {"saturation": -89},
-        {"lightness": -12},
-        {"visibility": "on"}
-    ]
-},
-{
-    "featureType": "road.highway",
-    "elementType": "geometry",
-    "stylers": [
-        {"hue": "#0000FF"},
-        {"saturation": 0},
-        {"lightness": 54},
-        {"visibility": "simplified"}
-    ]
-},
-{
-    "featureType": "road.arterial",
-    "elementType": "geometry",
-    "stylers": [
-        {"hue": "#bdc5b6"},
-        {"saturation": -89},
-        {"lightness": -3},
-        {"visibility": "simplified"}
-    ]
-},
-{
-    "featureType": "road.arterial",
-    "elementType": "labels",
-    "stylers": [
-        {"visibility": "off"}
-    ]
-},
-{
-    "featureType": "road.local",
-    "elementType": "geometry",
-    "stylers": [
-        {"hue": "#bdc5b6"},
-        {"saturation": -89},
-        {"lightness": -26},
-        {"visibility": "on"}
-    ]
-},
-{
-    "featureType": "road.local",
-    "elementType": "geometry.fill",
-    "stylers": [
-        {"saturation": "8"},
-        {"lightness": "100"}
-    ]
-},
-{
-    "featureType": "road.local",
-    "elementType": "labels",
-    "stylers": [
-        {"visibility": "off"}
-    ]
-},
-{
-    "featureType": "transit",
-    "elementType": "geometry",
-    "stylers": [
-        {"hue": "#a43218"},
-        {"saturation": 74},
-        {"lightness": -51},
-        {"visibility": "off"}
-    ]
-},
-{
-    "featureType": "transit",
-    "elementType": "labels.text",
-    "stylers": [
-        {"visibility": "off"}
-    ]
-},
+
 
 {
     "featureType": "water",
     "elementType": "geometry",
     "stylers": [
-        {"hue": "#165c64"},
+        {"hue": "#46bcec"},
         {"saturation": 34},
-        {"lightness": -69},
+        {"lightness": -60},
         {"visibility": "on"}
     ]
 },
@@ -340,7 +176,8 @@ handleClick(obj) {
                 } 
             };
             var new_string = this.state.reverse.formatted_address.replace(countryName, '');
-            document.getElementById('location').setAttribute('value', new_string);
+            var str = new_string.slice(0, -2);
+            document.getElementById('location').setAttribute('value', str);
         }.bind(this), function(){console.log('nvmifuckedup');});
         
         console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
@@ -392,7 +229,12 @@ componentDidMount() {
   render() {
     return (
       // Important! Always set the container height explicitly
+<<<<<<< HEAD
       <div style={{ height: '100vh', width: '100%' }}>
+=======
+
+      <div style={{ height: '90vh', width: '100%' }}>
+>>>>>>> 4fcd5c0e20505de6f3d9e4a6f27be6b1893bb0d0
         <GoogleMapReact
           onClick={this.handleClick.bind(this)}
           onChange={this._onChange}
@@ -414,7 +256,7 @@ componentDidMount() {
          
 
             <div id='plcs' lat={this.state.mrklat} lng={this.state.mrklng} />
-        <SearchBox id='sb' placeholder={"Var vill du åka?"}
+        <SearchBox id='sb' placeholder={"Search for a place"}
          onPlacesChanged={this.handleSearch} />
         </GoogleMapReact>
       </div>
