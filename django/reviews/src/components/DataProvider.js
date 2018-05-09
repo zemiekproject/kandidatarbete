@@ -38,6 +38,7 @@ class DataProvider extends Component {
 
   render() {
     const { data, loaded, placeholder} = this.state;
+    console.log(data[0]);
     return loaded ? this.props.render(data) : <p>{placeholder}</p>
   }
 }

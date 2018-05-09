@@ -21,10 +21,18 @@ function counter() {
 const uuid = shortid.generate;
 
 
-const ReviewCard = ({ data, term }) =>  
-  !data.length ? (
-    <p>Nothing to show</p>
-  ) : (
+class userCard({data, term }){
+    constructor(props){
+        super(props);
+        this.state = {
+      data: [],
+      term: '',
+    };
+    }
+    render(){
+      const { data, term } = this.state;
+      
+      return(
 <div>
   <div>
     {term ? null : "All Reviews:"} 
@@ -42,6 +50,8 @@ const ReviewCard = ({ data, term }) =>
             </Card> 
        ))}
  </CardGroup></div>);
+}
+}
 
 
-export default ReviewCard;
+export default userCard;
