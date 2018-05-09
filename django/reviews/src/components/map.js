@@ -392,7 +392,7 @@ componentDidMount() {
   render() {
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '90vh', width: '100%' }}>
+      <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           onClick={this.handleClick.bind(this)}
           onChange={this._onChange}

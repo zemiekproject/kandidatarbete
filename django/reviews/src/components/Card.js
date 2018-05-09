@@ -32,12 +32,13 @@ const ReviewCard = ({ data, term }) =>
   <CardGroup>
     {data.map( (data, location) => (
         <Card style={cardStyle}>
+      
             {/* <CardImg top width="100%" src="https://thumbs.dreamstime.com/b/beautiful-view-green-fields-meadows-sunset-tuscany-italy-46410906.jpg" alt="Card image cap" /> */}
                 <CardBody>
                     <CardTitle key={uuid()}>{data.title}</CardTitle>
                     <CardSubtitle>{data.location}</CardSubtitle>
                     <CardText>{data.text}</CardText>
-                    <CardLink>Written by: {data.author}</CardLink><br/>
+                    <CardLink>Written by: {data.author} </CardLink><br/>
                     <Button href={"/reviews/"+data.slug+"/"}>Read More</Button>
                 </CardBody>
             </Card> 
