@@ -19,7 +19,7 @@ const ReviewMarkerStyle = {
 
   }
 
-const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br /><a href={"http://localhost:8000/reviews/"+slug}>{text}</a></div>;
+const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><a href={"http://localhost:8000/reviews/"+slug}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br />{text}</a></div>;
 
 const NewReviewMarker = ({ text }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawingblue.svg"} alt="Logo" /><br /><p>{text}</p></div>;
 
@@ -176,7 +176,8 @@ handleClick(obj) {
                 } 
             };
             var new_string = this.state.reverse.formatted_address.replace(countryName, '');
-            document.getElementById('location').setAttribute('value', new_string);
+            var str = new_string.slice(0, -2);
+            document.getElementById('location').setAttribute('value', str);
         }.bind(this), function(){console.log('nvmifuckedup');});
         
         console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
