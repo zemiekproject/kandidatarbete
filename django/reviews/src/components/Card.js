@@ -14,11 +14,11 @@ const cardStyle = {
 }
 
 const NameEl = ({id}) => (
-   <DataProvider endpoint="api/location/" render={data => <LocationNamer data={data.slice(id,id+1)} />} />
+   <DataProvider endpoint="http://localhost:8000/reviews/api/location/" render={data => <LocationNamer data={data.slice(id,id+1)} />} />
  );
 
 const AuthorName = ({id}) => (
-   <DataProvider endpoint="api/user/" render={data => <UserNamer data={data.slice(id,id+1)} />} />
+   <DataProvider endpoint="http://localhost:8000/reviews/api/user/" render={data => <UserNamer data={data.slice(id,id+1)} />} />
  );
 
 var i = -1;
@@ -43,6 +43,7 @@ const ReviewCard = ({ data, term }) =>
   </div>
   <CardGroup>
     {data.map( (data, location) => (
+
         <Card style={cardStyle}>
       
             <CardImg top width="100%" src="https://thumbs.dreamstime.com/b/beautiful-view-green-fields-meadows-sunset-tuscany-italy-46410906.jpg" alt="Card image cap" />
@@ -55,30 +56,7 @@ const ReviewCard = ({ data, term }) =>
                 </CardBody>
             </Card> 
        ))}
- </CardGroup>
- <Pagination size="sm">
-        <PaginationItem>
-          <PaginationLink previous href="#" />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">
-            1
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">
-            3
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink next href="#" />
-        </PaginationItem>
-      </Pagination></div>);
+ </CardGroup></div>);
 
 
 export default ReviewCard;

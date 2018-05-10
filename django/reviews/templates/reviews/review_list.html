@@ -1,11 +1,84 @@
 {% extends "base.html" %}
 {% load render_bundle from webpack_loader %}
 {% block content %}
+<head><style>
+        .submitbutton{
+            text-transform: uppercase;
+            text-align: center;
+            color: rgba(255,127,80,0.95);
 
+            font: bold 20px arial, sans-serif;
+            font-size: 20px; 
+            
+            width: 250px;
+            height:50px;
+
+            background: rgba(255,127,80,0.95);
+            border: 1px solid rgba(255,127,80,0.95);
+            border-radius: 5px;
+            color: #FFF;
+            overflow: hidden;
+            
+            transition: all 0.5s;
+
+            
+        }
+
+        .submitbutton:hover, .submitbutton:active 
+        {
+            text-decoration: none;
+            color: #FFF;
+            border-color: #0C5;
+            background: #0C5;
+        }
+
+        .submitbutton span 
+        {
+            display: inline-block;
+            position: relative;
+            
+            transition: padding-right 0.5s;
+        }
+
+        .submitbutton span:after 
+        {
+            content: ' ';  
+            position: absolute;
+            top: 0;
+            right: -18px;
+            opacity: 0;
+            width: 10px;
+            height: 10px;
+            margin-top: -10px;
+
+            background: rgba(0, 0, 0, 0);
+            border: 3px solid #FFF;
+            border-top: none;
+            border-right: none;
+
+            transition: opacity 0.5s, top 0.5s, right 0.5s;
+            transform: rotate(-45deg);
+        }
+
+        .submitbutton:hover span, .submitbutton:active span 
+        {
+            padding-right: 30px;
+        }
+
+        .submitbutton:hover span:after, .submitbutton:active span:after 
+        {
+            transition: opacity 0.5s, top 0.5s, right 0.5s;
+            opacity: 1;
+            border-color: #0C5;
+            right: 0;
+            top: 50%;
+        }
+    </style>
+</head>
 <body>
         <div class="row">
+        
             <div class="col"><div class="Main" id="Main"></div>
-                <a href="{% url 'reviews:create' %}"><h4>Make review</h4></a>
             </div>
             <div class="col"><div><div class=Map></div></div></div>
         </div>

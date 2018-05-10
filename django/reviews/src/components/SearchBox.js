@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReviewList from './axios/ReviewList'
 
 
@@ -55,7 +56,7 @@ export default class SearchBox extends React.Component {
     }
   }
   componentDidMount() {
-    var input = React.findDOMNode(this.refs.input);
+    var input = ReactDOM.findDOMNode(this.refs.input);
     this.searchBox = new google.maps.places.SearchBox(input);
     this.searchBoxListener = this.searchBox.addListener('places_changed', this.onPlacesChanged);
   }
