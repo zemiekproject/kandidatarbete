@@ -1,17 +1,23 @@
 <style>
     nav {
-        background: transparent;
-        
+        background: whitesmoke;
+
     }
 
     .navbar {
         font-size: 1.25rem;
-        background: transparent;
+        background: whitesmoke;
     }
+
 
     .nav-item {
         font-size: 20px;
         text-align: center;
+    }
+
+    .nav-item>.nav-link:hover {
+        border-bottom: 5px solid #bd5734;
+        font-weight: 600;
     }
 
     .navbar1 {
@@ -45,7 +51,35 @@
         line-height: 60px;
 
     }
+
+    .dropdown:hover>.dropdown-menu {
+        display: block;
+    }
+
+    .login>.dropdown>.dropdown-menu,
+    #reviewsMenu {
+        border-radius: 0;
+        border-top: None;
+        border-left: None;
+        border-right: None;
+        border-color: #bd5734;
+        width: 100%;
+        background: whitesmoke;
+
+    }
+
+    #reviewsMenu {
+        line-height: 3em;
+        height: 3em;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .dropdown-menu>.dropdown-item:hover {
+        border-bottom: 5px solid #bd5734;
+    }
 </style>
+
 
 {% load static %}
 
@@ -58,7 +92,10 @@
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        <button class="navbar-toggler dropdown-toggle-split" type="button" data-toggle="collapse" data-target="#reviewsDropdown"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-fill w-100 navbar1">
                 <li class="nav-item">
@@ -66,8 +103,14 @@
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href='{%url "reviews:list" %}' id="reviews">Reviews</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href='{%url "reviews:list" %}' id="reviews">
+                        Reviews
+                        <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+                    </a>
+                    <div class="dropdown-menu p-0 m-0" id="reviewsMenu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item p-0 m-0" href="{% url 'reviews:create' %}">Make Review</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href='{%url "reviews:toplist" %}' id="toprated">Top Rated</a>
@@ -135,5 +178,20 @@
                 $(aElement).addClass('active');
             }
         });
+    });
+    $('body').on('mouseenter mouseleave', '.dropdown', function (e) {
+        var _d = $(e.target).closest('.dropdown'); _d.addClass('show');
+        setTimeout(function () {
+            _d[_d.is(':hover') ? 'addClass' : 'removeClass']('show');
+            $('[data-toggle="dropdown"]', _d).attr('aria-expanded', _d.is(':hover'));
+        }, 300);
+    });
+    $(".login>a").on("click",  function () {
+        console.log("click")
+        if ($(".dropdown>.dropdown-menu").hasClass("show")) {
+            $(".login>.nav-link").removeClass("active");
+        } else {
+            $(".login>.nav-link").addClass("active");
+        }
     });
 </script>

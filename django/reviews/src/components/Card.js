@@ -41,7 +41,7 @@ const ReviewCard = ({ data, term }) =>
   <div>
     {term ? null : "All Reviews:"} 
   </div>
-  <CardGroup>
+  <CardDeck>
     {data.map( (data, location) => (
         <Card style={cardStyle}>
       
@@ -55,7 +55,7 @@ const ReviewCard = ({ data, term }) =>
                 </CardBody>
             </Card> 
        ))}
- </CardGroup>
+ </CardDeck>
  <Pagination size="sm">
         <PaginationItem>
           <PaginationLink previous href="#" />

@@ -28,8 +28,10 @@ export default class SearchBox extends React.Component {
   }
 
   searchHandler(event) {
-    event.preventDefault()
-    this.setState({ term: event.target.value })
+    if (event.key === 'Enter') {
+      console.log(event.target.value)
+      this.setState({ term: event.target.value })
+    }
   }
   render() {
     if (window.location.pathname == "/") {
@@ -37,7 +39,7 @@ export default class SearchBox extends React.Component {
         <center>
           <p>Welcome to LOCUS</p>
         </center>
-        <input ref="input" onChange={this.searchHandler} {...this.props} type="text" />
+        <input ref="input" onKeyPress={this.searchHandler} {...this.props} type="text" />
         {this.state.showList ? <div id="homeReviewList"><ReviewList term={this.state.term} />
         </div> : null}
       </div>;
