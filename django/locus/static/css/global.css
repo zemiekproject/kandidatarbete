@@ -29,7 +29,7 @@ ul#sitefoot {
 
 .lowkey {
     font-family:sans-serif;
-    color: #CCCCCC;
+    color: black;
     font-size: 0.8em;
     padding: 0%;
     width:100%;
@@ -37,17 +37,16 @@ ul#sitefoot {
     padding: 0% 3%;
 }
 
-
-
-
-
-
-
-
+#column {
+    background-color: #FFFFEC;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin:1%;
+}
 
 #over_map {position: absolute;   top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 99; }
 
-#hidden {display:none;}
+#hidden {display:block;}
 
 .inputClass{
     fontSize: "45px";
@@ -82,13 +81,6 @@ div#reviewbox {
   margin-top: 20px;
 }
 
-
-
-.hiddenform{
-    display:none;
-}
-
-.hspaced{
-    padding: 0 20px;
-    margin: 0 20px;
+#submitbutton{
+    
 }

@@ -1,9 +1,36 @@
-{% extends "base.html" %}
-{% load render_bundle from webpack_loader %}
+{% extends "base.html" %} {% load render_bundle from webpack_loader %}
+<style>
+    .contentBlockWrapper {
+        height: 100%;
+    }
 
+    .contentBlock {
+        padding-top: 80px;
+        height: 100%;
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    #about {
+        height: 100%;
+    }
+</style>
 {% block content %}
-<h2>About</h2>
-<div>{{text}}</div>
+<div class="row h-100">
+    <div class="col-6 m-0 p-0">
+        <div class="jumbotron m-0" style="height:100%;">
+            <h1>About LOCUS</h1>
+            <p>{{text}}</p>
+        </div>
+    </div>
+    <div class="col-6 m-0" style="background: #bd5734">
+
+    </div>
+</div>
+
 <!-- {% render_bundle 'vendors' %}
 {% render_bundle 'App1' %} -->
 {% endblock %}

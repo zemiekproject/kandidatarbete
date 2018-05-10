@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, RedirectView
+from django.urls import resolve
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -33,7 +34,6 @@ User = get_user_model()
     # template_name = 'reviews/form.html'
     # context = {"form": form, "errors", errors}
     # return render(request, template_name, context)
-
 def about_view(request):
     template_name = 'about.html'
     context = {

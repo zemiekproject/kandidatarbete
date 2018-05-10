@@ -4,18 +4,24 @@
 {% block content %}
 <style>
     #wrapper { position: relative; }
-    #over_map { position: absolute;   top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 99; }
+    #over_map { position: absolute;   top: 40%; left: 62%; transform: translate(-50%, -50%); z-index: 99; }
+    #homeReviewList {background: white; color: black; width:40%;}
 
  </style>
- 
- <div id="wrapper">
+ <div id=div1>
+    <div id="wrapper">
     <div class=Map></div>
  
     <div id="over_map">
         <div id="search_wrapper"><br/>
         </div>
+        <div id="reviews_wrapper">
+
+        </div>
     </div>
  </div>
+</div>
+
 
  
 {% render_bundle 'vendors' %}

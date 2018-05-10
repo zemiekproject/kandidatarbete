@@ -20,6 +20,14 @@ function searchingFor(term) {
   }
 }
 
+function activeUser() {
+  if(window.location.pathname.split('/')[1]=='u'){
+  return function(x) {
+    return x.author == document.getElementById('userid').innerHTML;
+  }}
+  else return function(x){return x}
+}
+
 class App extends React.Component {
 
   constructor(props) {
@@ -39,8 +47,14 @@ class App extends React.Component {
 
   paginate(num){
     var newPage = (this.state.pages+num);
+    if ((document.getElementsByClassName('card').length == 6 && num==1)||(this.state.pages>0 && num==-1)){
     this.setState({pages:newPage})
+    }
   };
+
+  dataSelection(data){
+    return
+  }
 
   render() {
     const { data, term } = this.state;
@@ -60,7 +74,7 @@ class App extends React.Component {
             <Input placeholder="" type="text" onChange={this.searchHandler}/>
           </InputGroup></div></div>
             <DataProvider endpoint="http://localhost:8000/reviews/api/review/"  
-          render={data => <ReviewCard term={term} data={data.filter(searchingFor(term)).slice(0+this.state.pages*9,9+this.state.pages*9)} />} />
+          render={data => <ReviewCard term={term} data={data.filter(searchingFor(term)).filter(activeUser()).slice(0+this.state.pages*6,6+this.state.pages*6)} />} />
           </div>
         <Pagination>
          <PaginationItem>
