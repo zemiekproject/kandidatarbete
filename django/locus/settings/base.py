@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'locations',
     'tags',
     'profiles',
-    'rest_framework'
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +54,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'locus.urls'
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/'
 
 TEMPLATES = [
     {

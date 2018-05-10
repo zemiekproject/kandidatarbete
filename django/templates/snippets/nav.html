@@ -1,6 +1,7 @@
 <style>
     nav {
         background: transparent;
+        
     }
 
     .navbar {
@@ -46,9 +47,13 @@
     }
 </style>
 
+{% load static %}
+
 <div>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light p-0">
-        <a class="navbar-brand" href="{%url 'home'  %}">LOCUS</a>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light p-0 fixed-top">
+        <a class="navbar-brand" href="{%url 'home'  %}">
+            <img class="navbar-brand" style="width:45px; height:auto; margin-bottom: 15px;" src="{% static 'graphics/iconcolored.png' %}"
+                alt="logo">LOCUS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -110,9 +115,9 @@
                     <a class="nav-link logout" href="{% url 'profiles:logout' %}">Logout</a>
                 </li>
                 <span class="navbar-text username">
-                        Logged in as:
-                        <strong>{{request.user.get_username}}</strong>
-                    </span>
+                    Logged in as:
+                    <strong>{{request.user.get_username}}</strong>
+                </span>
             </ul>
             {% endif %}
         </div>
@@ -131,7 +136,4 @@
             }
         });
     });
-
-
 </script>
-
