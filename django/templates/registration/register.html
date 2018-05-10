@@ -10,6 +10,12 @@
         margin-left: 25%;
         margin-right: 25%;
         background: whitesmoke;
+
+    }
+
+    .registerwrapper {
+        padding-bottom: 100px;
+    
     }
 
     .error {
@@ -21,9 +27,6 @@
         height: 100%;
     }
 
-    .registerBlockWrapper {
-        height: 100%;
-    }
     
     .form-group {
         margin: 30px;
@@ -65,7 +68,7 @@
                     <label for="id_password2">Repeat password:</label>
                     {{form.password2}}
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" style ="margin-bottom: 50px; margin-left: 25px;" class="btn btn-primary">Register</button>
                 <input type="hidden" name="next" value="{{ next }}" />
             </form>
         </div>
