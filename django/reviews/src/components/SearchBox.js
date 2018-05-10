@@ -1,6 +1,13 @@
 import React from 'react';
 import ReviewList from './axios/ReviewList'
 
+
+function searchingFor(term) {
+  return function (x) {
+    return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
+  }
+}
+
 export default class SearchBox extends React.Component {
   static propTypes = {
     placeholder: React.PropTypes.string,
@@ -15,7 +22,14 @@ export default class SearchBox extends React.Component {
       },
       divid: 'over_map',
       showList: false,
+      term: '',
     }
+    this.searchHandler = this.searchHandler.bind(this)
+  }
+
+  searchHandler(event) {
+    event.preventDefault()
+    this.setState({ term: event.target.value })
   }
   render() {
     if (window.location.pathname == "/") {
@@ -23,8 +37,8 @@ export default class SearchBox extends React.Component {
         <center>
           <p>Welcome to LOCUS</p>
         </center>
-        <input ref="input" {...this.props} type="text" />
-        {this.state.showList ? <div id="homeReviewList"><ReviewList />
+        <input ref="input" onChange={this.searchHandler} {...this.props} type="text" />
+        {this.state.showList ? <div id="homeReviewList"><ReviewList term={this.state.term} />
         </div> : null}
       </div>;
 
