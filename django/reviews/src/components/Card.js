@@ -4,6 +4,7 @@ import { Card, CardImg, CardText, CardBody,
   CardGroup } from 'reactstrap';
 import PropTypes from "prop-types";
 import shortid from "shortid";
+import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 const cardStyle = {
   minWidth: "33%"
@@ -31,6 +32,7 @@ const ReviewCard = ({ data, term }) =>
   </div>
   <CardGroup>
     {data.map( (data, location) => (
+
         <Card style={cardStyle}>
             {/* <CardImg top width="100%" src="https://thumbs.dreamstime.com/b/beautiful-view-green-fields-meadows-sunset-tuscany-italy-46410906.jpg" alt="Card image cap" /> */}
                 <CardBody>
@@ -41,7 +43,7 @@ const ReviewCard = ({ data, term }) =>
                 </CardBody>
             </Card> 
        ))}
- </CardGroup></div>);
+</CardGroup></div>);
 
 
 export default ReviewCard;

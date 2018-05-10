@@ -88,3 +88,7 @@ div#reviewbox {
     display:none;
 }
 
+.hspaced{
+    padding: 0 20px;
+    margin: 0 20px;
+}
