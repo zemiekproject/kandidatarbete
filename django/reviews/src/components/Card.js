@@ -8,6 +8,7 @@ import DataProvider from "./DataProvider"
 import LocationNamer from "./LocationNamer"
 import UserNamer from "./UserNamer"
 
+
 const cardStyle = {
   minWidth: "33%",
   maxWidth: "33%",
@@ -18,7 +19,8 @@ const NameEl = ({id}) => (
  );
 
 const AuthorName = ({id}) => (
-   <DataProvider endpoint="http://localhost:8000/reviews/api/user/" render={data => <UserNamer data={data.slice(id,id+1)} />} />
+   <DataProvider endpoint="http://localhost:8000/reviews/api/user/" render={data => <UserNamer data={data.slice(id-1,id)} />} />
+   
  );
 
 var i = -1;
@@ -56,7 +58,8 @@ const ReviewCard = ({ data, term }) =>
                 </CardBody>
             </Card> 
        ))}
- </CardGroup></div>);
+ </CardGroup>
+</div>);
 
 
 export default ReviewCard;

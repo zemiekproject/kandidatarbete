@@ -58,8 +58,9 @@ class App extends React.Component {
 
   render() {
     const { data, term } = this.state;
-
-
+    console.log(data);
+    data.sort((a,b) => a.rating - b.rating);
+    console.log(data);
     
     
     return <div>

@@ -81,6 +81,12 @@ div#reviewbox {
   margin-top: 20px;
 }
 
+.reviewcard{
+  background-color: #FFFFCC;
+  padding: 20px;
+  margin-top: 20px;
+}
+
 #submitbutton{
     
 }
