@@ -222,7 +222,7 @@ handleSearch(place) {
 }
 
 componentDidMount() {
-    var input = React.findDOMNode(this.refs.map);
+    var input = ReactDOM.findDOMNode(this.refs.map);
     this.plc = new google.maps.places.PlacesService(input);
 }
 
