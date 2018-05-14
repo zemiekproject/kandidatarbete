@@ -193,6 +193,7 @@ class Form extends Component {
                 name="location"
                 onChange={this.handleChange}
                 value={location}
+                readOnly="readonly"
                 required
               />
             </div>
@@ -209,6 +210,7 @@ class Form extends Component {
                 name="country"
                 onChange={this.handleChange}
                 value={country}
+                readOnly="readonly"
                 required
               />
             </div>
