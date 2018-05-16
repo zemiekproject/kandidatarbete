@@ -240,8 +240,10 @@
             width: 20px;
             height: 20px;
         } 
+
+
         .radios {
-            font-size: 20px;
+            font-size: 25px;
         }
 
 
@@ -313,5 +315,18 @@
         </div>
         {% render_bundle 'vendors' %} {% render_bundle 'Main' %}
     </div>
+    <script>
+    $("input:radio").hover(function(){
+        $(this).prop('checked', true);
+}, function(){
+        //MouseOut event
+        $(this).prop('checked', false);
+}).click(function(){
+    //Unbind the hover event for all the radio buttons
+    $("input:radio").unbind('mouseenter mouseleave')
+    //Check clicked radio button
+    $(this).prop('checked', true);
+});
+</script>
 </body>
 {% endblock %}

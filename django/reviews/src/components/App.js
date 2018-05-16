@@ -18,8 +18,8 @@ const addButtonStyle = {
   color: "white",
   borderRadius: "50%",
   background: "#bd5734",
-  width: "10vh",
-  height: "10vh",
+  width: "12vh",
+  height: "12vh",
   top: "85vh",
   left: "90vh",
   zIndex: "99",
@@ -86,7 +86,7 @@ class App extends React.Component {
           {/* <button style={buttonmargin} className="submitbutton" id="submitbutton" onClick={function () { window.location.pathname = '/reviews/create' }} href="{% url 'reviews:create' %}"><h4>Make review</h4></button> */}
         </div>
           <div className="column">
-            <button style={addButtonStyle} onClick={function () { window.location.pathname = '/reviews/create' }} href="{% url 'reviews:create' %}">WRITE REVIEW</button>
+            <button style={addButtonStyle} className="newSubmitButton" onClick={function () { window.location.pathname = '/reviews/create' }} href="{% url 'reviews:create' %}">WRITE REVIEW</button>
             <InputGroup style={searchBoxStyle}>
               <Input placeholder="Search" type="text" onChange={this.searchHandler} />
               <InputGroupAddon addonType="append">
