@@ -78,7 +78,14 @@
             color: #46211A
         }
 
-        .submitbutton {
+        #formimage{
+           position: absolute;
+           top: 20px;
+           right: -500px;
+        }
+
+
+        .submitbutton{
             text-transform: uppercase;
             text-align: center;
             color: rgba(255, 127, 80, 0.95);
@@ -152,12 +159,14 @@
 
         }
 
-        #locationfield {
-            margin: 1vh;
+         #locationfield {
+            margin: 1vh;  
+            height: 8%;  
         }
 
         #countryfield {
             margin: 1vh;
+
         }
 
         #textfield {
@@ -165,7 +174,7 @@
         }
 
         #textbox {
-            height: 30vh;
+            height: 25vh;
         }
 
         #ratingfield {
@@ -285,7 +294,9 @@
                 <h3 class="text-muted" align="center">
                     <small class="text-muted"></small>
                 </h3>
-                <div id=ReviewForm></div>
+                <div id=ReviewForm>
+                    
+                </div>
             </div>
             <div class="column" id="mapcolumn">
                 <div class=Map></div>

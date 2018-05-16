@@ -180,6 +180,7 @@ class Form extends Component {
               />
             </div>
           </div>
+         <img id="formimage" height='130' src="http://digitalenamel.com/wp-content/uploads/2017/04/vacation-rentals-slider3.jpg"> </img>
 
         <div className="field" className="form-group" id="locationfield">
             <label className="label"><b>Location</b></label>
@@ -213,6 +214,8 @@ class Form extends Component {
               />
             </div>
           </div>
+
+         
 
           <div className="field" className="form-group">
             <div className="control" >
@@ -272,7 +275,7 @@ class Form extends Component {
             </div>
           </div>
 
-          <div className="field" className="form-group">
+          <div className="field" className="form-group" id="tagsfield">
             <label className="label"><b>Tags (Press space to add additional ones)</b></label>
 
             <div className="control">
