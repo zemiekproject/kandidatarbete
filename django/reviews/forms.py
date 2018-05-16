@@ -18,6 +18,9 @@ class ReviewCreateForm(forms.ModelForm):
             'rating',  
             'tags',    
         ]
+        widgets = {
+            'rating':forms.RadioSelect(),
+        }
 
 # class UpvoteForm(forms.ModelForm):
 #     class Meta:
