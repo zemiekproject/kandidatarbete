@@ -1,48 +1,46 @@
-{% extends "base.html" %}
-{% load render_bundle from webpack_loader %}
-{% block content %}
-<head><style>
-        .submitbutton{
+{% extends "base.html" %} {% load render_bundle from webpack_loader %} {% block content %}
+
+<head>
+    <style>
+        .submitbutton {
             text-transform: uppercase;
             text-align: center;
-            color: rgba(255,127,80,0.95);
+            color: rgba(255, 127, 80, 0.95);
 
             font: bold 20px arial, sans-serif;
-            font-size: 20px; 
-            
-            width: 250px;
-            height:50px;
+            font-size: 20px;
 
-            background: rgba(255,127,80,0.95);
-            border: 1px solid rgba(255,127,80,0.95);
+            width: 250px;
+            height: 50px;
+
+            background: rgba(255, 127, 80, 0.95);
+            border: 1px solid rgba(255, 127, 80, 0.95);
             border-radius: 5px;
             color: #FFF;
             overflow: hidden;
-            
+
             transition: all 0.5s;
 
-            
+
         }
 
-        .submitbutton:hover, .submitbutton:active 
-        {
+        .submitbutton:hover,
+        .submitbutton:active {
             text-decoration: none;
             color: #FFF;
             border-color: #0C5;
             background: #0C5;
         }
 
-        .submitbutton span 
-        {
+        .submitbutton span {
             display: inline-block;
             position: relative;
-            
+
             transition: padding-right 0.5s;
         }
 
-        .submitbutton span:after 
-        {
-            content: ' ';  
+        .submitbutton span:after {
+            content: ' ';
             position: absolute;
             top: 0;
             right: -18px;
@@ -60,30 +58,64 @@
             transform: rotate(-45deg);
         }
 
-        .submitbutton:hover span, .submitbutton:active span 
-        {
+        .submitbutton:hover span,
+        .submitbutton:active span {
             padding-right: 30px;
         }
 
-        .submitbutton:hover span:after, .submitbutton:active span:after 
-        {
+        .submitbutton:hover span:after,
+        .submitbutton:active span:after {
             transition: opacity 0.5s, top 0.5s, right 0.5s;
             opacity: 1;
             border-color: #0C5;
             right: 0;
             top: 50%;
         }
+
+        body,
+        html {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .here {
+            height: 100%;
+        }
+
+        .Main {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding-top: 10px;
+            padding-bottom: 100px;
+            height: 100vh;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #bd5734;
+            border-radius: 10px;
+        }
     </style>
 </head>
+
 <body>
-        <div class="row">
-        
-            <div class="col"><div class="Main" id="Main"></div>
-            </div>
-            <div class="col"><div><div class=Map></div></div></div>
+    <div class="row">
+        <div class="col-6 m-0 here">
+            <div class="Main" id="Main"></div>
         </div>
+        <div class="col-6 m-0">
+            <div>
+                <div class=Map></div>
+            </div>
+        </div>
+    </div>
 
 </body>
-{% render_bundle 'vendors' %}
-{% render_bundle 'Main' %}
-{% endblock content %}
+{% render_bundle 'vendors' %} {% render_bundle 'Main' %} {% endblock content %}

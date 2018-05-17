@@ -66,16 +66,16 @@ class Form extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const formRequest = async () => {
-        
+
       var locationNames = [];
       var locationValues = [];
-      
+
       const locationResponse = await fetch('api/location/');
       const locationJson = await locationResponse.json();
 
       locationNames = locationJson.map(function (arg) { return arg.name });
       locationValues = locationJson.map(function (arg) { return arg.id });
-    
+
 
       if (!(locationNames.includes(this.state.location)) && !(locationValues.includes(this.state.location.toString()))) {
         console.log("added new location");
@@ -109,7 +109,7 @@ class Form extends Component {
 
       tagNames = tagJson.map(function (arg) { return arg.name });
       tagValues = tagJson.map(function (arg) { return arg.id });
-      
+
       for (var i = 0, l = this.state.tags.length; i < l; i++) {
         if (!tagNames.includes(this.state.tags[i])) {
           console.log("adding new tag");
@@ -148,12 +148,12 @@ class Form extends Component {
       await fetch(this.props.endpoint)
         .then(function (response) {
           console.log(conf);
-          fetch("api/review/", conf).then(function(){
-              window.location.replace("http://localhost:8000/reviews");
-        },function(){
+          fetch("api/review/", conf).then(function () {
+            window.location.replace("http://localhost:8000/reviews");
+          }, function () {
             console.log('nvmifuckedup');
-        }
-        );
+          }
+          );
         });
     };
     formRequest();
@@ -180,12 +180,12 @@ class Form extends Component {
               />
             </div>
           </div>
-         <img id="formimage" height='130' src="http://digitalenamel.com/wp-content/uploads/2017/04/vacation-rentals-slider3.jpg"> </img>
+          <img id="formimage" height='130' src="http://digitalenamel.com/wp-content/uploads/2017/04/vacation-rentals-slider3.jpg"> </img>
 
-        <div className="field" className="form-group" id="locationfield">
+          <div className="field" className="form-group" id="locationfield">
             <label className="label"><b>Location</b></label>
             <div className="control">
-              <input
+              <input disabled
                 className="input"
                 className="form-control"
                 placeholder="Please mark your desired location on the map"
@@ -202,7 +202,7 @@ class Form extends Component {
           <div className="field" className="form-group" id="countryfield">
             <label className="label"><b>Country</b></label>
             <div className="control">
-              <input
+              <input disabled
                 className="input"
                 placeholder="Please mark your desired location on the map"
                 className="form-control"
@@ -217,7 +217,7 @@ class Form extends Component {
             </div>
           </div>
 
-         
+
 
           <div className="field" className="form-group">
             <div className="control" >
@@ -251,7 +251,7 @@ class Form extends Component {
             <label className="label"><b>Text</b></label>
             <div className="control">
               <textarea
-                id = "textbox"
+                id="textbox"
                 className="textarea"
                 className="form-control"
                 placeholder="Type your review here"
@@ -265,13 +265,96 @@ class Form extends Component {
           </div>
           <div className="field" className="form-group" id="ratingfield">
             <label className="label"><b>Rating (0-10)</b></label>
-            <div className="control">
+            <div className="control radios">
+              <label htmlFor="rating1">1:</label>
               <input
-                className="textarea"
-                type="number"
+                id="rating1"
+                type="radio"
                 name="rating"
                 onChange={this.handleChange}
-                value={rating}
+                value="1"
+                min="0" max="10"
+              />
+              <label htmlFor="rating2">2:</label>
+              <input
+                id="rating2"
+                type="radio"
+                name="rating"
+                onChange={this.handleChange}
+                value="2"
+                min="0" max="10"
+              />
+              <label htmlFor="rating3">3:</label>
+              <input
+                id="rating3"
+                type="radio"
+                name="rating"
+                onChange={this.handleChange}
+                value="3"
+                min="0" max="10"
+              />
+              <label htmlFor="rating4">4:</label>
+              <input
+                id="rating4"
+                type="radio"
+                name="rating"
+                onChange={this.handleChange}
+                value="4"
+                min="0" max="10"
+              />
+              <label htmlFor="rating5">5:</label>
+              <input
+                id="rating5"
+                type="radio"
+                name="rating"
+                onChange={this.handleChange}
+                value="5"
+                min="0" max="10"
+              />
+              <label htmlFor="rating6">6:</label>
+              <input
+                id="rating6"
+                type="radio"
+                name="rating"
+                onChange={this.handleChange}
+                value="6"
+                min="0" max="10"
+              />
+              <label htmlFor="rating7">7:</label>
+              <input
+                id="rating7"
+                className="textarea"
+                type="radio"
+                name="rating"
+                onChange={this.handleChange}
+                value="7"
+                min="0" max="10"
+              />
+              <label htmlFor="rating8">8:</label>
+              <input
+                id="rating8"
+                type="radio"
+                name="rating"
+                onChange={this.handleChange}
+                value="8"
+                min="0" max="10"
+              />
+              <label htmlFor="rating9">9:</label>
+              <input
+                id="rating9"
+                type="radio"
+                name="rating"
+                onChange={this.handleChange}
+                value="9"
+                min="0" max="10"
+              />
+              <label htmlFor="rating10">10:</label>
+              <input
+                id="rating10"
+                type="radio"
+                name="rating"
+                onChange={this.handleChange}
+                value="10"
                 min="0" max="10"
               />
             </div>
@@ -287,7 +370,7 @@ class Form extends Component {
           <div className="control">
 
             <button type="submit" className="submitbutton" id="submitbutton">
-                Submit
+              Submit
             </button>
           </div>
         </form>
