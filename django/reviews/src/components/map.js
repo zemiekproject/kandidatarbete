@@ -158,7 +158,7 @@ _onChange = ({center, zoom}) => {
   }
 
 
-handleClick(obj) { 
+handleClick(obj) {
     if (window.location.pathname=="/reviews/create/") {
         var geocoder = new google.maps.Geocoder;
         var loc = new google.maps.LatLng(obj.lat,obj.lng);
@@ -233,6 +233,7 @@ componentDidMount() {
       <div style={{ height: '83vh', width: '100%' }}>
         <GoogleMapReact
           onClick={this.handleClick.bind(this)}
+          onRightClick={console.log('theworks')}
           onChange={this._onChange}
           className='TheMap'
           options={mapOptions}

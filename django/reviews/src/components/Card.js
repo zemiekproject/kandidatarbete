@@ -11,6 +11,7 @@ import DataProvider from "./DataProvider"
 import LocationNamer from "./LocationNamer"
 import UserNamer from "./UserNamer"
 
+
 const cardStyle = {
   minWidth: "30%",
   maxWidth: "30%",
