@@ -18,10 +18,14 @@ const ReviewMarkerStyle = {
     top: -MARKER_SIZE * 2
 
   }
+const MarkerTextStyle = {
+    color: 'white'
 
-const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><a href={"http://localhost:8000/reviews/"+slug}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br />{text}</a></div>;
+}
 
-const NewReviewMarker = ({ text }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawingblue.svg"} alt="Logo" /><br /><p>{text}</p></div>;
+const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><a style={MarkerTextStyle} href={"http://localhost:8000/reviews/"+slug}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br />{text}</a></div>;
+
+const NewReviewMarker = ({ text }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawingblue.svg"} alt="Logo" /><br /><p style={MarkerTextStyle}>{text}</p></div>;
 
 const mapOptions = {
       

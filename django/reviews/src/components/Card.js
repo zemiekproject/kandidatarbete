@@ -14,8 +14,8 @@ const cardStyle = {
   maxWidth: "33%",
 }
 
-const NameEl = ({id}) => (
-   <DataProvider endpoint="http://localhost:8000/reviews/api/location/" render={data => <LocationNamer data={data.slice(id,id+1)} />} />
+const LocationName = ({id}) => (
+   <DataProvider endpoint="http://localhost:8000/reviews/api/location/" render={data => <LocationNamer data={data.slice(id-1,id)} />} />
  );
 
 const AuthorName = ({id}) => (
@@ -52,7 +52,7 @@ const ReviewCard = ({ data, term }) =>
                 <CardBody>
                     <CardTitle key={uuid()}>{data.title}</CardTitle>
                     <CardSubtitle>Written by: <AuthorName id={data.author}/></CardSubtitle>
-                    <CardSubtitle><NameEl id={data.location}/></CardSubtitle>
+                    <CardSubtitle><LocationName id={data.location}/></CardSubtitle>
                     <CardText>{data.text ? data.text.substring(0,60)+" ... " : null}</CardText>
                     <Button href={"/reviews/"+data.slug+"/"}>Read More</Button>
                 </CardBody>

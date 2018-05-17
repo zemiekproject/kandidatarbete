@@ -6,17 +6,26 @@ import DataProvider from "./DataProvider";
 import Table from "./Table";
 import ReviewCard from "./Card";
 import ReviewList from "./axios/ReviewList";
+import LocationNamer from "./LocationNamer"
+import UserNamer from "./UserNamer"
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 const buttonmargin = {
   marginLeft: 20
 };
 
+const LocationName = ({id}) => (
+   <DataProvider endpoint="http://localhost:8000/reviews/api/location/" render={data => <LocationNamer data={data.slice(id-1,id)} />} />
+ );
 
+const AuthorName = ({id}) => (
+   <DataProvider endpoint="http://localhost:8000/reviews/api/user/" render={data => <UserNamer data={data.slice(id-1,id)} />} />
+   
+ );
 
 function searchingFor(term) {
   return function(x) {
-    return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
+    return (x.title.toLowerCase().includes(term.toLowerCase()) || x.text.toLowerCase().includes(term.toLowerCase())) || !term;
   }
 }
 

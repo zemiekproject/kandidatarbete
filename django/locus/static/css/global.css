@@ -23,8 +23,12 @@ div#foot{
 ul#sitefoot {
    height: 0%;
    width: 100%;
-   background-color: #666666;
+   background-color: #FDFEFF;
    list-style-type: none;	
+}
+
+#baloontext{
+    color: white;
 }
 
 .lowkey {
