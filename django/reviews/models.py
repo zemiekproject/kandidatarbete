@@ -9,11 +9,13 @@ User = settings.AUTH_USER_MODEL
 
 ## ADDED A BUNCH OF BLANKS SHUDN*T B BLANKS
 class Review(models.Model):
+    CHOICES = [(i, i) for i in range(1,11)]
+
     author      = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     title       = models.CharField(max_length=120)
     location    = models.ForeignKey("locations.Location", on_delete=models.DO_NOTHING, db_column='location')
 
-    rating      = models.IntegerField(default=0)
+    rating      = models.IntegerField(default=0, choices = CHOICES)
     upvotes     = models.ManyToManyField(User, blank=True, related_name='review_upvotes')
     downvotes   = models.ManyToManyField(User, blank=True, related_name='review_downvotes')
 

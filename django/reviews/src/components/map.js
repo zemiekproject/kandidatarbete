@@ -113,7 +113,7 @@ const mapOptions = {
 draggableCursor: 'default',
 fullscreenControl: false,
 //gestureHandling: 'greedy',
-scrollwheel: false,
+scrollwheel: true,
 zoomControl: true,
 
 };
@@ -234,7 +234,7 @@ componentDidMount() {
     return (
       // Important! Always set the container height explicitly
 
-      <div style={{ height: '90vh', width: '100%' }}>
+      <div style={{ height: '83vh', width: '100%' }}>
         <GoogleMapReact
           onClick={this.handleClick.bind(this)}
           onRightClick={console.log('theworks')}

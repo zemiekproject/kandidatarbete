@@ -1,5 +1,4 @@
-
-{% extends "base.html" %} {% load render_bundle from webpack_loader %} {% block content %}
+ {% extends "base.html" %} {% load render_bundle from webpack_loader %} {% block content %}
 
 <head>
     <style>
@@ -23,7 +22,7 @@
             clear: both;
         }
 
-       /*  #submitbutton {
+        /*  #submitbutton {
             background: #38933b;
             color: white;
             border-style: outset; 
@@ -35,12 +34,33 @@
             margin: 1vh;
             
         } */
+
         .form {
             border: none;
             border-radius: 5px;
-            color: rgba(255,127,80,0.95);
-            margin:auto;
+            color: rgba(255, 127, 80, 0.95);
+            margin: auto;
             height: 84vh;
+        }
+
+        html, body {
+            overflow: hidden;
+        }
+        #formcolumn {
+            overflow: scroll;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #bd5734;
+            border-radius: 10px;
         }
 
         #column {
@@ -52,6 +72,7 @@
         #mapcolumn {
             height: 100%;
         }
+
         .label {
             margin-left: 1vh;
             color: #46211A
@@ -67,45 +88,41 @@
         .submitbutton{
             text-transform: uppercase;
             text-align: center;
-            color: rgba(255,127,80,0.95);
+            color: rgba(255, 127, 80, 0.95);
 
             font: bold 20px arial, sans-serif;
-            font-size: 20px; 
-            
-            width: 150px;
-            height:50px;
+            font-size: 20px;
 
-            background: rgba(255,127,80,0.95);
-            border: 1px solid rgba(255,127,80,0.95);
+            width: 200px;
+            height: 50px;
+
+            background: rgba(255, 127, 80, 0.95);
+            border: 1px solid rgba(255, 127, 80, 0.95);
             border-radius: 5px;
             color: #FFF;
             overflow: hidden;
-            
-            transition: all 0.5s;
 
-            margin: 1vh;
+            transition: all 0.5s;
+            margin-bottom: 5vh;
         }
 
-        .submitbutton:hover, .submitbutton:active 
-        {
+        .submitbutton:hover,
+        .submitbutton:active {
             text-decoration: none;
             color: #FFF;
             border-color: #0C5;
             background: #0C5;
         }
 
-        .submitbutton span 
-        {
+        .submitbutton span {
             display: inline-block;
             position: relative;
-            
+
             transition: padding-right 0.5s;
         }
 
-        .submitbutton span:after 
-        {
-            content: ' ';  
-            position: absolute;
+        .submitbutton span:after {
+            content: ' ';
             top: 0;
             right: -18px;
             opacity: 0;
@@ -122,43 +139,37 @@
             transform: rotate(-45deg);
         }
 
-        .submitbutton:hover span, .submitbutton:active span 
-        {
+        .submitbutton:hover span,
+        .submitbutton:active span {
             padding-right: 30px;
         }
 
-        .submitbutton:hover span:after, .submitbutton:active span:after 
-        {
+        .submitbutton:hover span:after,
+        .submitbutton:active span:after {
             transition: opacity 0.5s, top 0.5s, right 0.5s;
             opacity: 1;
             border-color: #0C5;
             right: 0;
             top: 50%;
         }
-                
+
 
         #namefield {
             margin: 1vh;
-            height: 8%;
-            width: 50%;
 
         }
 
          #locationfield {
-            margin: 1vh;  
-            height: 8%;  
-            width: 50%;
+            margin: 1vh;   
         }
 
         #countryfield {
             margin: 1vh;
-            height: 8%;
-            width: 50%;
+
         }
 
         #textfield {
-            margin: 1vh;    
-            height: 35%;
+            margin: 1vh;
         }
 
         #textbox {
@@ -166,13 +177,12 @@
         }
 
         #ratingfield {
-            margin: 1vh; 
-            height: 8%;
+            margin: 1vh;
         }
 
         #tagsfield {
-            margin: 1vh; 
-            height: 8%;
+            margin: 1vh;
+
         }
 
 
@@ -225,6 +235,18 @@
             width: 80px;
         }
 
+        #rating1,#rating2,#rating3,#rating4,#rating5,#rating5,#rating6,#rating7,#rating8,#rating9,#rating10 {
+            margin: 1vh;
+            width: 20px;
+            height: 20px;
+        } 
+
+
+        .radios {
+            font-size: 25px;
+        }
+
+
         button {
             background: #f8ba7c;
             color: #fff;
@@ -246,7 +268,6 @@
         button:before,
         button:after {
             content: '';
-            position: absolute;
             top: 0;
             right: 0;
             height: 2px;
@@ -267,9 +288,9 @@
             width: 100%;
             transition: 800ms ease all;
         }
-        
-        .hiddenform{
-            display:none;
+
+        .hiddenform {
+            display: none;
 
         }
     </style>
@@ -282,7 +303,6 @@
         <div class="row">
             <div class="column" id="formcolumn">
                 <h3 class="text-muted" align="center">
-                    Write a review
                     <small class="text-muted"></small>
                 </h3>
                 <div id=ReviewForm>
@@ -295,5 +315,18 @@
         </div>
         {% render_bundle 'vendors' %} {% render_bundle 'Main' %}
     </div>
+    <script>
+    $("input:radio").hover(function(){
+        $(this).prop('checked', true);
+}, function(){
+        //MouseOut event
+        $(this).prop('checked', false);
+}).click(function(){
+    //Unbind the hover event for all the radio buttons
+    $("input:radio").unbind('mouseenter mouseleave')
+    //Check clicked radio button
+    $(this).prop('checked', true);
+});
+</script>
 </body>
 {% endblock %}

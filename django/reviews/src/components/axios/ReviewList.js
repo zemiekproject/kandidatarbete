@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-
+    
 function searchingFor(term) {
     return function(x) {
       return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
