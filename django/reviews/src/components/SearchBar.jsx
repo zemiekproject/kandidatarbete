@@ -13,7 +13,7 @@ const textStyles = {
 
 function searchingFor(term) {
   return function(x) {
-    return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
+    return (x.location.toLowerCase().includes(term.toLowerCase())) || !term;
   }
 }
 

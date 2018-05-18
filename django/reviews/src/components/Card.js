@@ -32,10 +32,9 @@ const cardImgStyle = {
   paddingTop: "10px",
 }
 
-
-const NameEl = ({ id }) => (
-  <DataProvider endpoint="http://localhost:8000/reviews/api/location/" render={data => <LocationNamer data={data.slice(id, id + 1)} />} />
-);
+const LocationName = ({id}) => (
+   <DataProvider endpoint="http://localhost:8000/reviews/api/location/" render={data => <LocationNamer data={data.slice(id-1,id)} />} />
+ );
 
 const AuthorName = ({ id }) => (
   <DataProvider endpoint="http://localhost:8000/reviews/api/user/" render={data => <UserNamer data={data.slice(id, id + 1)} />} />
@@ -62,7 +61,7 @@ const ReviewCard = ({ data, term }) =>
                   {data.rating} / 10
                     </div>
                 <div>Written by: <AuthorName id={data.author} style={cardBodyStyle} /></div>
-                <div><NameEl id={data.location} /></div>
+                <div><LocationNamer id={data.location} /></div>
 
                 {/* <CardText>{data.text ? data.text.substring(0,60)+" ... " : null}</CardText> */}
                 {/* <Button href={"/reviews/"+data.slug+"/"}>Read More</Button> */}
@@ -72,6 +71,7 @@ const ReviewCard = ({ data, term }) =>
 
           ))}
         </CardDeck></div>);
+
 
 
 export default ReviewCard;
