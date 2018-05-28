@@ -1,5 +1,6 @@
 from django.urls import include, path
 from django.conf.urls import url, include
+from django.conf import settings
 from django.contrib import admin
 from django.views import generic
 from reviews.views import about_view, contact_view, staff_view, ReviewsListView, ReviewsDetailView, ReviewCreateView
@@ -23,4 +24,6 @@ urlpatterns = [
     url(r'^staff/$', staff_view, name = "staff"),
     #Names makes it easier to refer to the paths; you don't have to change your references if paths are changed
 ]
+
+
 

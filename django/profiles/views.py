@@ -7,7 +7,7 @@ from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, CreateView, FormView, UpdateView
 from .forms import RegisterForm, ModelFormWithFileField
-from .models import ProfilePicture
+from .models import Profile
 from django.core.files.storage import FileSystemStorage
 import os
 from locus.settings.base import MEDIA_ROOT
@@ -24,17 +24,17 @@ class RegisterView(CreateView):
     template_name = "registration/register.html"
     success_url = "/"
 
-class UpdateProfilePicture(UpdateView):
-    success_url = "/"
-    model = ProfilePicture
-    fields = ['picture']
-    template_name = 'profiles/update.html'
+# class UpdateProfilePicture(UpdateView):
+#     success_url = "/"
+#     model = Profile
+#     fields = ['image']
+#     template_name = 'profiles/update.html'
 
-    def get_object(self):
-        return ProfilePicture.objects.get(id=self.request.GET.get('id'))
+#     def get_object(self):
+#         return Profile.objects.get(user_id=self.request.GET.get('id'))
 
 class ProfileDetailView(LoginRequiredMixin, DetailView, FormView):
-    model = ProfilePicture
+    model = Profile
     form_class = ModelFormWithFileField
     qs = User.objects.filter(is_active=True)
     template_name = 'profiles/user.html'
@@ -47,19 +47,20 @@ class ProfileDetailView(LoginRequiredMixin, DetailView, FormView):
             username = self.request.user
         if username is None:
             raise Http404
-        return get_object_or_404(User, username__iexact=username, is_active=True)
+        u_id = User.objects.get(username__iexact=username).id
+        return get_object_or_404(Profile, user_id__exact=u_id)
 
     
-    def get_context_data(self,**kwargs):
-        context = super(ProfileDetailView, self).get_context_data(**kwargs)
-        context['form']=self.get_form()
-        query = self.request.user
-        print(query)
-        context['picture']= str(ProfilePicture.objects.filter(author__exact=query)[0])
-        print("Japp det är det" + context['picture'])
-        context['author']=query
+    # def get_context_data(self,**kwargs):
+    #     context = super(ProfileDetailView, self).get_context_data(**kwargs)
+    #     context['form']=self.get_form()
+    #     query = self.request.user
+    #     print(query)
+    #     # context['image']= str(Profile.objects.filter(user__exact=query))
+    #     # print("Japp det är det" + context['picture'])
+    #     context['user']=query
         
-        return context
+    #     return context
     
  
 
