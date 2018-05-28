@@ -1,13 +1,79 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content %}
+<style>
+    .contentBlock {
+        background: #bd5734;
+    }
 
-<form method="post" action="{% url 'register' %}">
-{% csrf_token %}
-{{ form.as_p }}
+    .registerform {
+        margin-top: 100px;
+        margin-left: 25%;
+        margin-right: 25%;
+        background: whitesmoke;
 
-<input type="submit" value="Register" /> 
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
+    }
+
+    .registerwrapper {
+        padding-bottom: 100px;
+    
+    }
+
+    .error {
+        color: red;
+    }
+
+    .registerBlock {
+        background: #bd5734;
+        height: 100%;
+    }
+
+    
+    .form-group {
+        margin: 30px;
+        background: whitesmoke;
+    }
+    .toplabel {
+        margin-top: 5%;
+    }
+</style>
+<div class="registerBlockWrapper">
+    <div class=registerBlock>
+
+        <div class="registerwrapper">
+
+            <form method="post" action="{% url 'register' %}" class="registerform">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_username" class="toplabel">Username:</label>
+                    {{form.username}}
+                </div>
+                <div class="form-group">
+                    
+                    <label for="id_email">Email address:</label>
+                    {{form.email}}
+                </div>
+                <div class="form-group">
+                    <label for="id_first_name">First name:</label>
+                    {{form.first_name}}
+                </div>
+                <div class="form-group">
+                    <label for="id_last_name">Last name:</label>
+                    {{form.last_name}}
+                </div>
+                <div class="form-group">
+                    <label for="id_password1">Password:</label>
+                    {{form.password1}}
+                </div>
+                <div class="form-group">
+                    <label for="id_password2">Repeat password:</label>
+                    {{form.password2}}
+                </div>
+                <button type="submit" style ="margin-bottom: 50px; margin-left: 25px;" class="btn btn-primary">Register</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

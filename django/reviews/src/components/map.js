@@ -18,10 +18,14 @@ const ReviewMarkerStyle = {
     top: -MARKER_SIZE * 2
 
   }
+const MarkerTextStyle = {
+    color: 'white'
 
-const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><a href={"http://localhost:8000/reviews/"+slug}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br />{text}</a></div>;
+}
 
-const NewReviewMarker = ({ text }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawingblue.svg"} alt="Logo" /><br /><p>{text}</p></div>;
+const ReviewMarker = ({ text, slug }) => <div style={ReviewMarkerStyle}><a style={MarkerTextStyle} href={"http://localhost:8000/reviews/"+slug}><img src={"/static/graphics/drawing.svg"} alt="Logo" /><br />{text}</a></div>;
+
+const NewReviewMarker = ({ text }) => <div style={ReviewMarkerStyle}><img src={"/static/graphics/drawingblue.svg"} alt="Logo" /><br /><p style={MarkerTextStyle}>{text}</p></div>;
 
 const mapOptions = {
       
@@ -109,7 +113,7 @@ const mapOptions = {
 draggableCursor: 'default',
 fullscreenControl: false,
 //gestureHandling: 'greedy',
-scrollwheel: false,
+scrollwheel: true,
 zoomControl: true,
 
 };
@@ -158,7 +162,7 @@ _onChange = ({center, zoom}) => {
   }
 
 
-handleClick(obj) { 
+handleClick(obj) {
     if (window.location.pathname=="/reviews/create/") {
         var geocoder = new google.maps.Geocoder;
         var loc = new google.maps.LatLng(obj.lat,obj.lng);
@@ -222,7 +226,7 @@ handleSearch(place) {
 }
 
 componentDidMount() {
-    var input = React.findDOMNode(this.refs.map);
+    var input = ReactDOM.findDOMNode(this.refs.map);
     this.plc = new google.maps.places.PlacesService(input);
 }
 
@@ -230,9 +234,10 @@ componentDidMount() {
     return (
       // Important! Always set the container height explicitly
 
-      <div style={{ height: '90vh', width: '100%' }}>
+      <div style={{ height: '83vh', width: '100%' }}>
         <GoogleMapReact
           onClick={this.handleClick.bind(this)}
+          onRightClick={console.log('theworks')}
           onChange={this._onChange}
           className='TheMap'
           options={mapOptions}

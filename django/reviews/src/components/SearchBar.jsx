@@ -13,7 +13,7 @@ const textStyles = {
 
 function searchingFor(term) {
   return function(x) {
-    return x.title.toLowerCase().includes(term.toLowerCase()) || !term;
+    return (x.location.toLowerCase().includes(term.toLowerCase())) || !term;
   }
 }
 
@@ -26,13 +26,14 @@ export default class SearchBar extends React.Component {
     this.state = {
       data: [],
       term: '',
+      showList: false,
     };
 
     this.searchHandler = this.searchHandler.bind(this)
   }
 
   searchHandler(event) {
-    this.setState({ term: event.target.value })
+    this.setState({ term: event.target.value, showList: true })
   }
 
   render() {

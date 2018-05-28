@@ -5,6 +5,7 @@
 
 <div id=reviewbox>
     <div class="card">
+    <div class="reviewcard">
         <h2 id="title">{{ object.title }}</h2>
         <p>Written by: <a href="{%url 'profiles:detail' username=object.author %}" id="author">{{ object.author }}</a></p><p>Last updated: {{ object.updated }}</p>
         <div class="fakeimg" style="height:200px;">Image</div>
@@ -23,6 +24,7 @@
         <li><a href='{{tag.get_absolute_url}}'>{{ tag }}</a></li>
         {% endfor %}
         </ul>
+        </div>
         </div>
     </div>
 

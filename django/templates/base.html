@@ -14,16 +14,36 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBFtKbB9YJWMcIrBh77MITgOT6TDa0JfY4&libraries=places&sensor=false"></script>
 </head>
+
+<style>
+
+    .contentBlockWrapper {
+        height: 100%;
+    }
+    .contentBlock {
+        padding-top: 80px;
+        height:100%;
+    }
+    html, body {
+        height: 100%;
+    }
+</style>
+
 <body>
+    
     <div id='uid' style="display:none;">{{ request.user.id }}</div> <!--GAD IS SHITTY SOLUTION-->
-    <div>
+    <div class=contentBlockWrapper>
         
     <header>{% include 'snippets/nav.html' %}</header>
-    
+    <div class=contentBlock>
     {% block content %}
-    
+
     {% endblock %}
-    </div>
+</div>
+</div>
+
+
+
     <footer>{% include 'snippets/footer.html' %}</footer>
     
 </body>

@@ -23,13 +23,17 @@ div#foot{
 ul#sitefoot {
    height: 0%;
    width: 100%;
-   background-color: #666666;
+   background-color: #FDFEFF;
    list-style-type: none;	
+}
+
+#baloontext{
+    color: white;
 }
 
 .lowkey {
     font-family:sans-serif;
-    color: #CCCCCC;
+    color: black;
     font-size: 0.8em;
     padding: 0%;
     width:100%;
@@ -46,7 +50,7 @@ ul#sitefoot {
 
 #over_map {position: absolute;   top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 99; }
 
-#hidden {display:none;}
+#hidden {display:block;}
 
 .inputClass{
     fontSize: "45px";
@@ -77,6 +81,12 @@ div#reviewbox {
 /* Add a card effect for articles */
 .card {
   background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.reviewcard{
+  background-color: #FFFFCC;
   padding: 20px;
   margin-top: 20px;
 }

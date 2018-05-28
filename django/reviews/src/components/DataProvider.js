@@ -34,11 +34,17 @@ class DataProvider extends Component {
         return response.json();
       })
       .then(data => this.setState({ data: data, loaded: true }));
+//     var pathArray = window.location.pathname.split( '/' );
+//     if(pathArray[1]=='u'){
+//         this.setState(data,this.state.data.filter(review => review.author==document.getElementById('uid').innerHTML));
+//     }
   }
 
   render() {
     const { data, loaded, placeholder} = this.state;
-    console.log(data[0]);
+    if(window.location.pathname=='/reviews/toprated/'){
+        data.sort((a,b) => b.rating - a.rating);
+    }
     return loaded ? this.props.render(data) : <p>{placeholder}</p>
   }
 }
