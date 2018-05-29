@@ -48,6 +48,14 @@ ul#sitefoot {
     margin:1%;
 }
 
+.column {
+    background-color: #FFFFEC;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin:1%;
+    width: 40 %
+}
+
 #over_map {position: absolute;   top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 99; }
 
 #hidden {display:block;}

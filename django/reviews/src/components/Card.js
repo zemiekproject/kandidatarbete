@@ -37,7 +37,7 @@ const LocationName = ({id}) => (
  );
 
 const AuthorName = ({ id }) => (
-  <DataProvider endpoint="http://localhost:8000/reviews/api/user/" render={data => <UserNamer data={data.slice(id, id + 1)} />} />
+  <DataProvider endpoint="http://localhost:8000/reviews/api/user/" render={data => <UserNamer data={data.slice(id-1, id)} />} />
 );
 const uuid = shortid.generate;
 
@@ -61,7 +61,7 @@ const ReviewCard = ({ data, term }) =>
                   {data.rating} / 10
                     </div>
                 <div>Written by: <AuthorName id={data.author} style={cardBodyStyle} /></div>
-                <div><LocationNamer id={data.location} /></div>
+                <div><LocationName id={data.location} /></div>
 
                 {/* <CardText>{data.text ? data.text.substring(0,60)+" ... " : null}</CardText> */}
                 {/* <Button href={"/reviews/"+data.slug+"/"}>Read More</Button> */}

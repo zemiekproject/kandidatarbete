@@ -106,9 +106,20 @@ const mapOptions = {
     "elementType": "labels.text",
     "stylers": [
         {"color": "#E8E3E3"},
-        {"visibility": "on"}
+        {"visibility": "off"}
     ]
-}
+    
+},
+{
+        'featureType': "administrative.country",
+        'elementType': "labels",
+        'stylers': [ { 'visibility': 'off' } ]
+    },
+{
+        'featureType': "administrative.city",
+        'elementType': "labels",
+        'stylers': [ { 'visibility': 'off' } ]
+    },
 ],
 draggableCursor: 'default',
 fullscreenControl: false,
