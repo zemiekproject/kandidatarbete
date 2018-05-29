@@ -1,5 +1,6 @@
 from django.urls import include, path
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.views import generic
@@ -25,5 +26,5 @@ urlpatterns = [
     #Names makes it easier to refer to the paths; you don't have to change your references if paths are changed
 ]
 
-
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

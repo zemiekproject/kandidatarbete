@@ -7,60 +7,28 @@
 <div id='name' style='display:none;'> {{user.first_name }} {{user.last_name}} ({{ user.username }})</div>
 <div id='email' style='display:none;'> {{user.email }} </div>
 <div id='userid' style='display:none;'>{{user.id}}</div>
+<style>
+.imgname{position: absolute; left: 73%}
+.revfield{margin-right: 30%; margin-left: 2%}
+.Main{margin-top: 12%}
+</style>
 
 <body>
 
-<div> {{ object.firstname }} </div>
-<div> {{ object.image }} </div>
 
-<!-- <div class="container"> 
-    <div class="row">
-    <div class='column'>
-            
-    </div>
-    
-    
-
-        <div class="column">
-                <div id=root> HEJ </div>
-            <div class=Map></div>
-            
+<div class="row">
+        <div class="col-6 m-0 here">
+            <img height="250" width="250" class=imgname src={{object.image.url}} />
+            <h1 class="revfield" class=name>{{object.firstname}} {{object.lastname}}</h1>
+                <h4 class="revfield">{{object.user}}</h4>
+                <p class="revfield">{{ object.aboutme }}</p>
+            <div class="Main" id="Main"></div>
         </div>
-    </div>
-
-</div> -->
-    <div class="row">
-        <div class="col-6">
-
-            <form method='post' enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p}}
-                
-                
-                <button type='submit'> Ladda upp bild </button>
-                
-                 
-             </form>
-  
-
-
-            <div><div class="Main" id="Main"></div>
+        <div class="col-6 m-0">
+            <div>
+                <div class=Map></div>
+            </div>
         </div>
-        <div class="col-3">
-        <img src="{% static picture %}"/>
-
-        </div>
-        <div class="col-3">
-            <div id=root> 
-                 
-
-             </div>
-            
-        </div>
-    </div>
-    <div class = "row">
-    <div class = "col-6"></div>
-    <div class = "col-6"><div class=Map></div></div>
     </div>
  
 
