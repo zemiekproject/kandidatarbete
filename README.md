@@ -1,7 +1,3 @@
 # kandidatarbete
-The amazing readme.
 
-
-When adding additional apps, remember to add it to the settings file.
-
-Use names for urls in html files.
+This is the REST branch which contains the final code of the Locus project.
