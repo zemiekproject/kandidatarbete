@@ -1,7 +1,3 @@
 # kandidatarbete
-The amazing readme.
 
-
-When adding additional apps, remember to add it to the settings file.
-
-Use names for urls in html files.
+This is the dev branch which does not contain the final code. This branch was created by mistake.
