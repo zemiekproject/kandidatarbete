@@ -8,6 +8,7 @@ module.exports = {
     // Add as many entry points as you have container-react-components here
     App1: './reactjs/App1',
     App2: './reactjs/App2',
+    Main: './reviews/src/index',
     vendors: ['react'],
   },
 
@@ -24,7 +25,16 @@ module.exports = {
   ], // add all common plugins here
 
   module: {
-    loaders: [] // add all common loaders here
+    loaders: [
+        {
+            test: /\.(gif|jpe?g|png|ico)$/,
+            loader: 'url-loader?limit=10000'
+        },
+                {
+            test: /\.(png|jpg)$/,
+            loader: 'file-loader'
+        },
+    ] // add all common loaders here
   },
 
   resolve: {

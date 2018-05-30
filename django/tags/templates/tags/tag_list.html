@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block content %}
+<h2>Tags</h2>
+<ul>
+    {% for tag in object_list %}
+    <li><a href='{{tag.get_absolute_url}}'><h3>{{ tag.name }}</h3></a></li>
+    {% endfor %}
+</ul>
+<!-- {% render_bundle 'vendors' %}
+{% render_bundle 'App1' %} -->
+{% endblock content %}

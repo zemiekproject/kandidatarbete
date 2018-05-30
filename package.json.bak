@@ -1,0 +1,21 @@
+{
+  "name": "kandidatarbete",
+  "version": "1.0.0",
+  "description": "The amazing readme.",
+  "main": "index.js",
+  "dependencies": {
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+  "dev": "webpack --mode development ./django/reviews/src/index.js --output ./django/reviews/static/review/main.js",
+  "build": "webpack --mode production ./django/reviews/src/index.js --output ./django/reviews/static/review/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/fruktfisk/kandidatarbete"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

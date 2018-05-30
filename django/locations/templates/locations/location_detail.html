@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block content %}
+
+<!-- <h2>{{ object.name }}</h2>{{ object.country }}
+
+{% for obj in object_list %}
+    <li><a href='{{obj.get_absolute_url}}'><h3>{{ obj.title }}</h3></a> </br> {{ obj.timestamp }}</li>
+{% endfor %} -->
+
+<h2>{{ location.name }}</h2>
+
+<p>Average rating: {{ location.get_avg_rating }}</p>
+
+{% for review in location.review_set.all %}
+    <li><a href='{{ review.get_absolute_url }}'>{{ review.title }}</a></li>
+{% endfor %}
+
+
+
+<!-- {% render_bundle 'vendors' %}
+{% render_bundle 'App1' %} -->
+{% endblock content %}
